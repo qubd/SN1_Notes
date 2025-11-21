@@ -1,0 +1,326 @@
+\documentclass{book}[letter]
+\title{\huge{201-SN1 - Probability \& Statistics}}
+\author{B. Cordy}
+\date{Fall 2025}
+
+\usepackage{theorem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pgfmath}
+\usepgfplotslibrary{fillbetween}
+\usepackage{imakeidx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{latexsym}
+\usepackage{cancel}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usetikzlibrary{patterns}
+\usetikzlibrary{patterns.meta}
+\usetikzlibrary{trees}
+\usetikzlibrary{arrows.meta}
+\setlength{\parskip}{1em plus 0.2em minus 0.2em}
+\setlength{\textheight}{8.1in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{.25in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+
+\setlength{\theorempreskipamount}{0.5em}   % space above theorem/definition
+\setlength{\theorempostskipamount}{0.5em} 
+
+% Set the overall layout of tikz trees
+\tikzstyle{level 1}=[level distance=2.5cm, sibling distance=2.25cm]
+\tikzstyle{level 2}=[level distance=2.5cm, sibling distance=1.5cm]
+\tikzstyle{level 3}=[level distance=2.5cm, sibling distance=1.5cm]
+
+% Define styles for bags and leafs
+\tikzstyle{head} = [inner sep=0pt]
+\tikzstyle{bag} = [text width=2em, text centered]
+\tikzstyle{bigbag} = [text width=6em, text centered]
+\tikzstyle{megabag} = [text width=10em, text centered]
+\tikzstyle{end} = [minimum width=3pt, inner sep=0pt]
+
+\makeatletter
+\long\def\ifnodedefined#1#2#3{%
+    \@ifundefined{pgf@sh@ns@#1}{#3}{#2}%
+}
+
+\def\aeundefinenode#1{%%
+  \ifnodedefined{#1}{\global\expandafter\let\csname pgf@sh@ns@#1\endcsname\relax}{}%
+}
+
+\pgfplotsset{
+    xtick parsed/.code={
+        \c@pgf@counta 0\relax
+        \foreach \x in {#1} {
+            \pgfmathparse{\x}
+            \ifnum\c@pgf@counta=0
+                \xdef\pgfplots@xtick{\pgfmathresult}
+            \else
+                \xdef\pgfplots@xtick{\pgfplots@xtick,\pgfmathresult}
+            \fi
+            \global\advance\c@pgf@counta 1\relax
+        }
+    }
+ } 
+
+\pgfplotsset{
+    cdf init/.code={\aeundefinenode{marker}},
+    cdf/.style={
+    scatter,
+    scatter/@pre marker code/.code={
+			\ifnodedefined{marker}{
+            \pgfpointdiff{\pgfpointanchor{marker}{center}}%
+             {\pgfpoint{0}{0}}%
+             \ifdim\pgf@y>0pt
+                \tikzset{options/.style={mark=*}}
+                \draw plot [mark=*,mark options={fill=white}] coordinates {(marker-|0,0)};
+             \else
+                \ifdim\pgf@y<0pt
+                    \tikzset{options/.style={mark=*,fill=white}}
+                    \draw plot [mark=*] coordinates {(marker-|0,0)};
+                \else
+                    \tikzset{options/.style={mark=none}}
+                \fi
+             \fi
+        }
+				{
+            \tikzset{options/.style={mark=none}}        
+        }
+        \coordinate (marker) at (0,0);
+        \begin{scope}[options]
+    },
+    scatter/@post marker code/.code={\end{scope}}
+    }
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+% Global defaults for itemize and enumerate
+\setlist[itemize]{%
+    topsep=0.5em,      % space above and below the list
+    itemsep=1em,    % space between items
+    parsep=0pt,        % extra space between paragraphs inside an item
+    partopsep=0pt,     % extra space added when list starts a new paragraph
+    leftmargin=*       % align with normal text margin
+}
+
+\setlist[enumerate]{%
+    topsep=0.5em,
+    itemsep=1em,
+    parsep=0pt,
+    partopsep=0pt,
+    leftmargin=*
+}
+
+\newenvironment{example}
+{\noindent\begin{examp}}
+{\hfill \end{examp}}
+
+\newenvironment{definition}
+{\noindent\begin{defn}}
+{\hfill \end{defn}}
+
+\newtcolorbox{warningbox}{
+  enhanced,
+  parbox=false,
+  colback=red!0,
+  colframe=red!0,
+  boxrule=0.4pt,
+  arc=2pt,
+  left=6pt,
+  right=6pt,
+  top=6pt,
+  bottom=3pt,
+  before skip=1.5em,
+  after skip=1.5em,
+  overlay={
+    % Erase part of the frame at top-left
+    \begin{scope}
+      \clip (frame.north west) rectangle ([xshift=2cm,yshift=-1ex]frame.north west);
+      \path[fill=red!0, draw=none] (frame.north west) rectangle ([xshift=2cm,yshift=-0.5ex]frame.north west);
+    \end{scope}
+    \draw[line width=2pt, red] 
+      ([xshift=2pt]frame.south west) -- 
+      ([xshift=2pt]frame.north west);
+    \draw[line width=2pt, red] 
+      ([xshift=2pt]frame.south east) -- 
+      ([xshift=2pt]frame.north east);
+    % Add "Remark" label
+    \node[anchor=west, font=\bfseries] at ([xshift=1pt,yshift=0ex]frame.north west) {Warning \faExclamationTriangle};
+  }
+}
+
+\newenvironment{warning}
+{\begin{warningbox}}
+{\end{warningbox}}
+
+\newtcolorbox{keypointbox}{
+  enhanced,
+  parbox=false,
+  colback=blue!0,
+  colframe=blue!0,
+  boxrule=0.4pt,
+  arc=2pt,
+  left=6pt,
+  right=6pt,
+  top=6pt,
+  bottom=6pt,
+  before skip=1.5em,
+  after skip=1.5em,
+  overlay={
+    % Erase part of the frame at top-left
+    \begin{scope}
+      \clip (frame.north west) rectangle ([xshift=2cm,yshift=-1ex]frame.north west);
+      \path[fill=blue!0, draw=none] (frame.north west) rectangle ([xshift=2cm,yshift=-0.5ex]frame.north west);
+    \end{scope}
+    \draw[line width=2pt, black] 
+      ([xshift=2pt]frame.south west) -- 
+      ([xshift=2pt]frame.north west);
+    \draw[line width=2pt, black] 
+      ([xshift=2pt]frame.south east) -- 
+      ([xshift=2pt]frame.north east);
+    % Add "Remark" label
+    \node[anchor=west, font=\bfseries] at ([xshift=1pt,yshift=0ex]frame.north west) {Key Point \faKey};
+  }
+}
+
+\newenvironment{keypoint}
+{\begin{keypointbox}}
+{\end{keypointbox}}
+
+\newtcolorbox{remarkbox}{
+  enhanced,
+  parbox=false,
+  colback=blue!0,
+  colframe=blue!0,
+  boxrule=0.4pt,
+  arc=2pt,
+  left=6pt,
+  right=6pt,
+  top=6pt,
+  bottom=6pt,
+  before skip=1.5em,
+  after skip=1.5em,
+  overlay={
+    % Erase part of the frame at top-left
+    \begin{scope}
+      \clip (frame.north west) rectangle ([xshift=2cm,yshift=-1ex]frame.north west);
+      \path[fill=blue!0, draw=none] (frame.north west) rectangle ([xshift=2cm,yshift=-0.5ex]frame.north west);
+    \end{scope}
+    \draw[line width=2pt, black] 
+      ([xshift=2pt]frame.south west) -- 
+      ([xshift=2pt]frame.north west);
+    \draw[line width=2pt, black] 
+      ([xshift=2pt]frame.south east) -- 
+      ([xshift=2pt]frame.north east);
+    % Add "Remark" label
+    \node[anchor=west, font=\bfseries] at ([xshift=1pt,yshift=0ex]frame.north west) {Remark \faHandPointUp};
+  }
+}
+
+\newenvironment{remark}
+{\begin{remarkbox}}
+{\end{remarkbox}}
+
+\newenvironment{note}
+{\begin{remarkbox}}
+{\end{remarkbox}}
+
+\newenvironment{theorem}
+{\noindent\begin{thm}}
+{\hfill \end{thm}}
+
+\newenvironment{corollary}
+{\noindent\begin{cor}}
+{\hfill \end{cor}}
+
+\newenvironment{proof}
+{\vspace*{-7pt}\noindent\begin{pf}}
+{\hfill $\Box$ \end{pf}}
+
+\newenvironment{proofnobox}
+{\vspace*{-7pt}\noindent\begin{pf}}
+{\hfill \end{pf}}
+
+\newenvironment{lemma}
+{\noindent\begin{lem}}
+{\hfill \end{lem}}
+
+\newenvironment{proposition}
+{\noindent\begin{prop}}
+{\hfill \end{prop}}
+%
+\newtheorem{examp}{Example}[chapter]
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{cor}{Corollary}[chapter]
+\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{lem}{Lemma}[chapter]
+\newcommand{\newterm}[1]{{\bf\emph{#1}}}
+\newcommand{\exercises}{\subsection*{Exercises}}
+\newcommand{\pf}{\noindent{\bf Pf.}}
+\newcommand{\vsp}{\vspace{0.1in}}
+\newcommand{\emx}[1]{{\em{#1}\/}}
+\newcommand{\mat}[1]{{\mbox{\bf#1}\/}}
+\newcommand{\inbox}[1]{{\begin{center}\begin{minipage}{0.8\textwidth}\hrule \vspace{5pt}  #1 \vspace{5pt} \hrule \end{minipage}\end{center}}}
+\newcommand{\eqnsbiggap}[1]{{$$\begin{aligned} #1 \end{aligned}\vspace*{5pt}$$}}
+\newcommand{\eqns}[1]{{$$\begin{aligned} #1 \end{aligned}\vspace*{-10pt}$$}}
+\newcommand{\eqnsgap}[1]{{$$\begin{aligned} #1 \end{aligned}$$}}
+\newcommand{\eqnspar}[1]{{$$\begin{aligned} #1 \end{aligned}\vspace*{-18pt}$$}}
+\newcommand{\given}{\,|\,}
+\newcommand{\biimp}{\ \leftrightarrow\ }
+\newcommand{\xbar}{{\overline{X}}}
+\newcommand{\littlexbar}{{\overline{x}}}
+\newcommand{\muxbar}{\mu_{\overline{X}}}
+\newcommand{\sigmaxbar}{\sigma_{\overline{X}}}
+\DeclareMathOperator{\Var}{Var}
+
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
+
+\makeindex
+\begin{document}
+\addtolength{\normalbaselineskip}{1pt}
+\normalbaselines
+
+\frontmatter
+\include{front}
+
+\mainmatter
+\include{ch1}
+\include{ch2}
+\include{ch3}
+\include{ch4}
+\include{ch5}
+\include{ch6}
+
+\backmatter
+
+\bibliographystyle{siam}
+\bibliography{201-SN1_Notes}{}
+
+\include{back}
+
+\end{document}
