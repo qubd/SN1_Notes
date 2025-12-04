@@ -1145,14 +1145,14 @@ Suppose we perform a one-sample $Z$-test of $H_0: \mu = 5$ against $H_a: \mu < 5
 \end{tikzpicture}
 \end{center}
 
-The test statistic is for a sample with mean $\littlexbar$ is 
+The test statistic $z$ for a sample with mean $\littlexbar$ is given by
 $$z = \frac{\littlexbar - \mu_0}{\frac{\sigma}{\sqrt{n}}} = \frac{\littlexbar - 5}{\frac{3}{\sqrt{50}}}=2.36(\littlexbar - 5)$$
-and since $P(Z < -1.96) = 0.05$, we will (correctly) reject $H_0$ when
-$$\begin{aligned}2.36(\littlexbar - 5) &< -1.96 \\
-\littlexbar - 5 &< -0.83 \\
-\littlexbar &< 4.17.\end{aligned}$$
-This means the power of the test is the probability a random sample has a mean under $4.17$. Since the true distribution of $\xbar$ has $\mu = 4$, we can appeal to the central limit theorem to calculate
-$$\begin{aligned}\beta &= P(\xbar < 4.17) \\ &= P(Z < \textstyle\frac{4.17 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.6554\end{aligned}$$
+and since $P(Z < -1.65) = 0.05$, we will (correctly) reject $H_0$ when
+$$\begin{aligned}2.36(\littlexbar - 5) &< -1.65 \\
+\littlexbar - 5 &< -0.70 \\
+\littlexbar &< 4.30.\end{aligned}$$
+This means the power of the test is the probability a random sample has a mean under $4.30$. The true distribution of $\xbar$ has $\mu = 4$, so by the central limit theorem $\xbar \sim AG(4,\frac{3}{\sqrt{50}})$, and we can calculate
+$$\begin{aligned}\beta &= P(\xbar < 4.30) \\ &= P(Z < \textstyle\frac{4.30 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.7071\end{aligned}$$
 \end{example}
 
 It's instructive to re-run the calculation after changing the sample size, population standard deviation, or significance level to see the effect. Notice that although the power of the test depends on all of these, the confidence depends only on the significance level. In the scenario where $H_0$ is true, a test done at the $5\%$ significance level will not reject it precisely $95\%$ of the time.
