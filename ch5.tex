@@ -1020,7 +1020,7 @@ Now if the null hypothesis is, in fact, true, then the two distributions are ide
       
       \addplot[black, dashed]  {(1/2.50663)*exp(-(x)*(x)/2)};
       
-      \node at (axis cs:0,0.165) {$\alpha$};
+      \node at (axis cs:0,0.165) {$1-\alpha$};
     
      \addplot[blue, opacity=0, fill=none, fill opacity=1, domain=1.96:4, postaction={pattern=north east lines}] 
       {(1/2.50663)*exp(-(x)*(x)/2)} \closedcycle;
@@ -1066,7 +1066,7 @@ The green area below is the probability of correctly rejecting $H_0$ (obtaining 
    
     \addplot[blue]  {(1/2.50663)*exp(-(x-3)*(x-3)/2)};
     
-    \node at (axis cs:3,0.165) {$\beta$};
+    \node at (axis cs:3,0.165) {$1-\beta$};
     
     \addplot[blue, opacity=0, fill=none, fill opacity=1, domain=1.96:4, postaction={pattern=north east lines}] 
       {(1/2.50663)*exp(-(x)*(x)/2)} \closedcycle;
@@ -1075,15 +1075,15 @@ The green area below is the probability of correctly rejecting $H_0$ (obtaining 
 \end{tikzpicture}
 \end{center}
 
-The probability of not rejecting $H_0$ when it's true is the \newterm{confidence}\index{Confidence Level! of a Hypothesis Test} level of the test, denoted $\alpha$, and the probability of rejecting $H_0$ when it's false is called the \newterm{power}\index{Power! of a Hypothesis Test} of the test, denoted $\beta$. As we increase the confidence level (that is, decrease the significance level) of the test, the red area in the first figure ($1 - \alpha$) shrinks, but the red area in the second figure ($1-\beta$) grows.
+The probability of not rejecting $H_0$ when it's true is the \newterm{confidence}\index{Confidence Level! of a Hypothesis Test} level of the test, denoted $1-\alpha$, and the probability of rejecting $H_0$ when it's false is called the \newterm{power}\index{Power! of a Hypothesis Test} of the test, denoted $1- \beta$. As we increase the confidence level (that is, decrease the significance level) of the test, the Type I error rate ($\alpha$) shrinks, but the Type II error rate ($\beta$) grows.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Decision} & \textbf{$H_0$ is True} & \textbf{$H_a$ is True} \\
 \hline
-Do not reject $H_0$ & $\alpha$ & $1 - \beta$ \\
+Do not reject $H_0$ & $1-\alpha$ & $\beta$ \\
 \hline
-Reject $H_0$ & $1 - \alpha$ & $\beta$ \\
+Reject $H_0$ & $\alpha$ & $1-\beta$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -1152,7 +1152,7 @@ $$\begin{aligned}2.36(\littlexbar - 5) &< -1.65 \\
 \littlexbar - 5 &< -0.70 \\
 \littlexbar &< 4.30.\end{aligned}$$
 This means the power of the test is the probability a random sample has a mean under $4.30$. The true distribution of $\xbar$ has $\mu = 4$, so by the central limit theorem $\xbar \sim AG(4,\frac{3}{\sqrt{50}})$, and we can calculate
-$$\begin{aligned}\beta &= P(\xbar < 4.30) \\ &= P(Z < \textstyle\frac{4.30 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.7071\end{aligned}$$
+$$\begin{aligned}1-\beta &= P(\xbar < 4.30) \\ &= P(Z < \textstyle\frac{4.30 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.7071\end{aligned}$$
 \end{example}
 
 It's instructive to re-run the calculation after changing the sample size, population standard deviation, or significance level to see the effect. Notice that although the power of the test depends on all of these, the confidence depends only on the significance level. In the scenario where $H_0$ is true, a test done at the $5\%$ significance level will not reject it precisely $95\%$ of the time.
