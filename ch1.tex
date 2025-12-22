@@ -274,7 +274,7 @@ Here's a scenario that illustrates the relevance of each measure: In a guessing 
 
 If there is a \$10 reward for guessing correctly, and no payout for guessing incorrectly, clearly the best strategy is to guess the mode, $1$. What's not so immediate is that if instead the player is rewarded \$10 minus the error in their guess (so guessing 3 then drawing a 5 will yield a reward of $10 - 2 = 8$ dollars), the best strategy is to guess the median, 2, and if the player is rewarded \$10 minus the squared error in their guess (so guessing 3 then drawing a 5 will yield a reward of $10 - 2^2 = 6$ dollars), then the best strategy is to guess the mean, 2.4. 
 
-This is not a quirk that happens because of the particular choice of labels on the balls. In general, regardless of the distribution of values, the median minimizes the average absolute error and the mean minimizes the average squared error.
+This is not a quirk that happens because of the particular choice of labels on the balls. In general, regardless of the distribution of values, \emph{the median minimizes the average absolute error} and \emph{the mean minimizes the average squared error}. These results can be stated formally and proven using language of random variables (which we'll get to in Chapter 4) and standard techniques from differential calculus.
 
 \begin{example}
 In the preceding section, we constructed the histogram shown below, which summarizes the distribution of the variable whose values are:
@@ -314,7 +314,7 @@ We know that $\frac{S_B}{15} = 117$ and $\frac{S_G}{12} = 122$, where $S_B$ and 
 $$\frac{S_B + S_G}{27} = \frac{15\cdot 117 + 12 \cdot 122}{27} = 119.22.$$
 \end{example}
 
-The example above, and the one below, are typical of more involved problems about means, which generally require you to pass back and forth between means and sums. You should get used to doing this, as the same idea will reappear later in the course in problems involving the Central Limit Theorem REF!.
+The example above, and the one below, are typical of more involved problems about means, which often require you to pass from a mean to the corresponding sum. You should get used to doing this, as the same idea will reappear later in the course when we study the Central Limit Theorem.
 
 \begin{example}
 Mr.\,Brown's grade three class has fifteen students and the mean height is 117\,cm. If a new student who is 114\,cm tall joins the class, how will the mean change?
@@ -323,7 +323,9 @@ As above, we know that $\frac{S_B}{15} = 117$, so $S_B = 15 \cdot 117$. We can t
 $$\frac{S_B + 114}{16} = 116.81$$
 \end{example}
 
-In later parts of the course, it will be extremely important to distinguish the mean of a population from the mean of a random sample taken from that population. The greek letter $\mu$ is used for the mean of a population (a parameter), while $\littlexbar$ is used for the mean of a sample (a statistic). Whenever possible, we'll try to use greek letters for parameters and latin letters for statistics.
+\begin{remark}
+It will be extremely important to distinguish the mean of a population from the mean of a random sample taken from a population. For this reason, the greek letter $\mu$ is used for the mean of a population (a parameter), while $\littlexbar$ is used for the mean of a sample (a statistic). Typically, parameters are denoted by greek letters.
+\end{remark}
 
 \begin{example}
 A random number generator produces the values $1$, $2$, $3$, $4$, $5$, and $6$ with equal probability. Three random numbers are produced, and the results are $2$, $2$, and $5$.
@@ -400,9 +402,9 @@ and the standard deviation is $\sigma = \sqrt{\frac{26}{5}}=2.28$.
 \end{example}
 
 \begin{warning}
-The standard deviation is not the average distance from the mean. We know $\sqrt{a^2 + b^2} \neq a + b$, and similarly, the average of a sequence of terms is not equal to the square root of the average of their squares.
+The standard deviation is not the average distance from the mean. We know that $\sqrt{a^2 + b^2} \neq a + b$, and similarly, the average of a sequence of terms is not generally the same as the square root of the average of their squares.
 
-The actual average distance from the mean is known as the mean absolute deviation\index{Mean Absolute Deviation}, which we will not study in this course. It's a fine measure of dispersion, but does not play a central role in statistics, as the variance and standard deviation do.
+The actual average distance from the mean is known as the mean absolute deviation\index{Mean Absolute Deviation}, which we will not study in this course. It's a fine measure of dispersion, but does not play as central a role in statistics as the variance and standard deviation do.
 \end{warning}
 
 %Note: Percentiles in R.V. section along with CDFs
@@ -443,7 +445,7 @@ Sample variance and sample standard deviation always refer to the Bessel correct
 \begin{example}
 Consider a standard fair six-sided die. Find the mean and variance for the outcome of a single die roll. Find the mean and variance for a sample of four rolls whose results are $2$, $3$, $6$, $1$.
 
-Treating the values $1$, $2$, $3$, $4$, $5$, $6$ as a complete population, we have
+Treating the list of values $1$, $2$, $3$, $4$, $5$, $6$ as a complete population, we have
 $$\mu = \textstyle\frac{1}{6}(1+2+3+4+5+6) = 3.5$$
 $$\sigma^2 = \textstyle\frac{1}{6}[(-2.5)^2+(-1.5)^2+(-0.5)^2+(0.5)^2+(1.5)^2+(2.5)^2] = \frac{35}{12}.$$
 
