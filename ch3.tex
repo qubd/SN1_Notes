@@ -141,39 +141,52 @@ Firstly, each element of $\Omega$ is a point, with no area, and hence an event s
 Secondly, it's not clear whether we've actually described the probability model completely. Consider an event like $Q = $ `the point selected has rational coordinates'. This is an event which could occur, and a well-defined subset of $\Omega$, but what is the area of $Q$? This is a deep question which ultimately leads to a branch of mathematics called measure theory, discussed in more advanced courses in mathematics.
 \end{remark}
 
-\subsection*{Basic Laws of Probability}
+\subsection*{Kolmogorov's Axioms}
 
 A probability model assigns probabilities to events, but not every kind of assignment is permitted. If would be absurd, for example, to create a probability model on the sample space $\Omega = \{H, T\}$ where $P(\{H\}) = 0.6$ and $P(\{T\}) = 0.9$. 
 
-\begin{proposition}
-Any probability model on a sample space $\Omega$ must satisfy the following.
+\begin{definition}
+A probability model on $\Omega$ is an assignment of probabilities to events that satisfies
 \begin{itemize}
-\item $P(\Omega) = 1$, and $0 \leq P(E) \leq 1$ for any event $E \subseteq \Omega$.
-\item $P(E^c) = 1 - P(E)$ for any event $E \subseteq \Omega$.
-\item If $A$ and $B$ are mutually exclusive events, then $P(A \cup B) = P(A) + P(B)$.
+\item Any event $E \subseteq \Omega$ has $0 \leq P(E) \leq 1$.
+\item $P(\Omega) = 1$.
+\item If $E_1, E_2, \,\dots$ are mutually exclusive events, then $P(E_1 \cup E_2 \cup \dots) = P(E_1) + P(E_2) + \dots$.
 \end{itemize}
+\end{definition}
+
+These three requirements are known as the Kolmogorov axioms for probability, after Russian mathematician Andrey Kolmogorov. Note that the sequence of events in the third axiom may be finite, or countably infinite. For this reason, it's known as the countable additivity axiom. 
+
+With two mutually exclusive events $A$ and $B$, the third axiom states $P(A \cup B) = P(A) + P(B)$, that is, we can compute the probability of the union by summing the two probabilities. In general, whenever any finite or countably infinite number of events in $\Omega$ do not overlap (in the sense of a Venn diagram), the countable additivity axioms says the probability of their union is the sum of their probabilities.
+
+The axioms are important because every part of the theory of probability presented in this chapter can be derived from them, so they are the pillars on which the theory of probability is built. Anyone who doubts the correctness of any part of the theory can always follow a chain of reasoning back to these three statements. Consider, for example, the proposition and justification below.
+
+%\begin{remark}
+%The second axiom actually follows from the first and third. It's a good exercise to prove this for yourself (\emph{Hint}: Read the next example, and note that $E$ and $E^c$ are always mutually exclusive events with $E \cup E^c = \Omega$).
+%\end{remark}
+
+%\begin{example}
+%Use the Kolmogorov axioms to show that $P(\emptyset) = 0$ in any probability model. 
+
+%Note that since $\Omega \cap \emptyset = \emptyset$, the events $\Omega$ and $\emptyset$ are mutually exclusive. Thus, by countable additivity,
+%$$P(\Omega) = P(\Omega \cup \emptyset) = P(\Omega) + P(\emptyset),$$
+%but since $P(\Omega) = 1$, the equation above says $1 = 1 + P(\emptyset)$, hence $P(\emptyset) = 0$.
+%\end{example}
+
+\begin{proposition}
+$P(E^c) = 1 - P(E)$ for any event $E$.
 \end{proposition}
+\begin{proof}
+The events $E$ and $E^c$ are mutually exclusive, and $E \cup E^c = \Omega$. Thus, by countable additivity,
+$$P(\Omega) = P(E \cup E^c) = P(E) + P(E^c),$$
+and since $P(\Omega) = 1$ by axiom two, we have $1 = P(E) + P(E^c)$, hence $1 - P(E) = P(E^c)$.
+\end{proof}
 
-It's reasonable to think about these requirements as either the defining characteristics of a probability model, or as the basic laws of probability. Note that the third law generalizes to sequences of mutually exclusive events. Formally, as long as $A_i \cap A_j = \emptyset$ for all $i$ and $j$ between $1$ and $n$,
-$$P(A_1 \cup A_2 \cup ... \cup A_n) = P(A_1) + P(A_2) + ... + P(A_n).$$
-Informally, whenever any finite number of events in $\Omega$ do not overlap (in the sense of a Venn diagram), the probability at least one occurs is the sum of their individual probabilities.
-
-\begin{remark}
-The second condition above actually follows from the first and third. It's a good exercise to prove this for yourself (\emph{Hint}: Read the next example, and note that $E$ and $E^c$ are always mutually exclusive events).
-\end{remark}
-
-\begin{example}
-Use the basic probability laws to show that $P(\emptyset) = 0$ in any probability model. 
-
-Note that since $\Omega \cap \emptyset = \emptyset$, the events $\Omega$ and $\emptyset$ are mutually exclusive. Therefore 
-$$P(\Omega) = P(\Omega \cup \emptyset) = P(\Omega) + P(\emptyset),$$
-but since $P(\Omega) = 1$, the equation above says $1 = 1 + P(\emptyset)$, and hence $P(\emptyset) = 0$.
-\end{example}
+It should be intuitively clear that if the probability an event occurs is $\frac{1}{3}$, the probability it doesn't occur is $\frac{2}{3}$, but with now we've established this is not just intuition, it's a necessary consequence of the three Kolmogorov axioms. We could call such formally justified statements \emph{laws of probability}.
 
 \begin{example}
 What is the probability that a single card drawn from a standard shuffled deck is a king or not a face card?
 
-Let $K =$ `the card drawn is a king' and $F =$ `the card drawn is a face card'. Since the events $K$ and $F^c$ are mutually exclusive (a card cannot be both a king and not a face card), we have
+Let $K =$ `the card drawn is a king' and $F =$ `the card drawn is a face card', and note the events $K$ and $F^c$ are mutually exclusive (a card cannot be both a king and not a face card). Using the countable additivity axiom and the law for complements we just demonstrated above,
 $$P(K \cup F^c) = P(K)+P(F^c) = P(K) + 1 - P(F) = \textstyle\frac{4}{52} + 1 - \frac{12}{52} = \frac{44}{52}.$$
 \end{example}
 
@@ -195,7 +208,7 @@ $$P(R \cup F^c) = 1 - P((R \cup F^c)^c) = 1 - P(R^c \cap F) = 1 - \textstyle\fra
 \begin{example}
 What is the probability that a single card drawn from a standard shuffled deck is either a diamond, a queen, or has an even number on it?
 
-Applying the three-event version of the inclusion-exclusion principle to the events $D =$ `the card drawn is a diamond', $Q =$ `the card drawn is a queen', and $E =$ `the card drawn has an even number on it',
+Applying the three-event version of the inclusion-exclusion principle to the events $D =$ `the card is a diamond', $Q =$ `the card is a queen', and $E =$ `the card has an even number on it',
 $$\begin{aligned}P(D \cup Q \cup E) &= P(D)+ P(Q) + P(E) - P(D \cap Q) - P(Q\cap E) - P(E \cap D) + P(D \cap Q \cap E) \\
 &= \textstyle\frac{13}{52} + \frac{4}{52} + \frac{20}{52} - \frac{1}{52} - \frac{0}{52} - \frac{5}{52} + \frac{0}{52} = \frac{31}{52}.\\
 \end{aligned}$$
@@ -270,8 +283,7 @@ We're looking for $P(T \given G)$ where $T = \{(x,y) \, | \, 0 \leq x \leq 1 \te
 \vspace{0pt}
 
 Recall from Example \ref{RandomPointInSquare} that in this probability model, the probability of any event is the area it occupies. The small triangle in the top-right (the event $T \setminus G$) is half of a $\frac{1}{3}$ by $\frac{1}{3}$ square, hence it has area $\frac{1}{18}$, so
-$$P(T \cap G) = \textstyle\frac{1}{3} - \frac{1}{18} = \frac{5}{18} \text{\ \  and \ } P(G) = \textstyle\frac{1}{2}$$
-
+$$P(T \cap G) = \textstyle\frac{1}{3} - \frac{1}{18} = \frac{5}{18} \text{\ \  and \ } P(G) = \textstyle\frac{1}{2}.$$
 Therefore, $P(T \given G) = \displaystyle\frac{P(T \cap G)}{P(G)} = \frac{\frac{5}{18}}{\frac{1}{2}} = \textstyle\frac{5}{9}$.
 \end{example}
 
@@ -426,7 +438,7 @@ This works because the branches represent mutually exclusive events (at each for
 $$\begin{aligned}P(E) =& \ P(E \given H_1 \cap H_2)P(H_1 \cap H_2) + P(E \given H_1 \cap N_2)P(H_1 \cap N_2) \\ &+ P(E \given N_1 \cap H_2)P(N_1 \cap H_2) + P(E \given N_1 \cap N_2)P(N_1 \cap N_2) \\
 =& \ 0 + P(E \given H_1 \cap N_2)P(N_2 \given H_1)P(H_1) + P(E \given N_1 \cap H_2)P(H_2 \given N_1)P(N_1) \\ &+ P(E \given N_1 \cap N_2)P(N_2 \given N_1)P(N_1) \\
 =& \ P(N_3 \given H_1 \cap N_2)P(N_2 \given H_1)P(H_1) + P(N_3 \given N_1 \cap H_2)P(H_2 \given N_1)P(N_1) \\ &+ P(H_3 \given N_1 \cap N_2)P(N_2 \given N_1)P(N_1)\end{aligned}$$
-and this is exactly how we calculated the result above. Each path from left to right corresponds to a term in the sum above. The event $E$ never occurs if two hearts are drawn, so $P(E \given H_1 \cap H_2) = 0$ and that term (which corresponds to a branch not depicted in the diagram) vanishes. Although working through the notation is good practice, I expect you'll agree that in cases like this, the tree diagram is more intuitive and simplifies the bookkeeping.
+and this is exactly how we calculated the result above. Each path from left to right corresponds to a term in the sum above. The event $E$ never occurs if two hearts are drawn, so $P(E \given H_1 \cap H_2) = 0$ and that term (which corresponds to a branch not depicted in the diagram) vanishes. Although working through the notation is good practice, I expect you'll agree that in cases like this, the tree diagram is more intuitive and simplifies the calculation.
 
 If at any point in the tree diagram, the event we're interested in is sure to occur, there's no need to continue along that branch any further.
 
@@ -572,7 +584,7 @@ If $A$ and $B$ are independent, then $A$ and $B^c$ are independent by Theorem \r
 The upshot of the previous theorem and its corollary is that the independence relation is unaffected by complements. This can be useful, since calculating $P(A^c \given B)$, or $P(A \given B^c)$, or $P(A^c \given B^c)$ may be easier than calculating $P(A \given B)$.
 \end{remark}
 
-Given a sequence of events $\{A_i\}_{i=1}^{n}$, we say this sequence is independent if the occurrence of any collection of these events does not influence the chance that any other event in the sequence occurs. Formally, it's easiest to state this by extending the relation $P(A \cap B) = P(A)P(B)$ to all subsequences.
+Given a sequence of events $\{A_i\}_{i=1}^{n}$, we say this sequence is independent if the occurrence of any collection of these events does not influence the chance that any other event in the sequence occurs. Formally, it's easiest to state this by extending the relation $P(A \cap B) = P(A)P(B)$ as below.
 
 \begin{definition}\index{Independence!of a sequence of Events}
 The sequence of events $\{A_i\}_{i=1}^{n}$ is independent if for any subsequence $A_{i_1}, A_{i_2}, \, \dots \, , A_{i_k}$ of events taken from $\{A_i\}_{i=1}^{n}$,
