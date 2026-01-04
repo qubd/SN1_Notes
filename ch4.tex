@@ -546,7 +546,7 @@ Thus, it does not matter which game you play in the long run. Over a very large 
 This large difference in the variances indicates Big Win Bob's game is much riskier. In Bob's game players win rarely but win big, while in Charles' game players win small amounts quite often.
 \end{example}
 
-Calculating the variance by hand is a tedious process, and in practice such calculations are essentially always done with computers. It's important to do a few examples by hand though, so that you understand the subtleties and develop some intuition. In the example above, for instance, you can see how the variance of Big Win Bob's game is dominated by the contribution of the rare outcome where the player wins \$100 because the difference between that outcome and the expected value is squared.
+Calculating the variance by hand can be tedious, and in practice such calculations are usually done with a computer. It's important to do a few examples by hand though, to understand the subtleties and develop some intuition. In the example above, note that the variance of Big Win Bob's game is dominated by the contribution of the term corresponding to the rare outcome where the player gains \$74, despite the tiny probability, because the difference between the rare \$74 gain and the expected gain is squared.
 
 \begin{example}\label{stdevoneroll}
 If $X$ represents the outcome of a single roll of a fair six-sided die, find $\sigma_X$.
@@ -577,7 +577,7 @@ Suppose there were two different realizations $x_1$ and $x_2$ which both have po
 
 The notation $X \sim Uniform(n)$ indicates $X$ is a discrete random variable which is uniformly distributed on $A = \{1,2,3, \, .. \,, n\}$. We could write $X \sim Uniform(6)$ to describe the distribution of the random variable in the example of a die roll above. 
 
-If $X$ is uniformly distributed on the set $A$ (some arithmetic progression), then its pmf has the form
+If $X$ is uniformly distributed on the set $A$, then its pmf has the form
 $$f_X(x) = \left\{
 \renewcommand*{\arraystretch}{1.35}
 \begin{array}{cl}
@@ -611,7 +611,7 @@ One could `randomly' select a number from the set $A = \{0,1,2,3\}$ by flipping 
 
 \section{The Bernoulli Distribution}\label{BernoulliDist}
 
-Suppose that we perform an experiment with only two possible outcomes, usually called success and failure, and the probability of success is known to be $p$. Such an experiment is called a Bernoulli trial, after Swiss mathematician Jacob Bernoulli. If $X$ is a random variable that counts the number of successes in a single such trial (either zero or one), we say that $X$ has a Bernoulli distribution with parameter $p$.
+Suppose that we perform an experiment with only two possible outcomes, usually called success and failure, and the probability of success is known to be $p$. Such an experiment is called a Bernoulli trial, after the mathematician Jacob Bernoulli. If $X$ is a random variable that counts the number of successes in a single Bernoulli trial (either zero or one), we say $X$ has a Bernoulli distribution with parameter $p$.
 
 \begin{definition}\index{Bernoulli Distribution}\index{Distribution!Bernoulli}The random variable $X$ has a \newterm{Bernoulli distribution} with parameter $p$, written $X \sim Bernoulli(p)$, if
 $$f_X(x) = \left\{
@@ -652,7 +652,7 @@ Bernoulli random variables are simple but fundamental in probability and statist
 
 \section{The Binomial Distribution}
 
-Suppose we perform a fixed number of Bernoulli trials (call this number $n$). Each trial has the same probability of success (call this value $p$), and the results of each trial form a sequence of independent Bernoulli random variables. If $X$ counts the total number of successes after all the trials have been performed, then we say that $X$ has a Binomial distribution.
+Suppose we perform a fixed number of Bernoulli trials (call this number $n$). Each trial has the same probability of success (call this value $p$), and the results of the $n$ consecutive trials form a sequence of independent Bernoulli random variables. If $X$ counts the total number of successes after all the trials have been performed, then we say that $X$ has a Binomial distribution.
 
 \begin{definition}\index{Binomial Distribution}\index{Distribution!Binomial} The random variable $X$ has a \newterm{binomial distribution} with parameters $n$ and $p$, written $X \sim Binomial(n,p)$, if
 $$f_X(x) = \left\{
@@ -694,7 +694,7 @@ In total then, there are $\binom{n}{x}$ sequences of outcomes with $x$ successes
 
 The number of heads in $n$ flips of a coin is the example that should immediately come to mind when you think of a binomial distribution, but binomial distributions also appear in many practical contexts involving samples.
 
-\begin{example}Suppose that in a certain country's election, $56\%$ of the voting population will vote for a particular candidate, Bob. If you select seven members of the voting population uniformly at random, and ask them who they'll vote for (assume they'll answer honestly), what is the probability your poll will incorrectly conclude that Bob will not win a majority of the vote?
+\begin{example}Suppose that in a certain country's election, $56\%$ of the voting population will vote for a particular candidate, Bob. If you select seven members of the voting population uniformly at random, and ask them who they'll vote for (assume they'll answer honestly), what is the probability your poll will incorrectly conclude that Bob will win less than half the vote?
 
 Let $X$ represent the number of people who respond by saying that they'll vote for Bob. If we regard such a response as a success, and each interview is done without knowledge of the results of any of the others, then $X \sim Binomial(7, 0.56)$.
 
@@ -731,7 +731,7 @@ Edward lives in a country with an unreliable mail system, where 7\% of parcels d
 
 Let $X \sim Bernoulli(0.07)$, then sending both books in one parcel, the \$5.20 postage charge always applies, and \$40 is lost if $X = 1$. If $L$ represents Edward's loss, then $L = 5.20 + 40X$, and therefore $E(L) = 5.20 + 40E(X) = 5.20 + 40 \cdot 0.07 = 8$.
 
-If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the lower average loss.
+If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the smaller expected loss.
 \end{example}
 
 \section{Continuous Random Variables}\label{ContinuousRVSection}
@@ -912,7 +912,7 @@ In general then, the probability $X$ lies close to a given value is proportional
 \begin{definition}\index{Probability Density Function}\index{Probability Density}If $X$ is a continuous random variable with cdf $F_X$, the \newterm{probability density function} of $X$ is denoted $f_X$ and is defined by $f_X(x) = \frac{d}{dx}{F_X}(x)$.
 \end{definition}
 
-The cdf $F_X$ of the continuous random variable $X$ defined in Example \ref{ContinuousCDFExample} above is shown once again on the left, and the corresponding probability density function $f_X$ is on the right. It's standard practice to draw vertical lines on the graph of the probability density function as below. These lines are technically not part of the graph (they are jump discontinuities), but can make it easier to read.
+The cdf $F_X$ of the continuous random variable $X$ defined in Example \ref{ContinuousCDFExample} above is shown once again on the left, and the corresponding probability density function $f_X$ is on the right. It's standard practice to draw vertical lines on the graph of the probability density function as below. These lines are technically not part of the graph (they are jump discontinuities), but make for a more appealing image.
 
 \begin{center}
     \begin{minipage}{.5\textwidth}
@@ -999,7 +999,7 @@ The area above the interval $I$ under the probability density function $f_X$ is 
 \end{keypoint}
 
 \begin{proposition}If $X$ is any continuous random variable with cdf $F_X$, the pdf $f_X$ satisfies each of the properties below.
-\vspace{-0.5em}
+\vspace{-0.25em}
 \begin{enumerate}
 \item For all $x \in \mathbb{R}$, $f_X(x) \geq 0$.
 \item $\int_{-\infty}^{\infty} f_X(x) \, dx = P(-\infty < X < \infty) = 1$.
@@ -1007,7 +1007,7 @@ The area above the interval $I$ under the probability density function $f_X$ is 
 \end{enumerate}
 \end{proposition}
 
-Informally, any non-negative function which encloses an area of one between its graph and the horizontal axis is the pdf of some continuous random variable whose cdf can be recovered through integration, as in the third property above.
+Informally, every non-negative function which encloses an area of one between its graph and the horizontal axis is the pdf of some continuous random variable, the cdf of which can be recovered through integration, as in the third property above.
 
 \begin{example}Consider the function $f$ given below. Find $c$ so that this function is the pdf of some continuous random variable.
 \renewcommand*{\arraystretch}{1.35}
@@ -1040,7 +1040,7 @@ The area under $f$ is simply $c$, and therefore if we take $c=1$, $f$ is a pdf. 
 \end{center}
 \end{example}
 
-As you can see, the material that was covered in Calculus I \& II will be very relevant in the world of continuous random variables. If you're a bit rusty, don't get too worried. The integrals that appear in problems involving continuous random variables are often either very basic, or not possible to evaluate using the methods of elementary calculus (we'll see an example in the next section). The example above was created specifically to remind you about integration by parts and L'H\^{o}pital's rule.
+As you can see, the material that was covered in Calculus I \& II will be very relevant in the world of continuous random variables. If you're a bit rusty, don't be worried. Using the tools of calculus to work with general continuous random variables is a topic we'll not go into in this course, and instead leave for the Probability \& Random Variables option course, 201-PRV. It's also worth noting that the integrals appearing in problems involving continuous random variables are often either very simple, or not possible to evaluate using the methods of elementary calculus (we'll see an example in the next section). The example above was created specifically to remind you about integration by parts and L'H\^{o}pital's rule.
 
 \subsection*{Expectation for Continuous Random Variables}
 
@@ -1093,7 +1093,7 @@ Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u)
 \end{example}
 
 \begin{remark}
-This result may seem odd, since you would intuitively place the center of this distribution at zero. It turns out that there exist distributions (this one is known as a Cauchy distribution) that have so much area in their tails that they have an undefined mean. These fat-tailed distributions are very interesting, as many of the usual estimation methods we'll see later on in the course don't work well, or even at all, when the variable being studied has a fat-tailed distribution.
+This result may seem odd, since you would intuitively place the center of this distribution at zero. It turns out that there exist distributions (this one is known as a Cauchy distribution) that have so much area in their tails that they have an undefined mean. These \newterm{fat-tailed}\index{Distribution!Fat-tailed} distributions are very interesting, as most of the usual estimation methods we'll see later on in the course don't work well, or even at all, when the variable being studied has a fat-tailed distribution.
 \end{remark}
 
 As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDef}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
@@ -1107,13 +1107,13 @@ The standard deviation, $\sigma_X$, is the square root of the variance.
 \begin{example}\label{MeanVarianceUnitInterval}
 Let $X$ be a number chosen uniformly at random from the interval $[0,1]$. Find the mean and standard deviation of $X$.
 
-The pdf of $X$ can be obtained by differentiating the cdf we derived in the discussion at the start of this section. Doing so gives the function below.
+The pdf of $X$ can be obtained by differentiating the cdf we came up with in the discussion at the start of this section. Doing so gives the function below.
 $$f_X(x) = \left\{
 \begin{array}{cl}
       1 & \text{ if \ } 0 < x < 1  \\
       0 & \text{ otherwise \ }  \\ \end{array}
 \right.$$
-Now we can calculate the mean and variance of $X$ by evaluating the following integrals.
+Now we can calculate the mean and variance of $X$ as follows.
 $$E(X) = \int_{-\infty}^{\infty} x f_X(x) \, dx = \int_{0}^{1} x \cdot 1 \, dx = \textstyle\frac{1}{2}x^2 \,\bigr|_{0}^{1}=\frac{1}{2}$$
 $$Var(X) = \int_{-\infty}^{\infty} (x-\textstyle\frac{1}{2})^2 f_X(x) \, dx = \displaystyle\int_{0}^{1} (x-\textstyle\frac{1}{2})^2  \cdot 1 \, dx = \displaystyle\int_{0}^{1} x^2-x+\textstyle\frac{1}{4} \, dx = \textstyle\frac{1}{3}x^3 - \frac{1}{2}x^2 + \frac{1}{4}x \,\bigr|_{0}^{1}=\frac{1}{12}$$
 Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma = \frac{1}{\sqrt{12}}$.
@@ -1150,13 +1150,13 @@ Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma
 \end{center}
 \end{definition}
 
-The Gaussian distribution gets its name from mathematician Carl Friedrich Gauss, and is also known as the Normal distribution. It will play a central role in the statistical procedures we'll develop in the next chapter. 
+The Gaussian distribution gets its name from mathematician Carl Friedrich Gauss, and is also known as the Normal distribution. It will play a central role in the estimation and testing procedures we'll develop in the next chapter. 
 
 Unfortunately, the pdf $f_X$ for a Gaussian distribution is not integrable in elementary terms. In other words, its antiderivative can't be expressed using only the functions and operations you've encountered in Calculus II, which means we can't find areas under the curve (probabilities) using those methods.
 
-The traditional way to get around this problem is to use a large table of values as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z)$, that is, a list of $P(Z \leq z)$ for a huge collection of realizations $z \in \mathbb{R}$.
+The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
 
-What if $X$ is a Gaussian random variable with a mean which is not zero and a standard deviation which is not one? As you might expect given the two graphs above, the distributions of any two Gaussian random variables differ by shifting and scaling, in other words, one is a linear function of the other. The tools required to prove this proposition are developed in the Probability \& Random Variables option course, 201-PRV.
+What if $X$ is a Gaussian random variable with a mean which is not zero and a standard deviation which is not one? As you might expect given the two graphs above, the distributions of any two Gaussian random variables differ by shifting and scaling, in other words, one is a linear function of the other. The tools required to show this are covered in the Probability \& Random Variables option course, 201-PRV.
 
 \begin{proposition}If $X \sim Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim Gaussian(0,1)$.
 \end{proposition}
@@ -1206,7 +1206,7 @@ Thus, about 5.5\% of Canadian adult females are taller than 5'8". For the second
 Therefore, around 54\% of Canadian adult females are between 5'3" and 5'7".
 \end{example}
 
-Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim Gaussian(0,1)$ efficiently using numerical integration, the $Z$-table is something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
+Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim Gaussian(0,1)$ efficiently using numerical integration, $Z$-tables are something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
 
 \subsection*{Gaussian Distribution Shortcuts}
 
@@ -1246,7 +1246,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
  \end{center}
 \end{proposition}
 
-Primarily a useful rule of thumb for quick approximate calculations, the rule also illustrates how quickly the distribution decays when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have thin tails.
+Primarily a useful rule of thumb for quick approximate calculations, the rule also illustrates how quickly a Gaussian distribution approaches the horizontal axis when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have \newterm{thin tails}\index{Distribution! Thin-tailed}.
 
 \begin{example}If $X \sim Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
 
@@ -1358,7 +1358,7 @@ To sum up, we've learned some important things about the \emx{distribution of me
 
 Now that we know the mean and variance of the sampling distribution of $\xbar$, what can we say about the shape? Consider, for example, the continuous random variable with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$. We can approximate the sampling distribution of $\xbar$ by taking ten thousand random samples, calculating their means, and plotting the results.
 
-If we take samples of size one from the distribution of $X$, the resulting distribution of sample means should look just like the distribution of $X$, since the mean of a single observation is that observation itself. 
+If we take samples of size one from the distribution of $X$, the distribution of sample means should look just like the distribution of $X$, since the mean of a single observation is that observation itself. We're just building a histogram for the distribution of $X$ by taking many realizations.
 \begin{center}
     \begin{minipage}{.5\textwidth}
         \centering
@@ -1382,7 +1382,7 @@ If we take samples of size one from the distribution of $X$, the resulting distr
 The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
 \end{remark}
 
-What happens when we increase the sample size? Now we take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each. The resulting distribution of sample means is given below on the right.
+What happens when we increase the sample size? Now we'll take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each sample. The resulting distribution of sample means is given below on the right. Note that the most likely realizations of $X$ are very close to zero, but the most likely realizations of $\xbar$ are close to one. Each of the sample values $X_1$ and $X_2$ is more likely to be very close to zero than anywhere else, but samples where both values are simultaneously very close to zero are nonetheless quite unusual.
 \begin{center}
     \begin{minipage}{.5\textwidth}
         \centering
@@ -1402,7 +1402,7 @@ What happens when we increase the sample size? Now we take ten thousand random s
 \end{tikzpicture}
 \end{minipage}
 \end{center}
-If we continue to increase the sample size, taking ten thousand random samples of larger and larger sizes from the same exponential distribution, and computing the mean of each sample, how will the distribution of sample means change?
+If we continue increasing the sample size, taking ten thousand random samples of larger and larger sizes from the same distribution, how will the distribution of the sample mean $\xbar$ change?
 \begin{center}
     \begin{minipage}{.5\textwidth}
         \centering
@@ -1465,7 +1465,7 @@ In the last section, we saw that if $\xbar$ is the mean of a random sample, then
 
 Moreover, there is a clear trend in the shapes of the sampling distributions. As the sample size increases, the distribution looks less like an exponential distribution, and more like a Gaussian distribution. This, once again, is not a coincidence.
 
-This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then we know that the distribution of that quantity \emph{must be approximately Gaussian regardless of the shape of the population distribution}.
+This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then we know that the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample values were drawn from}.
 
 \begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
 \end{theorem}
@@ -1519,11 +1519,11 @@ The distribution of $\xbar$ for random samples of size twenty is extremely well 
 
 \subsection*{Sample Size}
 
-The central limit theorem states that the sampling distribution of $\xbar$ will eventually look Gaussian, once the sample size is large enough. So how large must our sample be so that when we use a Gaussian distribution for probability calculations, as in the example above, we can be sure our result is accurate?
+The central limit theorem states that the sampling distribution of $\xbar$ will eventually look Gaussian, once the sample size is large enough. The question is then how large must our sample be, so that using a Gaussian distribution for probability calculations, as in the example above, gives an accurate result?
 
-Unfortunately, the answer depends on the details of the population distribution. Symmetric population distributions with tails that decay exponentially typically yield sampling distributions for $\xbar$ which are very close to normal even for single digit sample sizes, while asymmetric population distributions with tails that decay polynomially can result in sampling distributions for $\xbar$ which don't look normal until the sample size becomes extremely large.
+Unfortunately, the answer depends on the details of the population distribution. Symmetric population distributions with tails that decay exponentially (thin tails) typically yield sampling distributions for $\xbar$ which are very close to Gaussian even for single digit sample sizes, while asymmetric population distributions with tails that decay polynomially (fat tails) can result in sampling distributions for $\xbar$ which don't look Gaussian until the sample size becomes extremely large.
 
-As a rule of thumb, we'll require a sample size of thirty or more to treat the distribution of $\xbar$ as if it's Gaussian. There is nothing mathematically significant about this value, or slightly different values you might find in other texts. We're simply establishing a clear (yet arbitrary) baseline. 
+As a rule of thumb, we'll require a sample size of thirty or more to treat the distribution of $\xbar$ as if it's Gaussian. There is nothing mathematically significant about this value, or slightly different values you might find in other texts. We're simply establishing a clear, yet arbitrary, baseline. 
 
 \begin{remark}
 If the population distribution is known to be Gaussian, then any sample size will suffice. In fact, an important property of Gaussian distributions is that the average of any number of observations from a Gaussian distribution is again Gaussian, no central limit theorem required.
@@ -1563,13 +1563,13 @@ Therefore, there's about a $16\%$ chance we will observe more tails than heads. 
 \end{example}
 
 \begin{warning}
-It's very important to understand the hypotheses of the central limit theorem. These are assumptions we have to make to be sure that the statistical procedures of the next chapter are properly justified.
+It's very important to know the hypotheses of the central limit theorem. These requirements have to be met for the procedures in the next chapter to be properly justified.
 \begin{itemize}
-\item The sample we're working with is a random sample.
+\item The sample data we're working with is from a random sample.
 \item The distribution we're sampling from from has well-defined mean and variance.
 \item The sample size is large enough.
 \end{itemize}
-If these three requirements are not satisfied, then the conclusion that, for the purposes of calculating probabilities, we can treat the mean of our sample as a realization of a Gaussian random variable, is not necessarily true.
+We can treat the mean of our sample as a realization of a Gaussian random variable as long as these three statements hold.
 \end{warning}
 
 
