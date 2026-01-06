@@ -29,7 +29,7 @@ This range of values is called a \index{Confidence Interval}\newterm{confidence 
 
 Confidence intervals are so useful and pervasive in applications of statistics, it's worth our while to set up some notation and terminology to make constructing them as routine as possible.
 
-\begin{definition}\index{Critical Value}\index{Confidence Level}Given a confidence level $C \in (0,1)$, the critical value corresponding to that confidence level is the value $z^*$ with $P(-z^* < Z < z^*) = C$.
+\begin{definition}\index{Critical Value}\index{Confidence Level}Given a confidence level $C \in (0,1)$, the \newterm{critical value} corresponding to that confidence level is the value $z^*$ with $P(-z^* < Z < z^*) = C$.
 \end{definition}
 \begin{center}
 \begin{tikzpicture}[scale = 0.8]
@@ -42,7 +42,6 @@ Confidence intervals are so useful and pervasive in applications of statistics, 
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/0.8},
       xtick = {-1.5,0,1.5}, xticklabels = {$-z^*$,$0$,$z^*$},
       ytick=\empty,
       legend pos=north east,
@@ -72,7 +71,6 @@ $$P(-1.65 < Z < 1.65) = P(Z < 1.65) - P(Z < -1.65) = 0.9505 - 0.495 = 0.9.$$
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/0.8},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -90,7 +88,7 @@ $$P(-1.65 < Z < 1.65) = P(Z < 1.65) - P(Z < -1.65) = 0.9505 - 0.495 = 0.9.$$
 Using the $Z$-table, we can find $z^*$ by noting that if $P(-z^* < Z < z^*) = 0.9$, then by symmetry, the area in both tails is 0.05, so $P(Z < z^*) = 0.95$. Thus, we're looking for the value of $z$ that has an area of 0.95 to its left.
 \end{example}
 
-If we follow through the calculation we made in the introduction to this section with a general critical value $z^*$ and a general sample mean $\xbar$, we'll arrive at a formula for a confidence interval for the mean $\mu$ of any population from which we might draw a sample. With a probability of $C$, we have
+If we repeat the calculation we made in the introduction to this section, but this time with a general critical value $z^*$ and sample mean $\xbar$, we'll arrive at a general formula for a confidence interval for the mean $\mu$ of any population from which we might draw a sample. With a probability of $C$, we have
 \begin{gather*}
 -z^* < Z < z^* \\
 -z^* < \textstyle\frac{\overline{X}- \muxbar}{\sigmaxbar} < z^* \\
@@ -103,13 +101,13 @@ If we follow through the calculation we made in the introduction to this section
 
 This result here is only holds if $\xbar$ is Gaussian, but the central limit theorem assures us that as long as our data comes from random sample of a sufficiently large size, we are justified in treating it as such. The quantity we add to and subtract from $\xbar$ in the last line is called the margin of error.
 
-\begin{definition}\index{Margin of Error! for a Mean} Given a SRS of $n$ values drawn from a distribution with standard deviation $\sigma$, and a confidence level $C \in (0,1)$, the margin of error for $\overline{X}$ at confidence level $C$ is 
+\begin{definition}\index{Margin of Error! for a Mean} Given a random sample of $n$ values drawn from a distribution with standard deviation $\sigma$, and a confidence level $C \in (0,1)$, the \newterm{margin of error} for $\overline{X}$ at confidence level $C$ is 
 $$E = z^* \frac{\sigma}{\sqrt{n}}$$
 \end{definition}
 
-This value represents the largest possible gap between a sample mean $\overline{X}$ and the population mean $\mu$ that is observed at the confidence level $C$. For example, if $E = 2.2$ when $C = 0.9$, this means the probability that a random sample has a mean which differs from the population mean by less than $2.2$ is exactly $90\%$.
+This value represents the largest possible gap between a sample mean $\overline{X}$ and the population mean $\mu$ that is observed at the confidence level $C$. For example, if $E = 2$ when $C = 0.9$, this means that 90\% of random samples have means which differ from the population mean by less than $2$.
 
-With these definitions established, we can describe the procedure for constructing a confidence interval for a population mean $\mu$ based on a SRS of $n$ values with mean $\littlexbar$ in three steps.
+With these definitions established, we can describe the procedure for constructing a confidence interval for a population mean $\mu$ based on a random sample of $n$ values with mean $\littlexbar$ in three steps.
 \begin{enumerate}[label=\textnormal{\Roman*}.]
 \item Find the critical value $z^*$ for the desired confidence level $C$.
 \item Compute the margin of error $E$.
@@ -131,7 +129,6 @@ The standard deviation for heights of all men in Canada is known to be around 2.
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/0.8},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -156,7 +153,7 @@ Thus, with $95\%$ confidence, the mean height of all Canadian men must be betwee
 
 Note that when we say `with 95\% confidence, $68.066 < \mu < 69.934$', this means there a 95\% chance that we have selected a sample which will produce a confidence interval containing the true mean height of the population, $\mu$.
 
-The mean height of all Canadian men is some fixed single value, we just don't know what it is. Thus, the probability it's inside our particular confidence interval is either $100\%$ or $0\%$ (it is or it isn't). But if we were to take many random samples and compute a 95\% confidence interval from each, we would expect that, typically, nineteen of every twenty samples would produce intervals that contain the true value of $\mu$ (since 19/20 is 95\%). This is the correct interpretation of the confidence level.
+The mean height of all Canadian men is some fixed single value, we just don't know what it is. Thus, the probability it's inside our particular confidence interval is either $100\%$ or $0\%$ (it is or it isn't, there's no randomness involved). But if we were to take many random samples and compute a 95\% confidence interval from each, we would expect that, typically, nineteen of every twenty samples would produce intervals that contain the true value of $\mu$ (since 19/20 is 95\%). This is the correct interpretation of the confidence level.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
 \draw[<->] (-3.5,0) -- (3.5,0);
@@ -202,9 +199,9 @@ If we use the sample standard deviation, $S$, to estimate the standard deviation
 $$\frac{\overline{X} - \muxbar}{\sigmaxbar} = \frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{n}}}, \ \ \text{we'll have the estimate} \ \ \frac{\overline{X} - \muxbar}{\sigmaxbar} \approx \frac{\overline{X} - \mu}{\frac{S}{\sqrt{n}}}.$$
 Our construction of a confidence interval for the population mean $\mu$ was justified by the central limit theorem, which tells us the distribution of the quantity on the left approaches $Z \sim Gaussian(0,1)$ as the sample size $n$ grows. But what about our estimate on the right? If we repeatedly draw samples and calculate this value, what kind of distribution will we obtain?
 
-\begin{definition}\label{TDistDef}\index{Distribution! Student's T}\index{T-distribution} Draw a SRS $X_1, X_2, \, \dots \, , X_n$ from a normally distributed population with mean $\mu$. Let
+\begin{definition}\label{TDistDef}\index{Distribution! Student's T}\index{T-distribution} Draw a random sample $X_1, X_2, \, \dots \, , X_n$ from a Gaussian distribution with mean $\mu$. Let
 $$T = \frac{\overline{X} - \mu}{\frac{S}{\sqrt{n}}}$$
-where $S$ is the sample standard deviation, as in Definition \ref{SampleStdDev}. Then $T$ is a continuous random variable whose distribution is called Student's $T$-distribution (or simply the $T$-distribution) with $n-1$ degrees of freedom.
+where $S$ is the sample standard deviation, as in Definition \ref{SampleStdDev}. Then $T$ is a continuous random variable whose distribution is called \newterm{Student's $\boldsymbol{T}$-distribution} (or simply the $T$-distribution) with $n-1$ degrees of freedom.
 \end{definition}
 \begin{center}
 \begin{tikzpicture}[scale = 1]
@@ -217,7 +214,6 @@ where $S$ is the sample standard deviation, as in Definition \ref{SampleStdDev}.
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/1},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -258,9 +254,9 @@ By definition of $t^*$, with probability $C$ we have
 \end{gather*}
 \end{proofnobox}
 
-\begin{example}\label{TIntExample} A sample of five values is drawn from a normal distribution with unknown mean and standard deviation. These values are $43$, $27$, $30$, $22$, and $38$. Construct a 90\% confidence interval for the mean of the normal distribution.
+\begin{example}\label{TIntExample} A sample of five values is drawn from a Gaussian distribution with unknown mean and standard deviation. These values are $43$, $27$, $30$, $22$, and $38$. Construct a 90\% confidence interval for the mean of the Gaussian distribution.
 
-Computing the mean and (Bessel corrected) standard deviation of the sample yields $\xbar = 32$ and $S = 8.456$. We can now construct a confidence interval for the population mean $\mu$ just as we've done before in the last section, but using $s$ in place of $\sigma$ and the $T$-distribution in place of the standard normal distribution.
+Computing the mean and (Bessel corrected) standard deviation of the sample yields $\littlexbar = 32$ and $s = 8.456$. We can now construct a confidence interval for the population mean $\mu$ just as we've done before in the last section, but using $s$ in place of $\sigma$ and the $T$-distribution in place of the standard normal distribution.
 %\begin{center}
 %   \begin{tikzpicture}[scale = 0.6]
 %       \begin{axis}[unit vector ratio=1 6 1, ymin=0,ymax=0.5,xmin=-2.9, xmax = 2.9, xtick = {-2.13,0,2.13}, xticklabels = {$-2.13$,$0$,$2.13$}, ytick = {0.1,0.2,0.3,0.4,0.5}]
@@ -282,7 +278,6 @@ Computing the mean and (Bessel corrected) standard deviation of the sample yield
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/0.8},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -314,9 +309,9 @@ $$\begin{aligned}32 - 8.05 < \ &\mu < 32 + 8.05 \\
 \subsection*{Robustness}\index{Robustness! of $T$-intervals}
 Notice that the $T$-distribution is defined as the distribution of $T$-scores of random samples drawn from a Gaussian distribution. In practice though, we would rarely know enough about the population we are studying to be able to determine if the random variable whose mean we want to estimate is Gaussian.
 
-Fortunately, whenever the hypotheses of the central limit theorem hold, the distribution of $T$-scores of random samples will, in fact, eventually converge to the $T$-distribution (which itself converges to the standard normal distribution) as the sample size grows larger \cite{vanderVaart}. 
+Fortunately, whenever the hypotheses of the central limit theorem hold, the distribution of $T$-scores of random samples will, in fact, eventually converge to the $T$-distribution (which itself converges to the standard normal distribution) as the sample size grows larger, though the justification if this fact is well beyond the scope of this course \cite{vanderVaart}. 
 
-Even with smaller sample sizes, statisticians like to say that the confidence interval procedure above in Example \ref{TIntExample} is `robust to non-normality'. This means that although the assumption that we're sampling from a normal distribution is strictly necessary for correctness of the procedure, bending the rules on this assumption will often introduce only a small source of error. However, with small samples from a population whose distribution is not well understood, one can be justifiably suspicious, especially if there's reason to believe the distribution of the population could be fat-tailed or very asymmetric.
+Even with smaller sample sizes, statisticians like to say that the confidence interval procedure above in Example \ref{TIntExample} is `robust to non-normality'. This means that although the assumption that we're sampling from a Gaussian distribution is necessary for the formal justification of the procedure, bending the rules on this assumption will typically only introduce a small source of error. However, with small samples from a population whose distribution is not well understood, one can be justifiably suspicious, especially if there's reason to believe the distribution of the population could be fat-tailed or very asymmetric.
 
 \begin{example}
 In a study of a particular species of maple in a provincial park, the height of every tree in a random sample of 38 mature trees was measured. If the sample mean and sample standard deviation for the heights of the trees were $21.3$ metres and $4.9$ metres respectively, construct a $90\%$ confidence interval for the mean height of all trees of this species in the park.
@@ -333,7 +328,6 @@ We have a sample of $38$ values with a mean of $\littlexbar = 21.3$ and standard
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/0.8},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -358,10 +352,10 @@ $$\begin{aligned}21.3-1.343 < \ &\mu < 21.3+1.343 \\
 So we conclude that with $90\%$ confidence, the mean height of all mature trees of this species in the park is between $19.9$ and $22.7$ metres.
 \end{example}
 
-In contexts like this, where we can confidently assume the distribution our sample is drawn from is somewhat bell-shaped, and without fat tails, the $T$-distribution confidence interval procedure should hit very close to its target error rate (that is, 90\% of the intervals constructed at the 90\% confidence level should contain $\mu$) for all but very small sample sizes.
+In contexts like this, where we can be well assured that the distribution our sample is drawn from (the distribution of heights of adult trees of a specific species) is somewhat bell-shaped, and without fat tails, the $T$-distribution confidence interval procedure should hit very close to its target confidence, that is, around 90\% of the intervals constructed at the 90\% confidence level should contain $\mu$.
 
 \begin{keypoint}
-Now we have two variations of the three-step procedure to construct a confidence interval for a population mean. In the first, the critical value comes from the standard normal distribution $Z \sim Gaussian(0,1)$, and in the second it comes from the $T$-distribution with $n-1$ degrees of freedom.
+We have two variations of the confidence interval procedure for a population mean. In the first, the critical value comes from the standard normal distribution $Z \sim Gaussian(0,1)$, and in the second it comes from the $T$-distribution with $n-1$ degrees of freedom.
 
 Deciding which variation to use is simple: if the population standard deviation $\sigma$ is known, use the first variation (with $Z$) and if not, use the second (with $T$). 
 \end{keypoint}
@@ -369,7 +363,7 @@ Deciding which variation to use is simple: if the population standard deviation 
 \begin{remark}
 In many treatments of this subject, you'll see that this decision is made on the basis of sample size.
 
-Since the $T$-distribution converges to $Z \sim Gaussian(0,1)$ as $n \to \infty$, the two variations of the procedure will yield the same interval for large enough samples, so there's an argument to be made that we should use the $Z$-table whenever we can for simplicity's sake. On the other hand, there's an argument to be made that we should emphasize the parameter / statistic distinction whenever we can for benefit of the student (since the easiest way to lose your way in statistics is to blur this distinction).
+Since the $T$-distribution converges to $Z \sim Gaussian(0,1)$ as $n \to \infty$, the two variations of the procedure will yield the same interval for large enough samples, so there's an argument to be made that we should use the $Z$-table whenever we can for simplicity's sake. On the other hand, there's also an argument to be made that we should emphasize the distinction between parameters and statistics ($\sigma$ and $S$ in this case) whenever we can, since the easiest way for students to lose their way in statistics is to blur this distinction.
 \end{remark}
 
 \section{Confidence Interval for a Population Proportion}\index{Confidence Interval! for a Proportion}
@@ -438,7 +432,7 @@ Note that the margin of error formula indicates which distribution to use to fin
 \end{keypoint}
 
 
-We obtained the margin of error formula for a proportion by estimating the parameter $\sigma = p(1-p)$ by the statistic $\widehat{p}(1-\widehat{p})$. This introduces a new source of variability, but it can be shown that regardless, as the sample size grows larger, the proportion of intervals that contain the population proportion $p$ will approach the confidence level $C$. Unfortunately, the tools required to show this are well beyond the scope of this course.
+We obtained the margin of error formula for a proportion by estimating the parameter $\sigma = p(1-p)$ by the statistic $\widehat{p}(1-\widehat{p})$. This introduces a new source of variability, but it can be shown that regardless, as the sample size grows larger, the proportion of intervals that contain the population proportion $p$ will approach the confidence level $C$. Unfortunately, the tools required to show this are well beyond the scope of this course \cite{vanderVaart}.
 
 \begin{remark}
 The confidence interval for a proportion introduced in this section is commonly known as the Wald interval. There are other methods of constructing confidence intervals for proportions which actually perform better (the proportion of intervals containing $p$ will approach $C$ faster as the sample size increases). The Wald interval is usually covered in a first statistics course since the procedure for constructing it is essentially the same as the procedure for a mean from the previous section.
@@ -713,7 +707,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/1},
+      tick label style={font=\scriptsize, scale = 1/0.9},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -783,7 +777,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/1},
+      tick label style={font=\scriptsize, scale = 1/0.9},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -848,7 +842,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/1},
+      tick label style={font=\scriptsize, scale = 1/0.9},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -895,7 +889,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
       ymax=0.5,
       xmin=-3,
       xmax=3,
-      tick label style={font=\scriptsize, scale = 1/1},
+      tick label style={font=\scriptsize, scale = 1/0.9},
       xtick={-3,-2,-1,0,1,2,3},
       ytick=\empty,
       legend pos=north east,
@@ -1285,13 +1279,13 @@ Consulting a table of values for the chi-square distribution, we can find the cr
 \end{enumerate}
 \end{example}
 
-Pearson's chi-square test \index{Pearson's Chi-Square Test! for Goodness of Fit} is used in many scenarios where we want to know whether some treatment results in a change from a known distribution. This is usually known as a goodness-of-fit test, which attempts to answer the very general question: could this sample have come from that distribution?
+This test can be used in many scenarios where we want to know whether some treatment results in a change from a known distribution, and is usually known as the \newterm{chi-square goodness-of-fit test}\index{Pearson's Chi-Square Test! for Goodness of Fit}. It attempts to answer the very general question: could this sample have come from that distribution?
 
 For example, from past data, we may know the distribution of the number of weeks it takes patients to fully recover from a certain surgery. If adding physiotherapy sessions has no effect on recovery time, the recovery times in a sample of patients who undergo physiotherapy is a sample from this same distribution (the null hypothesis of the test), and if the physiotherapy is actually having some kind of effect, it's a sample from some other distribution (the alternative hypothesis of the test).
 
-\subsection*{Testing for Independence}\index{Pearson's Chi-Square Test! for Independence}
+\subsection*{Testing Independence}
 
-We can use a variation of the chi-square test to check for evidence that two variables are not independent in a given population. Suppose we ask a random sample of 109 people at the college, all of whom are in their twenties, thirties, or fourties, whether they prefer to drink tea or coffee. The number of individuals in the sample who fall into each possible category of age and drink preference is given in the table below.
+We can use a variation of this test, the \newterm{chi-square test of independence}\index{Pearson's Chi-Square Test! of Independence}, to check for evidence that two variables are not independent in a given population. Suppose we ask a random sample of 109 people at the college, all of whom are in their twenties, thirties, or fourties, whether they prefer to drink tea or coffee. The number of individuals in the sample who fall into each possible category of age and drink preference is given in the table below.
 \renewcommand{\arraystretch}{1.25}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -1441,7 +1435,7 @@ Consulting a table of values for the chi-square distribution, we can find the cr
 \end{example}
 
 \begin{remark}
-We're testing how different our sample data is from what we would expect to see if the variables are independent. We never conclude the variables are independent, only that we have not seen enough evidence in our sample to convince us otherwise. 
+We're testing how far our sample data is from what we would expect to see if the variables were independent. Either we have seen enough evidence to convince us they are not, or we haven't seen enough evidence to convince us they are not. We can never conclude the variables are independent from sample data.
 \end{remark}
 
 \begin{example}
@@ -1461,7 +1455,7 @@ Wrinkled & $11$ & $11$ \\
 
 If there is no genetic linkage between the genes that code for the two traits, we would expect the two variables to be independent (whether one is inherited does not change the probability of inheriting the other). Does this sample provide enough evidence, at the 5\% significance level, to conclude otherwise? 
 
-We begin by finding the row and columns, and computing the expected count in each cell.
+We begin by finding the row and column totals, and computing the expected count in each cell.
 \renewcommand{\arraystretch}{1.25}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
