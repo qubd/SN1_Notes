@@ -1470,7 +1470,7 @@ This phenomenon is why the Gaussian distribution plays such a central role in st
 \begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
 \end{theorem}
 
-The conclusion of the theorem is written here in very informal language. To make it more precise, we would need to decide on a way to measure the difference between two distributions, so the theorem above could state that this difference vanishes as $n \to \infty$. For details, and more precise treatment, see \cite{Bertsekas} or \cite{DevoreBerk}.
+The conclusion of the theorem is written here in very informal language. To make it more precise, we would need to decide on a way to measure the difference between two distributions, so the theorem above could state that this difference vanishes as $n \to \infty$. For details, see \cite{DevoreBerk} or \cite{Ghahramani}.
 
 We will write $Y \sim AG(\mu,\sigma)$ to indicate a random variable $Y$ has a distribution which is approximately Gaussian with mean $\mu$ and standard deviation $\sigma$. This way, the conclusion of the central limit theorem can be written simply as $\xbar \sim AG(\mu,\frac{\sigma}{\sqrt{n}})$, where $\mu$ and $\sigma$ are the mean and standard deviation of the population our sample was drawn from.
 
