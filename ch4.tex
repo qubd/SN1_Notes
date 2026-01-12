@@ -1156,12 +1156,12 @@ Unfortunately, the pdf $f_X$ for a Gaussian distribution is not integrable in el
 
 The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
 
-What if $X$ is a Gaussian random variable with a mean which is not zero and a standard deviation which is not one? As you might expect given the two graphs above, the distributions of any two Gaussian random variables differ by shifting and scaling, in other words, one is a linear function of the other. The tools required to show this are covered in the Probability \& Random Variables option course, 201-PRV.
+What if $X$ is a Gaussian random variable with a nonzero mean and a standard deviation which is different from one? As you might expect given the two graphs shown above, it turns out the distributions of any two Gaussian random variables differ only by shifting and stretching. The tools required to show this are covered in the Probability \& Random Variables option course, 201-PRV.
 
 \begin{proposition}If $X \sim Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim Gaussian(0,1)$.
 \end{proposition}
 
-The process of translating values of any normally distributed random variable into corresponding values of $Z \sim Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, and we can treat the resulting $z$ as a realization of $Z \sim Gaussian(0, 1)$.
+The process of translating values of any Gaussian distributed random variable into corresponding values of $Z \sim Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, which is known as the \newterm{Z-score}\index{Z-score} of $x$, and we can treat the resulting $z$ as a realization of $Z \sim Gaussian(0, 1)$.
 
 \begin{example}\label{FemaleHeightsGaussian} The height of a randomly selected Canadian adult female, in inches, is approximated by the random variable $X \sim Gaussian(64,2.5)$. What proportion of Canadian adult females are taller than 5'8"? What proportion have heights between 5'3" and 5'7"?
 
@@ -1210,7 +1210,7 @@ Since there is now almost universal access to computers which can calculate area
 
 \subsection*{Gaussian Distribution Shortcuts}
 
-Any Gaussian distribution has two inflection points, and these points occur exactly one standard deviation from the mean. This fact is useful when drawing a quick sketch of a Gaussian distribution.
+Any Gaussian distribution has two inflection points, and these occur precisely one standard deviation from the mean. This fact is useful when drawing a sketch of a Gaussian distribution.
 \begin{center}    
     \begin{tikzpicture}[scale = 0.6]
        \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
@@ -1224,7 +1224,7 @@ Any Gaussian distribution has two inflection points, and these points occur exac
     \end{tikzpicture}
  \end{center}
 
-For approximate reasoning with Gaussian distributions without the aid of a $Z$-table or computer, the proposition below presents a well-known rule of thumb.
+For approximate reasoning with Gaussian distributions without the aid of a $Z$-table or a computer, there is a well-known rule of thumb which is sometimes useful.
 
 \begin{proposition}\index{68-95-99.7 Rule}\label{GaussianRuleThumb}(68-95-99.7 Rule) For any Gaussian distribution, 68\% of the area under its pdf occurs within one standard deviation of the mean, 95\% occurs within two standard deviations, and 99.7\% occurs within three standard deviations.
 \begin{center}
@@ -1246,7 +1246,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
  \end{center}
 \end{proposition}
 
-Primarily a useful rule of thumb for quick approximate calculations, the rule also illustrates how quickly a Gaussian distribution approaches the horizontal axis when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have \newterm{thin tails}\index{Distribution! Thin-tailed}.
+Primarily used for quick approximate calculations, the rule also illustrates how quickly a Gaussian distribution approaches the horizontal axis when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have \newterm{thin tails}\index{Distribution! Thin-tailed}.
 
 \begin{example}If $X \sim Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
 
