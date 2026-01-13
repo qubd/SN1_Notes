@@ -84,7 +84,7 @@ In her statistics class, Anne is doing a project where she wants to estimate how
 In this case, Anne will obtain a convenience sample. Conclusions she draws about students in her age group are dubious, since she's only sampling students she happens to be close with.
 \end{example}
 
-Notice that in practice, it is often very difficult to obtain a random sample. It requires a complete list of all members of the population under study, and if these members are people, a way to guarantee they will volunteer the information the experimenters are interested in knowing. If you read any corporate software license agreement, you will almost certainly see a section which affirms all your user data is accessible for studies carried out by the company that developed the software. This ensures the company can obtain high quality samples from the population of its users.
+Notice that in practice, it's often very difficult to obtain a random sample. It requires a complete list of all members of the population under study, and if these members are people, a way to guarantee they will volunteer the information the experimenters are interested in knowing. If you read any corporate software license agreement, you will almost certainly see a section which affirms all your user data is accessible for studies carried out by the company that developed the software. This ensures the company can obtain high quality samples from the population of its users.
 
 An interesting sampling case study is the COVID-19 outbreak on the MV Diamond Princess, which was quarantined in February 2020. Under normal circumstances, there's no way to obtain a sample of people who are known to have been exposed to a disease (and may or may not have any symptoms), as we cannot forcibly expose people for ethical reasons, and subjects cannot self-select because those who are asymptomatic are often unaware they've been exposed at all. Because no one was allowed to leave the ship, researchers were able to derive accurate estimates of parameters like the proportion of COVID-19 cases which present as asymptomatic.
 
@@ -198,7 +198,7 @@ The precise details of the process that creates the bins is not important, as lo
 
 \begin{example}
 Consider the first eleven positive integers. The histogram below on the left was created from these values by using 2.2 for the bin width, and 0.2 for the lower limit of the first bin. The histogram below on the right was created from the same values by using 1.9 for the bin width, and 1 for the lower limit of the first bin.
-
+\begin{center}
 \begin{minipage}{0.47\textwidth}
 \centering
 \begin{tikzpicture}[scale=0.65]
@@ -231,8 +231,9 @@ Consider the first eleven positive integers. The histogram below on the left was
 \end{axis}
 \end{tikzpicture}
 \end{minipage}
+\end{center}
 
-There is nothing incorrect about either of the two histograms, it is simply a quirk of the way the axis was divided into bins that results in the difference in appearance. This illustrates how it's sometimes possible to build intentional bias into a histogram.
+There is nothing incorrect about either of the two histograms, it's simply a quirk of the way the axis was divided into bins that results in the difference in appearance. This illustrates how it's sometimes possible to build intentional bias into a histogram.
 \end{example}
 
 As mentioned above, we won't dwell on the details of the process of creating bins, but suffice to say it is good practice to have some consistent, explicit process (usually the one built-in to whatever software package is being used to generate the histogram) and not tweak the details until the result is deemed satisfactory, which one might call `bin hacking'.
@@ -249,14 +250,14 @@ As mentioned above, we won't dwell on the details of the process of creating bin
 
 \section{Measures of Center}\label{MeasuresOfCenterSec}
 
-It's often useful to quantify the notion of the center of a distribution by producing a single `typical' or `central' value. The definition below gives three ways to do this.
+It's often useful to give a description of where the middle of a distribution lies by producing a single `typical' or `central' value. The mean, median, and mode are the most common methods of producing such a value.
 
 \begin{definition}
-Let $x_1, x_2,\,\dots\,, x_n$ be the values of a statistical variable that occur across the $n$ individuals in the dataset.
+Let $x_1, x_2,\,\dots\,, x_n$ be values of a statistical variable that occur across the $n$ individuals in a dataset.
 \begin{itemize}
 \item The \newterm{mean}\index{Mean} value of the variable is given by $\frac{1}{n}\sum_{i} x_i = \frac{1}{n}(x_1 + x_2 + ... + x_n)$.
 \item The \newterm{median}\index{Median} value of the variable is obtained by ordering $x_1, x_2, ...\,, x_n$ smallest to largest, then taking the value in the middle of the resulting list if $n$ is odd, and the mean of the two values nearest the middle if $n$ is even.
-\item The \newterm{mode}\index{Mode} is the value of the variable which occurs most frequently. Note that there may be more than one mode, and in these cases we say the variable is multimodal.
+\item The \newterm{mode}\index{Mode} is the value of the variable which occurs most frequently in the data. If no value occurs more than once, we say the variable has no mode. Note that there may be more than one mode.
 \end{itemize}
 \end{definition}
 
@@ -264,7 +265,7 @@ Let $x_1, x_2,\,\dots\,, x_n$ be the values of a statistical variable that occur
 Consider the set of values $1,1,2,3,5$. We can compute the mean $\frac{1}{5}(1+1+2+3+5) = 2.4$, and since the values are already given in sorted order, we can see the median is $2$ and the mode is $1$.
 \end{example}
 
-Note that these three measures of centre correspond to three levels or measurement. The mean is defined at the interval level and above, the median is defined at the the ordinal level and above, and the mode is always defined, even at the nominal level.
+Note that these three measures of centre correspond to three levels or measurement. The mean is defined at the interval level and above, the median is defined at the the ordinal level and above, and the mode is defined even at the categorical level.
 
 \begin{warning}
 In colloquial language, the average almost always refers to the mean, but there are many situations where it doesn't. The average letter grade cannot refer to the mean, since letter grades are ordinal data, and income and wealth averages quoted in the media are often medians, not means.
@@ -274,11 +275,11 @@ Here's a scenario that illustrates the relevance of each measure: In a guessing 
 
 If there is a \$10 reward for guessing correctly, and no payout for guessing incorrectly, clearly the best strategy is to guess the mode, $1$. What's not so immediate is that if instead the player is rewarded \$10 minus the error in their guess (so guessing 3 then drawing a 5 will yield a reward of $10 - 2 = 8$ dollars), the best strategy is to guess the median, 2, and if the player is rewarded \$10 minus the squared error in their guess (so guessing 3 then drawing a 5 will yield a reward of $10 - 2^2 = 6$ dollars), then the best strategy is to guess the mean, 2.4. 
 
-This is not a quirk that happens because of the particular choice of labels on the balls. In general, regardless of the distribution of values, \emph{the median minimizes the average absolute error} and \emph{the mean minimizes the average squared error}. These results can be stated formally and proven using language of random variables (which we'll get to in Chapter 4) and standard techniques from differential calculus.
+This is not a quirk that happens because of the particular choice of labels on the balls. In general, regardless of the distribution of values, \emph{the median minimizes the average absolute error} and \emph{the mean minimizes the average squared error}. These results can be stated formally and proven in the language of random variables (which we'll get to in Chapter 4) with techniques from differential calculus.
 
 \begin{example}
-In the preceding section, we constructed the histogram shown below, which summarizes the distribution of the variable whose values are:
-$$2\ \ 3\ \ 3\ \ 4\ \ 5\ \ 5\ \ 6\ \ 7\ \ 7\ \ 7\ \ 7\ \ 7\ \ 7\ \ 8\ \ 8\ \ 9\ \ 9\ \ 10\ \  11\ \ 11\ \ 11\ \ 12 \ \ 14.$$
+In the preceding section, we constructed the histogram shown below to summarize the distribution of the variable whose values were as follows.
+$$2\ \ 3\ \ 3\ \ 4\ \ 5\ \ 5\ \ 6\ \ 7\ \ 7\ \ 7\ \ 7\ \ 7\ \ 7\ \ 8\ \ 8\ \ 9\ \ 9\ \ 10\ \  11\ \ 11\ \ 11\ \ 12 \ \ 14$$
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
     \begin{axis}[
@@ -308,23 +309,23 @@ For this reason, I encourage students to pay more attention to the median grades
 In general, if the data being studied contains outliers, the median is often preferred over the mean. This is why it's more common to measure median income than mean income. The distribution of income has such a long tail that citing the mean income can be deceptive when studying populations with high income inequality.
 
 \begin{example}
-Mr.\,Brown's grade three class has fifteen students and the mean height is 117\,cm. Mrs.\,Green's grade three class has twelve students and the mean height is 122\,cm. What is the mean height in the combined group of twenty-seven students?
+Mr.\,Brown's grade three class has fifteen students, and the mean height in his class is 117\,cm. Mrs.\,Green's grade three class has twelve students, and the mean height in her class is 122\,cm. What is the mean height in the combined group of twenty-seven students?
 
 We know that $\frac{S_B}{15} = 117$ and $\frac{S_G}{12} = 122$, where $S_B$ and $S_G$ are the sums of the heights of all students in Mr.\,Brown's and Mrs.\,Green's classes, respectively. Therefore, $S_B = 15 \cdot 117$ and $S_G = 12\cdot 122$. We can then calculate the mean of the entire group as
 $$\frac{S_B + S_G}{27} = \frac{15\cdot 117 + 12 \cdot 122}{27} = 119.22.$$
 \end{example}
 
-The example above, and the one below, are typical of more involved problems about means, which often require you to pass from a mean to the corresponding sum. You should get used to doing this, as the same idea will reappear later in the course when we study the Central Limit Theorem.
+The example above, and the one below, are typical of more involved problems about means, which often require you to pass from a mean to the corresponding sum. You should get used to doing this, as the same idea will reappear later in the course when we study the central limit theorem.
 
 \begin{example}
-Mr.\,Brown's grade three class has fifteen students and the mean height is 117\,cm. If a new student who is 114\,cm tall joins the class, how will the mean change?
+Mr.\,Brown's grade three class has fifteen students, and the mean height in his class is 117\,cm. If a new student who is 114\,cm tall joins the class, how will the mean change?
 
 As above, we know that $\frac{S_B}{15} = 117$, so $S_B = 15 \cdot 117$. We can then calculate the mean of the new group of sixteen students as below, and conclude the mean height will drop by 0.19\,cm.
 $$\frac{S_B + 114}{16} = 116.81$$
 \end{example}
 
 \begin{remark}
-It will be extremely important to distinguish the mean of a population from the mean of a random sample taken from a population. For this reason, the greek letter $\mu$ is used for the mean of a population (a parameter), while $\littlexbar$ is used for the mean of a sample (a statistic). Typically, parameters are denoted by greek letters.
+It will be extremely important to distinguish the mean of a population from the mean of a random sample taken from a population. For this reason, the greek letter $\mu$ is used for the mean of a population (a parameter), while $\littlexbar$ is used for the mean of a sample (a statistic). It is standard practice to reserve greek letters for parameters to keep the parameter / statistic distinction clear.
 \end{remark}
 
 \begin{example}
@@ -338,6 +339,7 @@ The mean value generated by the random number generator is $\mu = \frac{1}{6}(1+
 
 \section{Measures of Dispersion}\label{MeasuresOfDispersionSec}
 
+\begin{center}
 \begin{minipage}{0.47\textwidth}
 \centering
 \begin{tikzpicture}[scale=0.65]
@@ -370,6 +372,7 @@ The mean value generated by the random number generator is $\mu = \frac{1}{6}(1+
 \end{axis}
 \end{tikzpicture}
 \end{minipage}
+\end{center}
 
 The two distributions pictured in the histograms above have a similar mean, somewhere between 5 and 6 in both cases, but differ noticeably in how the data is distributed around the mean. The variable whose distribution is pictured on the right is more likely to take values farther from it's mean. We say it has higher \newterm{dispersion} than the variable on the left. In this section we'll introduce a few ways to quantify this notion.
 
@@ -390,7 +393,7 @@ The values are already in sorted order, so we can see the median is $2$, and the
 Although the interquartile range is useful for summarizing data, by far the most important measure of dispersion in statistical theory and practice is the variance, together with its square root, the standard deviation.
 
 \begin{definition}\label{VarianceDef}
-The average squared distance from the mean is called the \newterm{variance}\index{Variance! of a Population}, and denoted $\sigma^2$. If $x_1, x_2,\,\dots\,, x_n$ are the values of a statistical variable that occur across the $n$ individuals in the dataset, and $\mu$ is the mean of these values, then the variance is given by $\sigma^2 = \textstyle\frac{1}{n}\sum_{i=1}^{n}(x_i - \mu)^2$. The square root of the variance, $\sigma$, is known as the standard deviation.\index{Standard Deviation! of a Population}
+The average squared distance from the mean is called the \newterm{variance}\index{Variance! of a Population}, and denoted $\sigma^2$. If $x_1, x_2,\,\dots\,, x_n$ are the values of a statistical variable that occur across the $n$ individuals in the dataset, and $\mu$ is the mean of these values, then the variance is given by $\sigma^2 = \textstyle\frac{1}{n}\sum_{i=1}^{n}(x_i - \mu)^2$. The square root of the variance, $\sigma$, is known as the \newterm{standard deviation}.\index{Standard Deviation! of a Population}
 \end{definition}
 
 \begin{example}
@@ -425,10 +428,10 @@ This problem doesn't occur when using the sample mean to estimate the population
 
 Unfortunately, if we calculate the variance in our sample using the formula introduced earlier, this results in a biased estimator of the population variance, which undershoots on average. The good news is that we can fix the problem easily, and obtain an unbiased estimator for the population variance, by making a small change in the way we calculate the variance of a sample, called Bessel's correction, after German astronomer and mathematician Friedrich Bessel.
 
-\begin{definition}\index{Sample Standard Deviation}\index{Standard Deviation! of a Sample}\index{Variance! of a Sample}\index{Bessel's Correction}\label{SampleStdDev}The (Bessel corrected) sample variance is $s^2 = \frac{1}{n-1}\sum_{i} (x_i - \overline{x})^2$ and the (Bessel corrected) sample standard deviation, $s$, is its square root.
+\begin{definition}\index{Sample Standard Deviation}\index{Standard Deviation! of a Sample}\index{Variance! of a Sample}\index{Bessel's Correction}\label{SampleStdDev}The (Bessel corrected) \newterm{sample variance} is $s^2 = \frac{1}{n-1}\sum_{i} (x_i - \overline{x})^2$ and the (Bessel corrected) \newterm{sample standard deviation}, $s$, is its square root.
 \end{definition}
 
-There are two important changes here. Firstly, the mean is denoted $\littlexbar$, since we're working with sample data, and secondly, instead of averaging as usual, by dividing by the number of terms in the sum, we decrease the divisor by one. This is Bessel's correction.
+There are two important changes to note. First, the mean is denoted $\littlexbar$, since we're working with sample data, and second, instead of averaging as usual, by dividing by the number of terms in the sum, we decrease the divisor by one. This is Bessel's correction.
 
 \begin{example} 
 Find the mean and sample variance of the sample of five values $2$, $0$, $7$, $3$, $3$.
@@ -439,7 +442,7 @@ $$s^2 = \textstyle\frac{1}{n-1}\sum_{i} (x_i - \overline{x})^2 = \frac{1}{4}[(-1
 In practice, the Bessel corrected variance and standard deviation are used almost universally. Try calculating the standard deviation of a small list of values using spreadsheet software on a computer. You'll find two commands to calculate the standard deviation, one where Bessel's correction is applied (STDEV.S in Excel or Google Sheets) and one where it isn't (STDEV.P in Excel or Google Sheets). 
 
 \begin{remark}
-Sample variance and sample standard deviation always refer to the Bessel corrected values. When referring to the original formula in Definition \ref{VarianceDef}, we'll omit the prefix sample, or use the term population explicitly.
+Sample variance and sample standard deviation always refer to the Bessel corrected values. When referring to the formula in Definition \ref{VarianceDef}, we'll omit the prefix sample, or sometimes explicitly use the terms population variance or population standard deviation to be as clear as possible.
 \end{remark}
 
 \begin{example}
