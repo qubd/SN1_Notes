@@ -1087,7 +1087,7 @@ $$\begin{aligned}E(X) &= \frac{1}{\pi}\int_{-\infty}^{\infty} \frac{x}{1+x^2} \,
 &= \frac{1}{\pi}\int_{\infty}^{1} \frac{x}{u} \frac{1}{2x}\, du + \frac{1}{\pi}\int_{1}^{\infty} \frac{x}{u} \frac{1}{2x}\, du \\
 &= \frac{1}{2\pi}\int_{\infty}^{1} \frac{1}{u} \, du + \frac{1}{2\pi}\int_{1}^{\infty} \frac{1}{u} \, du \\ 
 &= \frac{1}{2\pi}\ln(u) \biggr|_{\infty}^{1} + \frac{1}{2\pi}\ln(u) \biggr|_{1}^{\infty} \\
-&= \frac{1}{2\pi}\left(\ln(1) - \lim_{u \to \infty}ln(u)\right) + \frac{1}{2\pi}\left(\lim_{u \to \infty}ln(u) - \ln(1)\right)\end{aligned}$$
+&= \frac{1}{2\pi}\left(\ln(1) - \lim_{u \to \infty}\ln(u)\right) + \frac{1}{2\pi}\left(\lim_{u \to \infty}\ln(u) - \ln(1)\right)\end{aligned}$$
 
 Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u) = \infty$, and hence $E(X)$ is undefined. 
 \end{example}
@@ -1096,7 +1096,7 @@ Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u)
 This result may seem odd, since you would intuitively place the center of this distribution at zero. It turns out that there exist distributions (this one is known as a Cauchy distribution) that have so much area in their tails that they have an undefined mean. These \newterm{fat-tailed}\index{Distribution!Fat-tailed} distributions are very interesting, as most of the usual estimation methods we'll see later on in the course don't work well, or even at all, when the variable being studied has a fat-tailed distribution.
 \end{remark}
 
-As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDefRV}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
+As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDefRV}, but with an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
 
 \begin{definition}\index{Variance! of a Continuous R.V.}
 If $X$ is a continuous random variable, the variance of $X$ is denoted $\Var(X)$ or ${\sigma_X}^2$, and defined by
@@ -1326,7 +1326,7 @@ If $\overline{X}$ is the mean of a random sample taken from a population with me
 The notation $\mu_{\overline{X}}$ is also used for $E(\overline{X})$, so you may see the result above written as $\mu_{\overline{X}} = \mu$.
 \end{remark}
 
-This is a key result that all the inference procedures in the next Chapter depend on, and it's a very special property of the mean that is generally not true of other statistics.
+This is a key result that all the inference procedures in the next chapter depend on, and it's a very special property of the mean that is generally not true of other statistics.
 
 Now that we know that in any scenario where we're doing random sampling, the mean of the distribution of $\overline{X}$ is $\mu$, it's natural to wonder about the variance. Is there a simple relationship between the variance of $\overline{X}$ and the variance of the population the random sample was drawn from?
 
@@ -1363,7 +1363,7 @@ If we take samples of size one from the distribution of $X$, the distribution of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1379,7 +1379,7 @@ If we take samples of size one from the distribution of $X$, the distribution of
 \end{minipage}
 \end{center}
 \begin{remark}
-The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
+The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim \Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
 \end{remark}
 
 What happens when we increase the sample size? Now we'll take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each sample. The resulting distribution of sample means is given below on the right. Note that the most likely realizations of $X$ are very close to zero, but the most likely realizations of $\xbar$ are close to one. Each of the sample values $X_1$ and $X_2$ is more likely to be very close to zero than anywhere else, but samples where both values are simultaneously very close to zero are nonetheless quite unusual.
@@ -1387,7 +1387,7 @@ What happens when we increase the sample size? Now we'll take ten thousand rando
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1407,7 +1407,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1426,7 +1426,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1445,7 +1445,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
