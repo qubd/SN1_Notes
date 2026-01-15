@@ -565,7 +565,7 @@ The standard deviation is then $\sigma_X = \sqrt{\frac{35}{12}}\approx 1.707$.
 \end{proposition}
 
 \begin{proof}
-Suppose there were two different realizations $x_1$ and $x_2$ which both have positive probabilities of occurring. Then at least one of $(x_1 - \mu_X)^2$ and $(x_2 - \mu_X)^2$ is nonzero (since $\mu_X$ cannot be equal to both $x_1$ and $x_2$), but this means at least one of the terms in the sum that defines $E[(X-\mu_X)^2]$ is positive. There are no negative terms in this sum since both squares and probabilities are always non-negative, hence $Var(X) > 0$.
+Suppose there were two different realizations $x_1$ and $x_2$ which both have positive probabilities of occurring. Then at least one of $(x_1 - \mu_X)^2$ and $(x_2 - \mu_X)^2$ is nonzero (since $\mu_X$ cannot be equal to both $x_1$ and $x_2$), but this means at least one of the terms in the sum that defines $E[(X-\mu_X)^2]$ is positive. There are no negative terms in this sum since both squares and probabilities are always non-negative, hence $\Var(X) > 0$.
 \end{proof}
 
 \section{The Uniform Distribution}
@@ -1099,8 +1099,8 @@ This result may seem odd, since you would intuitively place the center of this d
 As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDefRV}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
 
 \begin{definition}\index{Variance! of a Continuous R.V.}
-If $X$ is a continuous random variable, the variance of $X$ is denoted $Var(X)$ or ${\sigma_X}^2$, and defined by
-$$Var(X) = \int_{-\infty}^{\infty}(x-\mu_X)^2 f_X(x) \, dx.$$
+If $X$ is a continuous random variable, the variance of $X$ is denoted $\Var(X)$ or ${\sigma_X}^2$, and defined by
+$$\Var(X) = \int_{-\infty}^{\infty}(x-\mu_X)^2 f_X(x) \, dx.$$
 The standard deviation, $\sigma_X$, is the square root of the variance.
 \end{definition}
 
@@ -1115,7 +1115,7 @@ $$f_X(x) = \left\{
 \right.$$
 Now we can calculate the mean and variance of $X$ as follows.
 $$E(X) = \int_{-\infty}^{\infty} x f_X(x) \, dx = \int_{0}^{1} x \cdot 1 \, dx = \textstyle\frac{1}{2}x^2 \,\bigr|_{0}^{1}=\frac{1}{2}$$
-$$Var(X) = \int_{-\infty}^{\infty} (x-\textstyle\frac{1}{2})^2 f_X(x) \, dx = \displaystyle\int_{0}^{1} (x-\textstyle\frac{1}{2})^2  \cdot 1 \, dx = \displaystyle\int_{0}^{1} x^2-x+\textstyle\frac{1}{4} \, dx = \textstyle\frac{1}{3}x^3 - \frac{1}{2}x^2 + \frac{1}{4}x \,\bigr|_{0}^{1}=\frac{1}{12}$$
+$$\Var(X) = \int_{-\infty}^{\infty} (x-\textstyle\frac{1}{2})^2 f_X(x) \, dx = \displaystyle\int_{0}^{1} (x-\textstyle\frac{1}{2})^2  \cdot 1 \, dx = \displaystyle\int_{0}^{1} x^2-x+\textstyle\frac{1}{4} \, dx = \textstyle\frac{1}{3}x^3 - \frac{1}{2}x^2 + \frac{1}{4}x \,\bigr|_{0}^{1}=\frac{1}{12}$$
 Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma = \frac{1}{\sqrt{12}}$.
 \end{example}
 
@@ -1332,17 +1332,17 @@ Now that we know that in any scenario where we're doing random sampling, the mea
 
 \begin{example}
 Consider again the scenario in Example \ref{DistOfMeanAge}. Let's compute the variance of the random variable $\overline{X}$ and the compare it to the variance of the population.
-$$Var(\overline{X}) = (12 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} + (14 - \textstyle\frac{50}{3})^2 \cdot \frac{2}{9} + \dots + (22 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} = \frac{76}{9}$$
+$$\Var(\overline{X}) = (12 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} + (14 - \textstyle\frac{50}{3})^2 \cdot \frac{2}{9} + \dots + (22 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} = \frac{76}{9}$$
 $$\sigma^2 = \textstyle\frac{1}{3}\left((12-\frac{50}{3})^2 + (16-\frac{50}{3})^2 + (22-\frac{50}{3})^2 \right) = \frac{152}{9}$$
 In fact, the variance of $\overline{X}$ is precisely half the population variance. This is, again, not a coincidence.
 \end{example}
 
 \begin{proposition}\label{VarianceOfSampleMean}
-If $\overline{X}$ is the mean of a random sample of $n$ individuals taken from a population with variance $\sigma^2$, then $Var(\overline{X}) = \frac{\sigma^2}{n}$. In other words, the variance of the distribution of the sample mean is $n$ times smaller than the variance of the population.
+If $\overline{X}$ is the mean of a random sample of $n$ individuals taken from a population with variance $\sigma^2$, then $\Var(\overline{X}) = \frac{\sigma^2}{n}$. In other words, the variance of the distribution of the sample mean is $n$ times smaller than the variance of the population.
 \end{proposition}
 
 \begin{remark}
-The notation $\sigma_{\overline{X}}$ is used for the standard deviation of $\overline{X}$, so taking the square root of each side of $Var(\overline{X}) = \frac{\sigma^2}{n}$, we obtain $\sigma_{\overline{X}} = \frac{\sigma}{\sqrt{n}}$.
+The notation $\sigma_{\overline{X}}$ is used for the standard deviation of $\overline{X}$, so taking the square root of each side of $\Var(\overline{X}) = \frac{\sigma^2}{n}$, we obtain $\sigma_{\overline{X}} = \frac{\sigma}{\sqrt{n}}$.
 \end{remark}
 
 The proofs of Propositions \ref{MeanOfSampleMean} and \ref{VarianceOfSampleMean} require results on properties of expected value and variance that are developed in the Probability \& Random Variables option course, 201-PRV.
