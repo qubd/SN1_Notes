@@ -197,7 +197,7 @@ Can we somehow estimate $\sigma$ and build this estimation process into the conf
 
 If we use the sample standard deviation, $S$, to estimate the standard deviation in our population, $\sigma$, then when we standardize a sample mean $\xbar$, instead of the standardized value
 $$\frac{\overline{X} - \muxbar}{\sigmaxbar} = \frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{n}}}, \ \ \text{we'll have the estimate} \ \ \frac{\overline{X} - \muxbar}{\sigmaxbar} \approx \frac{\overline{X} - \mu}{\frac{S}{\sqrt{n}}}.$$
-Our construction of a confidence interval for the population mean $\mu$ was justified by the central limit theorem, which tells us the distribution of the quantity on the left approaches $Z \sim Gaussian(0,1)$ as the sample size $n$ grows. But what about our estimate on the right? If we repeatedly draw samples and calculate this value, what kind of distribution will we obtain?
+Our construction of a confidence interval for the population mean $\mu$ was justified by the central limit theorem, which tells us the distribution of the quantity on the left approaches $Z \sim \Gaussian(0,1)$ as the sample size $n$ grows. But what about our estimate on the right? If we repeatedly draw samples and calculate this value, what kind of distribution will we obtain?
 
 \begin{definition}\label{TDistDef}\index{Distribution! Student's T}\index{T-distribution} Draw a random sample $X_1, X_2, \, \dots \, , X_n$ from a Gaussian distribution with mean $\mu$. Let
 $$T = \frac{\overline{X} - \mu}{\frac{S}{\sqrt{n}}}$$
@@ -355,7 +355,7 @@ So we conclude that with $90\%$ confidence, the mean height of all mature trees 
 In contexts like this, where we can be well assured that the distribution our sample is drawn from (the distribution of heights of adult trees of a specific species) is somewhat bell-shaped, and without fat tails, the $T$-distribution confidence interval procedure should hit very close to its target confidence, that is, around 90\% of the intervals constructed at the 90\% confidence level should contain $\mu$.
 
 \begin{keypoint}
-We have two variations of the confidence interval procedure for a population mean. In the first, the critical value comes from the standard normal distribution $Z \sim Gaussian(0,1)$, and in the second it comes from the $T$-distribution with $n-1$ degrees of freedom.
+We have two variations of the confidence interval procedure for a population mean. In the first, the critical value comes from the standard normal distribution $Z \sim \Gaussian(0,1)$, and in the second it comes from the $T$-distribution with $n-1$ degrees of freedom.
 
 Deciding which variation to use is simple: if the population standard deviation $\sigma$ is known, use the first variation (with $Z$) and if not, use the second (with $T$). 
 \end{keypoint}
@@ -363,18 +363,18 @@ Deciding which variation to use is simple: if the population standard deviation 
 \begin{remark}
 In many treatments of this subject, you'll see that this decision is made on the basis of sample size.
 
-Since the $T$-distribution converges to $Z \sim Gaussian(0,1)$ as $n \to \infty$, the two variations of the procedure will yield the same interval for large enough samples, so there's an argument to be made that we should use the $Z$-table whenever we can for simplicity's sake. On the other hand, there's also an argument to be made that we should emphasize the distinction between parameters and statistics ($\sigma$ and $S$ in this case) whenever we can, since the easiest way for students to lose their way in statistics is to blur this distinction.
+Since the $T$-distribution converges to $Z \sim \Gaussian(0,1)$ as $n \to \infty$, the two variations of the procedure will yield the same interval for large enough samples, so there's an argument to be made that we should use the $Z$-table whenever we can for simplicity's sake. On the other hand, there's also an argument to be made that we should emphasize the distinction between parameters and statistics ($\sigma$ and $S$ in this case) whenever we can, since the easiest way for students to lose their way in statistics is to blur this distinction.
 \end{remark}
 
 \section{Confidence Interval for a Population Proportion}\index{Confidence Interval! for a Proportion}
 
 Suppose we're interested in estimating the proportion of individuals in a population that have some property. For example, a pollster might want to estimate the proportion of all voters in a certain riding that intend to vote for a particular political party.
 
-If we randomly select a member of the population and consider selecting someone with the desired property a success, then $X \sim Bernoulli(p)$ counts the number of successes in a single selection (either zero or one), where the parameter $p$ is the population proportion we want to estimate. The mean of this distribution is $E(X) = p$ (see Section \ref{BernoulliDist}), so the population mean $\mu$ is equal to the population proportion $p$.
+If we randomly select a member of the population and consider selecting someone with the desired property a success, then $X \sim \Bernoulli(p)$ counts the number of successes in a single selection (either zero or one), where the parameter $p$ is the population proportion we want to estimate. The mean of this distribution is $E(X) = p$ (see Section \ref{BernoulliDist}), so the population mean $\mu$ is equal to the population proportion $p$.
 
 When sampling from a Bernoulli distribution, the sample mean $\xbar = \frac{1}{n}(X_1+X_2+\cdots+X_n)$ is the proportion of individuals in the sample that have the desired property ($X_i$ takes the value $1$ when the $i^{th}$ individual has the property, and $0$ if not). Thus, the sample mean $\xbar$ is equal to the sample proportion, which we'll write as $\widehat{p}$.
 
-In summary, if we sample from $X \sim Bernoulli(p)$, then the population mean and sample mean are equal to the population proportion and sample proportion respectively. This means we can construct a confidence interval for a proportion in exactly the same way we made a confidence interval for a mean in the last section. We're simply applying the same procedure in the special case where our sample is drawn from a Bernoulli distribution.
+In summary, if we sample from $X \sim \Bernoulli(p)$, then the population mean and sample mean are equal to the population proportion and sample proportion respectively. This means we can construct a confidence interval for a proportion in exactly the same way we made a confidence interval for a mean in the last section. We're simply applying the same procedure in the special case where our sample is drawn from a Bernoulli distribution.
 
 To produce a confidence interval, we'll need to know, or have to estimate, the standard deviation $\sigma$ of the distribution we're sampling from. For a Bernoulli distribution, this quantity depends completely on the unknown parameter $p$. To be precise, we saw that $\sigma = \sqrt{p(1-p)}$ in Section \ref{BernoulliDist}. Using the sample proportion $\widehat{p}$ in place of the population proportion $p$ gives the estimate $\sqrt{\widehat{p}(1-\widehat{p})}$ for $\sigma$, and applying this estimate in our original margin of error formula for a mean,
 $$E = z^{*}\frac{\sigma}{\sqrt{n}}  \ \ \longrightarrow \ \ E = z^{*}\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}} .$$
@@ -456,7 +456,7 @@ What Bob has just done is a \emph{statistical hypothesis test}, and the probabil
 
 The next day, Bob is playing basketball, and he meets a friend, Charles, who claims he makes 90\% of his free throws. Bob is skeptical, so he asks Charles to shoot twenty free throws, and of those twenty, sixteen go in the basket.
 
-Bob calculates the probability that this happened purely by chance, assuming that Charles is actually as good as he claims. If Charles is indeed a 90\% free throw shooter, then in any sample of twenty free throws, the number he makes should be $X \sim Binomial(20,0.9)$. Bob computes $P(X \leq 16) = 0.133$. This means that in a sample of twenty free throws, a 90\% free throw shooter will make sixteen or fewer baskets about $13\%$ of the time. So Bob has some evidence against Charles' claim, but it's not that strong. Bob is skeptical, but not yet totally convinced Charles is lying about his basketball skills.
+Bob calculates the probability that this happened purely by chance, assuming that Charles is actually as good as he claims. If Charles is indeed a 90\% free throw shooter, then in any sample of twenty free throws, the number he makes should be $X \sim \Binomial(20,0.9)$. Bob computes $P(X \leq 16) = 0.133$. This means that in a sample of twenty free throws, a 90\% free throw shooter will make sixteen or fewer baskets about $13\%$ of the time. So Bob has some evidence against Charles' claim, but it's not that strong. Bob is skeptical, but not yet totally convinced Charles is lying about his basketball skills.
 
 Why did Bob compute $P(X \leq 16)$, and not $P(X = 16)$? As we take a sample of more and more free throws, the probability of any specific number of successful shots decreases, since there are simply more possible values for the number of baskets. Consider that in sample of one hundred free throws, there are one hundred and one possibilities for the number of successful shots, so any individual outcome will have a very small probability of occurring.
 
@@ -550,7 +550,7 @@ You meet someone who claims to be a wizard. He says he can cast a spell that wil
 
 Here the null hypothesis is that the spell had no effect, so the coin is still fair. The alternative is that the probability of heads has increased. If we let $p$ denote the probability of heads after the spell has been cast, then we can abbreviate the hypotheses as $H_0: p = \frac{1}{2}$ and $H_a: p > \frac{1}{2}$. 
 
-Under the null hypothesis, the number of heads we observe in thirty flips is $X \sim Binomial(30,0.5)$. We observed a sample with eighteen heads, so the $P$-value for the test is $P(X \geq 18) \approx 0.181$, which was computed by summing up the binomial probabilities $P(X = 18) + P(X = 19) + \,\dots\, + P(X = 30)$.
+Under the null hypothesis, the number of heads we observe in thirty flips is $X \sim \Binomial(30,0.5)$. We observed a sample with eighteen heads, so the $P$-value for the test is $P(X \geq 18) \approx 0.181$, which was computed by summing up the binomial probabilities $P(X = 18) + P(X = 19) + \,\dots\, + P(X = 30)$.
 
 \begin{center}
 \begin{tikzpicture}[scale = 0.6]
@@ -1198,7 +1198,7 @@ $$\sum_{i=1}^6 \frac{(\mathcal{O}_i - E_i)^2}{E_i} = \frac{(8-\frac{50}{6})^2}{\
 When the null hypothesis is true, that is, if the die is in fact fair, the values of this statistic across all random samples have a particular distribution, called the chi-square distribution.
 
 \begin{definition}\index{Distribution! Chi-Square}
-The \newterm{chi-square distribution}\index{Chi-Square Distribution} with $n$ degrees of freedom is defined as the distribution of $\chi^2 = {Z_1}^2 + {Z_2}^2 + \dots + {Z_n}^2$ where all $Z_i \sim Gaussian(0,1)$ and all are independent. Graphs of the densities of chi-square random variables with one, five, and ten degrees of freedom are shown in red, blue, and green respectively.
+The \newterm{chi-square distribution}\index{Chi-Square Distribution} with $n$ degrees of freedom is defined as the distribution of $\chi^2 = {Z_1}^2 + {Z_2}^2 + \dots + {Z_n}^2$ where all $Z_i \sim \Gaussian(0,1)$ and all are independent. Graphs of the densities of chi-square random variables with one, five, and ten degrees of freedom are shown in red, blue, and green respectively.
 \end{definition}
 \begin{center}
 \begin{tikzpicture}[scale = 1]

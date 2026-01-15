@@ -575,7 +575,7 @@ Suppose there were two different realizations $x_1$ and $x_2$ which both have po
 \begin{example} Suppose that $X$ represents the result of a single fair die roll, then $X$ is uniformly distributed on $A = \{1,2,3,4,5,6\}$, since $P(X = x) = \frac{1}{6}$ for all $x \in A$.
 \end{example}
 
-The notation $X \sim Uniform(n)$ indicates $X$ is a discrete random variable which is uniformly distributed on $A = \{1,2,3, \, .. \,, n\}$. We could write $X \sim Uniform(6)$ to describe the distribution of the random variable in the example of a die roll above. 
+The notation $X \sim \Uniform(n)$ indicates $X$ is a discrete random variable which is uniformly distributed on $A = \{1,2,3, \, .. \,, n\}$. We could write $X \sim \Uniform(6)$ to describe the distribution of the random variable in the example of a die roll above. 
 
 If $X$ is uniformly distributed on the set $A$, then its pmf has the form
 $$f_X(x) = \left\{
@@ -601,7 +601,7 @@ which yields a lollipop plot with a finite number lollipops of the equal height,
 
 The expected value of a uniformly distributed variable on the set $A$ is simply the average of the values in $A$. Formally, if $X$ is uniformly distributed on the set $A = \{a_1, a_2,\, \dots \, , a_n\}$, then
 $$E(X) = a_1 \cdot \textstyle\frac{1}{n} + a_2 \cdot \frac{1}{n} + \cdots + a_n \cdot \frac{1}{n} = \frac{a_1 + a_2 + \dots + a_n}{n}.$$
-In particular, if $X \sim Uniform(n)$, then $E(X) = \frac{1+2+3+\cdots+n}{n} = \frac{\frac{n(n+1)}{2}}{n} = \frac{n+1}{2}$.
+In particular, if $X \sim \Uniform(n)$, then $E(X) = \frac{1+2+3+\cdots+n}{n} = \frac{\frac{n(n+1)}{2}}{n} = \frac{n+1}{2}$.
 
 \begin{remark}
 When an element is being chosen from a set, and each element in that set has the same probability of being selected, we say the choice is made \emx{uniformly at random}.
@@ -613,7 +613,7 @@ One could `randomly' select a number from the set $A = \{0,1,2,3\}$ by flipping 
 
 Suppose that we perform an experiment with only two possible outcomes, usually called success and failure, and the probability of success is known to be $p$. Such an experiment is called a Bernoulli trial, after the mathematician Jacob Bernoulli. If $X$ is a random variable that counts the number of successes in a single Bernoulli trial (either zero or one), we say $X$ has a Bernoulli distribution with parameter $p$.
 
-\begin{definition}\index{Bernoulli Distribution}\index{Distribution!Bernoulli}The random variable $X$ has a \newterm{Bernoulli distribution} with parameter $p$, written $X \sim Bernoulli(p)$, if
+\begin{definition}\index{Bernoulli Distribution}\index{Distribution!Bernoulli}The random variable $X$ has a \newterm{Bernoulli distribution} with parameter $p$, written $X \sim \Bernoulli(p)$, if
 $$f_X(x) = \left\{
 \renewcommand*{\arraystretch}{1.35}
 \begin{array}{cl}
@@ -626,7 +626,7 @@ $$f_X(x) = \left\{
 In other words, $X$ takes the value $1$ with probability $p$, and $0$ with probability $1-p$.
 \end{definition}
 
-Think of a Bernoulli random variable as counting the number of heads observed in a single flip of a coin with a given bias. If $X$ represents the number of heads in a single flip of a fair coin, then $X \sim Bernoulli(0.5)$, and if $Y$ represents the number of heads in a single flip of a biased coin which lands on heads only $30\%$ of the time, then $Y \sim Bernoulli(0.3)$. The pmf of $Y$ is graphed below.
+Think of a Bernoulli random variable as counting the number of heads observed in a single flip of a coin with a given bias. If $X$ represents the number of heads in a single flip of a fair coin, then $X \sim \Bernoulli(0.5)$, and if $Y$ represents the number of heads in a single flip of a biased coin which lands on heads only $30\%$ of the time, then $Y \sim \Bernoulli(0.3)$. The pmf of $Y$ is graphed below.
 
 \begin{center}
 \begin{tikzpicture}[scale = 0.6]
@@ -640,7 +640,7 @@ Think of a Bernoulli random variable as counting the number of heads observed in
 \end{tikzpicture}
 \end{center}
 
-\begin{proposition}\label{BernoulliExpectation}\index{Bernoulli Distribution!Expected Value of}\index{Bernoulli Distribution!Variance of} If $X \sim Bernoulli(p)$, then $E(X) = p$ and $\Var(X) = p(1-p)$.
+\begin{proposition}\label{BernoulliExpectation}\index{Bernoulli Distribution!Expected Value of}\index{Bernoulli Distribution!Variance of} If $X \sim \Bernoulli(p)$, then $E(X) = p$ and $\Var(X) = p(1-p)$.
 \end{proposition}
 
 \begin{proof} These results both follow from direct calculations. From the probability mass function above we have $E(X) = 0 \cdot (1-p) + 1 \cdot p  = p$. We can then calculate
@@ -654,7 +654,7 @@ Bernoulli random variables are simple but fundamental in probability and statist
 
 Suppose we perform a fixed number of Bernoulli trials (call this number $n$). Each trial has the same probability of success (call this value $p$), and the results of the $n$ consecutive trials form a sequence of independent Bernoulli random variables. If $X$ counts the total number of successes after all the trials have been performed, then we say that $X$ has a Binomial distribution.
 
-\begin{definition}\index{Binomial Distribution}\index{Distribution!Binomial} The random variable $X$ has a \newterm{binomial distribution} with parameters $n$ and $p$, written $X \sim Binomial(n,p)$, if
+\begin{definition}\index{Binomial Distribution}\index{Distribution!Binomial} The random variable $X$ has a \newterm{binomial distribution} with parameters $n$ and $p$, written $X \sim \Binomial(n,p)$, if
 $$f_X(x) = \left\{
 \renewcommand*{\arraystretch}{1.35}
 \begin{array}{cl}
@@ -696,7 +696,7 @@ The number of heads in $n$ flips of a coin is the example that should immediatel
 
 \begin{example}Suppose that in a certain country's election, $56\%$ of the voting population will vote for a particular candidate, Bob. If you select seven members of the voting population uniformly at random, and ask them who they'll vote for (assume they'll answer honestly), what is the probability your poll will incorrectly conclude that Bob will win less than half the vote?
 
-Let $X$ represent the number of people who respond by saying that they'll vote for Bob. If we regard such a response as a success, and each interview is done without knowledge of the results of any of the others, then $X \sim Binomial(7, 0.56)$.
+Let $X$ represent the number of people who respond by saying that they'll vote for Bob. If we regard such a response as a success, and each interview is done without knowledge of the results of any of the others, then $X \sim \Binomial(7, 0.56)$.
 
 The result we're seeking is the probability that there are fewer than four successes, which we calculate from the pmf as follows.
 $$\begin{aligned}P(X \leq 3) &= \sum_{i=0}^{3} P(X = i) = \sum_{i=0}^{3} \binom{7}{i}(0.56)^{i}(0.44)^{7-i} \\
@@ -712,7 +712,7 @@ It would be easier to use the cdf to evaluate $P(X \leq 3)$, but unfortunately, 
 
 One of the reasons the binomial distribution appears in many contexts is that the process of evaluating a claim by doing repeated independent trials, which could be interviews, simulations, or literal laboratory experiments, is such a fundamental practice.
 
-\begin{theorem}\index{Binomial Distribution!Expected value of}\index{Binomial Distribution!Variance of}If $X \sim Binomial(n,p)$, then $E(X) = np$ and $\Var(X) = np(1-p)$.
+\begin{theorem}\index{Binomial Distribution!Expected value of}\index{Binomial Distribution!Variance of}If $X \sim \Binomial(n,p)$, then $E(X) = np$ and $\Var(X) = np(1-p)$.
 \end{theorem}
 
 These formulas follow from properties of expected value and sums of random variables which are not covered in this course, but appear in the Probability \& Random Variables option course, 201-PRV.
@@ -729,9 +729,9 @@ Therefore, $Y$ is larger on average. The second question is somewhat ambiguous, 
 \begin{example}
 Edward lives in a country with an unreliable mail system, where 7\% of parcels do not make it to their destination. He wants to send two books to his brother, each with a value of \$20. If he sends them in one parcel, the postage is \$5.20, and if he sends them separately, the postage is \$3.30 for each book. To minimize his expected losses, which method is preferable?
 
-Let $X \sim Bernoulli(0.07)$, then sending both books in one parcel, the \$5.20 postage charge always applies, and \$40 is lost if $X = 1$. If $L$ represents Edward's loss, then $L = 5.20 + 40X$, and therefore $E(L) = 5.20 + 40E(X) = 5.20 + 40 \cdot 0.07 = 8$.
+Let $X \sim \Bernoulli(0.07)$, then sending both books in one parcel, the \$5.20 postage charge always applies, and \$40 is lost if $X = 1$. If $L$ represents Edward's loss, then $L = 5.20 + 40X$, and therefore $E(L) = 5.20 + 40E(X) = 5.20 + 40 \cdot 0.07 = 8$.
 
-If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the smaller expected loss.
+If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim \Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the smaller expected loss.
 \end{example}
 
 \section{Continuous Random Variables}\label{ContinuousRVSection}
@@ -1130,7 +1130,7 @@ Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$Z \sim Gaussian(0,1)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$Z \sim \Gaussian(0,1)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     xtick={-2,-1,...,2},
     ytick = {0.1,0.2,0.3,0.4, 0.5},
     ymin=0,ymax=0.5,xmin=-2.5, xmax = 2.5, width=10cm, height=6cm]
@@ -1141,7 +1141,7 @@ Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma
     \begin{minipage}{0.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=17.5, xmax = 32.5, xtick = {19,22,25,28,31}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=10cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
     \end{axis}
@@ -1154,16 +1154,16 @@ The Gaussian distribution gets its name from mathematician Carl Friedrich Gauss,
 
 Unfortunately, the pdf $f_X$ for a Gaussian distribution is not integrable in elementary terms. In other words, its antiderivative can't be expressed using only the functions and operations you've encountered in Calculus II, which means we can't find areas under the curve (probabilities) using those methods.
 
-The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
+The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim \Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
 
 What if $X$ is a Gaussian random variable with a nonzero mean and a standard deviation which is different from one? As you might expect given the two graphs shown above, it turns out the distributions of any two Gaussian random variables differ only by shifting and stretching. The tools required to show this are covered in the Probability \& Random Variables option course, 201-PRV.
 
-\begin{proposition}If $X \sim Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim Gaussian(0,1)$.
+\begin{proposition}If $X \sim \Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim \Gaussian(0,1)$.
 \end{proposition}
 
-The process of translating values of any Gaussian distributed random variable into corresponding values of $Z \sim Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, which is known as the \newterm{Z-score}\index{Z-score} of $x$, and we can treat the resulting $z$ as a realization of $Z \sim Gaussian(0, 1)$.
+The process of translating values of any Gaussian distributed random variable into corresponding values of $Z \sim \Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim \Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim \Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, which is known as the \newterm{Z-score}\index{Z-score} of $x$, and we can treat the resulting $z$ as a realization of $Z \sim \Gaussian(0, 1)$.
 
-\begin{example}\label{FemaleHeightsGaussian} The height of a randomly selected Canadian adult female, in inches, is approximated by the random variable $X \sim Gaussian(64,2.5)$. What proportion of Canadian adult females are taller than 5'8"? What proportion have heights between 5'3" and 5'7"?
+\begin{example}\label{FemaleHeightsGaussian} The height of a randomly selected Canadian adult female, in inches, is approximated by the random variable $X \sim \Gaussian(64,2.5)$. What proportion of Canadian adult females are taller than 5'8"? What proportion have heights between 5'3" and 5'7"?
 
 To standardize 5'8"\,=\,68", we calculate $z = \frac{68 - 64}{2.5} = 1.6$. Then we have
 \
@@ -1206,14 +1206,14 @@ Thus, about 5.5\% of Canadian adult females are taller than 5'8". For the second
 Therefore, around 54\% of Canadian adult females are between 5'3" and 5'7".
 \end{example}
 
-Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim Gaussian(0,1)$ efficiently using numerical integration, $Z$-tables are something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
+Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim \Gaussian(0,1)$ efficiently using numerical integration, $Z$-tables are something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
 
 \subsection*{Gaussian Distribution Shortcuts}
 
 Any Gaussian distribution has two inflection points, and these occur precisely one standard deviation from the mean. This fact is useful when drawing a sketch of a Gaussian distribution.
 \begin{center}    
     \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=17.5, xmax = 32.5, xtick = {19,22,25,28,31}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=10cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
        \addplot [only marks] table {
@@ -1229,7 +1229,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
 \begin{proposition}\index{68-95-99.7 Rule}\label{GaussianRuleThumb}(68-95-99.7 Rule) For any Gaussian distribution, 68\% of the area under its pdf occurs within one standard deviation of the mean, 95\% occurs within two standard deviations, and 99.7\% occurs within three standard deviations.
 \begin{center}
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=15, xmax = 35, xtick = {16,19,22,25,28,31,34}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=12cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
        \draw (axis cs:22,0.17) -- node[below]{68\%} (axis cs:28,0.17);
@@ -1248,7 +1248,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
 
 Primarily used for quick approximate calculations, the rule also illustrates how quickly a Gaussian distribution approaches the horizontal axis when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have \newterm{thin tails}\index{Distribution! Thin-tailed}.
 
-\begin{example}If $X \sim Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
+\begin{example}If $X \sim \Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
 
 Using the 68-95-99.7 Rule, $95\%$ of Canadian adult females will have heights within two standard deviations of the mean height, 64". So we calculate $64 - 2(2.5) = 59$ and $64 + 2(2.5) =69$, then conclude that 95\% of all Canadian adult females are taller than 59"\,=\,4'11" and shorter than 69"\,=\,5'9".
 \end{example}
@@ -1467,7 +1467,7 @@ Moreover, there is a clear trend in the shapes of the sampling distributions. As
 
 This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then we know that the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample values were drawn from}.
 
-\begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
+\begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $\Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
 \end{theorem}
 
 The conclusion of the theorem is written here in very informal language. To make it more precise, we would need to decide on a way to measure the difference between two distributions, so the theorem above could state that this difference vanishes as $n \to \infty$. For details, see \cite{DevoreBerk} or \cite{Ghahramani}.
@@ -1508,7 +1508,7 @@ Note that the central limit theorem does not tell us how accurate the Gaussian a
 If the two distributions match well, then we'll know that our answer above is fairly accurate. If the sampling distribution is still far from being Gaussian, then we'll have to disregard our answer.
 \begin{center}
 \begin{tikzpicture}[scale = 0.8]
-\begin{axis}[title = {Distribution of $\xbar$ and $Gaussian(\frac{1}{2},\frac{1}{\sqrt{240}})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1700,xmin=0.2, xmax = 0.8, xtick = {0.2,0.3,0.4,0.5,0.6,0.7,0.8}, ytick = {3300}, area style, width = 10cm, height = 6cm]
+\begin{axis}[title = {Distribution of $\xbar$ and $\Gaussian(\frac{1}{2},\frac{1}{\sqrt{240}})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1700,xmin=0.2, xmax = 0.8, xtick = {0.2,0.3,0.4,0.5,0.6,0.7,0.8}, ytick = {3300}, area style, width = 10cm, height = 6cm]
 \addplot+[ybar interval,mark=no] plot coordinates {(0,0) (0.025,0) (0.05,0) (0.075,0) (0.1,0) (0.125,0) (0.15,0) (0.175,0) (0.2,0) (0.225,0) (0.25,2) (0.275,6) (0.3,13) (0.325,61) (0.35,147) (0.375,328) (0.4,624) (0.425,942) (0.45,1257) (0.475,1520) (0.5,1499) (0.525,1355) (0.55,955) (0.575,668) (0.6,346) (0.625,167) (0.65,58) (0.675,34) (0.7,7) (0.725,0)};
 \addplot[very thick,domain=0:1,red, samples=500] {250*6.185*e^((-(x - 0.5)^2)/(2*(1/240)))};
 \end{axis}
@@ -1534,7 +1534,7 @@ In practice, to convince themselves the sampling distribution of $\xbar$ is suff
 \begin{example}
 If a biased coin with a 55\% probability of heads is flipped one hundred times, what is the probability that the number of heads observed is less than the number of tails?
 
-If we call a head a success, then we have a sample of $n=100$ values $X_1,X_2\,\dots\,,X_{100}$ from $X \sim Bernoulli(0.55)$. If more tails than heads were observed, this means that more than half of the $X_i$ are zeros, so $\xbar = \frac{X_1 + X_2 + \cdots + X_{100}}{100} < \frac{50}{100} =0.5$.
+If we call a head a success, then we have a sample of $n=100$ values $X_1,X_2\,\dots\,,X_{100}$ from $X \sim \Bernoulli(0.55)$. If more tails than heads were observed, this means that more than half of the $X_i$ are zeros, so $\xbar = \frac{X_1 + X_2 + \cdots + X_{100}}{100} < \frac{50}{100} =0.5$.
 
 Using the formulas for the mean and variance of a Bernoulli random variable in Proposition \ref{BernoulliExpectation}, the mean and standard deviation of the sampling distribution of $\xbar$ are given by 
 $$\muxbar = \mu = p = 0.55 \ \ \text{and} \ \  \sigmaxbar = \frac{\sigma}{\sqrt{n}} = \frac{\sqrt{p(1-p)}}{\sqrt{n}} = \textstyle\frac{\sqrt{0.55\cdot 0.45}}{\sqrt{100}} \approx 0.05.$$
