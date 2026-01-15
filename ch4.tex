@@ -504,7 +504,7 @@ The values of $X$ tend to be clustered close to the center of the distribution, 
 
 In Section \ref{MeasuresOfDispersionSec} we defined the variance of a statistical variable in a dataset as the average squared distance from the mean, and we'll define the variance of a random variance analagously, as the expected squared distance between a random variable and its expected value.
 
-\begin{definition}\index{Random Variable!Variance of}\index{Random Variable!Standard Deviation of}\index{Variance}\index{Standard Deviation}\label{VarianceDef} The \newterm{variance} of a discrete random variable $X$ is denoted $\Var(X)$ or $\sigma^{2}_{X}$, and given by 
+\begin{definition}\index{Random Variable!Variance of}\index{Random Variable!Standard Deviation of}\index{Variance}\index{Standard Deviation}\label{VarianceDefRV} The \newterm{variance} of a discrete random variable $X$ is denoted $\Var(X)$ or $\sigma^{2}_{X}$, and given by 
 $$\Var(X) = E[(X - \mu_X)^2] = \sum_{x \in A} (x - \mu_X)^2 f_X(x).$$
 The \newterm{standard deviation} of $X$ is then $\sigma_X = \sqrt{\sigma^{2}_X} = \sqrt{\Var(X)}$.
 \end{definition}
@@ -1096,7 +1096,7 @@ Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u)
 This result may seem odd, since you would intuitively place the center of this distribution at zero. It turns out that there exist distributions (this one is known as a Cauchy distribution) that have so much area in their tails that they have an undefined mean. These \newterm{fat-tailed}\index{Distribution!Fat-tailed} distributions are very interesting, as most of the usual estimation methods we'll see later on in the course don't work well, or even at all, when the variable being studied has a fat-tailed distribution.
 \end{remark}
 
-As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDef}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
+As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDefRV}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
 
 \begin{definition}\index{Variance! of a Continuous R.V.}
 If $X$ is a continuous random variable, the variance of $X$ is denoted $Var(X)$ or ${\sigma_X}^2$, and defined by
