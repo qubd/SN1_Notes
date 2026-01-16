@@ -6,7 +6,7 @@
 
 %TODO: Examples and discussion of non-CLT confidence intervals.
 
-\section{Confidence Interval for a Population Mean}\index{Confidence Interval! for a Mean}
+\section{Confidence Interval for a Population Mean}\index{Confidence Interval! for a Mean}\label{ConfIntervalIntro}
 
 
 \subsection*{Estimating Average Age}
@@ -239,12 +239,10 @@ The $T$-distribution has fatter tails and less area near the center than the sta
 
 If we can find areas under the $T$-distribution, then the same procedure we've been using to construct confidence intervals with the population standard deviation can be modified to work with the sample standard deviation.
 
-\begin{proposition} Let $\xbar$ and $S$ be the sample mean and (Bessel-corrected) sample standard deviation in a random sample of $n$ values drawn from a Gaussian distribution with mean $\mu$. 
-
-Take $t^*$ such that $P(-t^* < T < t^*) = C$, and let $E = t^*\frac{S}{\sqrt{n}}$. Then $P(\xbar - E < \mu < \xbar + E) = C$.
+\begin{proposition} Let $\xbar$ and $S$ be the sample mean and (Bessel-corrected) sample standard deviation in a random sample of $n$ values drawn from a Gaussian distribution with mean $\mu$. Take $t^*$ such that $P(-t^* < T < t^*) = C$, and let $E = t^*\frac{S}{\sqrt{n}}$. Then $P(\xbar - E < \mu < \xbar + E) = C$.
 \end{proposition}
-\begin{proofnobox}
-By definition of $t^*$, with probability $C$ we have
+\begin{proof}
+We can repeat the derivation of the margin of error formula from earlier in this section, but with $T$ in place of $Z$. By definition of $t^*$, with probability $C$ we have
 \begin{gather*}
 -t^* < T < t^* \\
 -t^* < \textstyle\frac{\overline{X}- \mu}{\frac{S}{\sqrt{n}}} < t^* \\
@@ -252,7 +250,7 @@ By definition of $t^*$, with probability $C$ we have
 -\overline{X}-t^* \textstyle\frac{S}{\sqrt{n}} < - \mu < -\overline{X}+t^* \frac{S}{\sqrt{n}} \\[0.3ex]
 \overline{X}-t^* \textstyle\frac{S}{\sqrt{n}} <  \mu < \overline{X}+t^* \frac{S}{\sqrt{n}}.
 \end{gather*}
-\end{proofnobox}
+\end{proof}
 
 \begin{example}\label{TIntExample} A sample of five values is drawn from a Gaussian distribution with unknown mean and standard deviation. These values are $43$, $27$, $30$, $22$, and $38$. Construct a 90\% confidence interval for the mean of the Gaussian distribution.
 
@@ -1146,7 +1144,7 @@ $$\begin{aligned}2.36(\littlexbar - 5) &< -1.65 \\
 \littlexbar - 5 &< -0.70 \\
 \littlexbar &< 4.30.\end{aligned}$$
 This means the power of the test is the probability a random sample has a mean under $4.30$. The true distribution of $\xbar$ has $\mu = 4$, so by the central limit theorem $\xbar \sim AG(4,\frac{3}{\sqrt{50}})$, and we can calculate
-$$\begin{aligned}1-\beta &= P(\xbar < 4.30) \\ &= P(Z < \textstyle\frac{4.30 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.7071\end{aligned}$$
+$$\begin{aligned}1-\beta &= P(\xbar < 4.30) \\[0.5ex] &= P(Z < \textstyle\frac{4.30 - 4}{\frac{3}{\sqrt{50}}}) \\ &= P (Z < 0.40) = 0.7071\end{aligned}$$
 \end{example}
 
 It's instructive to re-run the calculation after changing the sample size, population standard deviation, or significance level to see the effect. Notice that although the power of the test depends on all of these, the confidence depends only on the significance level. In the scenario where $H_0$ is true, a test done at the $5\%$ significance level will not reject it precisely $95\%$ of the time.
