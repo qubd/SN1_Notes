@@ -1,4 +1,4 @@
-\documentclass{book}[letter]
+\documentclass[letterpaper]{book}
 \title{\huge{201-SN1 - Probability \& Statistics}}
 \author{B. Cordy}
 \date{Fall 2025}
@@ -284,12 +284,24 @@
 \newcommand{\eqnsgap}[1]{{$$\begin{aligned} #1 \end{aligned}$$}}
 \newcommand{\eqnspar}[1]{{$$\begin{aligned} #1 \end{aligned}\vspace*{-18pt}$$}}
 \newcommand{\given}{\,|\,}
-\newcommand{\biimp}{\ \leftrightarrow\ }
+\newcommand{\biimp}{\ \Leftrightarrow\ }   % changed from \leftrightarrow
 \newcommand{\xbar}{{\overline{X}}}
 \newcommand{\littlexbar}{{\overline{x}}}
 \newcommand{\muxbar}{\mu_{\overline{X}}}
 \newcommand{\sigmaxbar}{\sigma_{\overline{X}}}
+
 \DeclareMathOperator{\Var}{Var}
+
+\DeclareMathOperator{\Uniform}{Uniform}
+\DeclareMathOperator{\Bernoulli}{Bernoulli}
+\DeclareMathOperator{\Binomial}{Binomial}
+\DeclareMathOperator{\Geometric}{Geometric}
+\DeclareMathOperator{\Poisson}{Poisson}
+\DeclareMathOperator{\Exponential}{Exponential}
+\DeclareMathOperator{\Normal}{Normal}
+\DeclareMathOperator{\Gaussian}{Gaussian}
+
+
 
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
@@ -301,6 +313,16 @@
 
 
 \makeindex
+
+
+% --- hyperref ---
+% make all (internal and external) links clickable, adjust colors as wanted,
+% this also creates a Table of Contents in the final pdf ("bookmarks" in pdf-parlance)
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue, bookmarksopen, bookmarksopenlevel=2, bookmarksnumbered]{hyperref}
+
+\usepackage{idxlayout}  % make sure the index doesn't use a different pagestyle (also allows other customization)
+
+
 \begin{document}
 \addtolength{\normalbaselineskip}{1pt}
 \normalbaselines
@@ -317,9 +339,6 @@
 \include{ch6}
 
 \backmatter
-
-\bibliographystyle{siam}
-\bibliography{201-SN1_Notes}{}
 
 \include{back}
 

@@ -363,10 +363,10 @@ Four fair six-sided dice are rolled. What is the probability at least one shows 
 
 Let $X_i$ be the result that shows on the $i^{th}$ die. Then we have
 $$\begin{aligned}
-P(X_1 = 6 \cup ... \cup X_4 = 6) &= P((X_1 \neq 6 \cap ... \cap X_4 \neq 6)^c) \\
-&= 1 - P(X_1 \neq 6 \cap ... \cap X_4 \neq 6) \\
-&= 1 - P(X_1 \neq 6) \cdot ... \cdot P(X_4 \neq 6) \\
-&= 1 - \textstyle\frac{5}{6} \cdot ... \cdot \frac{5}{6} \\
+P(X_1 = 6 \cup \dots \cup X_4 = 6) &= P((X_1 \neq 6 \cap \dots \cap X_4 \neq 6)^c) \\
+&= 1 - P(X_1 \neq 6 \cap \dots \cap X_4 \neq 6) \\
+&= 1 - P(X_1 \neq 6) \cdot \dots \cdot P(X_4 \neq 6) \\
+&= 1 - \textstyle\frac{5}{6} \cdot \dots \cdot \frac{5}{6} \\
 &= 1 - (\textstyle\frac{5}{6})^4.
 \end{aligned}$$
 \end{example}
@@ -502,9 +502,9 @@ We can also use the expected value to quantify the amount of dispersion present 
 
 The values of $X$ tend to be clustered close to the center of the distribution, only very rarely straying under 4 or over 7. On the other hand, $Y$ takes on values far from the center of its distribution quite often. In other words, the distance between the value of $X$ and the center of its distribution is usually smaller than the distance between the value of $Y$ and its center of its distribution. 
 
-In Section \ref{MeasuresOfDispersionSec} we defined the variance of a statistical variable in a dataset as the average squared distance from the mean, and we'll define the variance of a random variance analagously, as the expected squared distance between a random variable and its expected value.
+In Section \ref{MeasuresOfDispersionSec} we defined the variance of a statistical variable in a dataset as the average squared distance from the mean, and we'll define the variance of a random variance analogously, as the expected squared distance between a random variable and its expected value.
 
-\begin{definition}\index{Random Variable!Variance of}\index{Random Variable!Standard Deviation of}\index{Variance}\index{Standard Deviation}\label{VarianceDef} The \newterm{variance} of a discrete random variable $X$ is denoted $\Var(X)$ or $\sigma^{2}_{X}$, and given by 
+\begin{definition}\index{Random Variable!Variance of}\index{Random Variable!Standard Deviation of}\index{Variance}\index{Standard Deviation}\label{VarianceDefRV} The \newterm{variance} of a discrete random variable $X$ is denoted $\Var(X)$ or $\sigma^{2}_{X}$, and given by 
 $$\Var(X) = E[(X - \mu_X)^2] = \sum_{x \in A} (x - \mu_X)^2 f_X(x).$$
 The \newterm{standard deviation} of $X$ is then $\sigma_X = \sqrt{\sigma^{2}_X} = \sqrt{\Var(X)}$.
 \end{definition}
@@ -553,7 +553,7 @@ If $X$ represents the outcome of a single roll of a fair six-sided die, find $\s
 
 First, we compute the mean $E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} = \frac{7}{2}$. Then we calculate the variance as
 $$\begin{aligned}
-Var(X) &= \sum_{x \in A} \left(x - \frac{7}{2}\right)^2 \cdot \frac{1}{6} \text{\ , where } A = \{1,2,3,4,5,6\} \\
+\Var(X) &= \sum_{x \in A} \left(x - \frac{7}{2}\right)^2 \cdot \frac{1}{6} \text{\ , where } A = \{1,2,3,4,5,6\} \\
 &= \left(-\frac{5}{2}\right)^2 \cdot \frac{1}{6} + \left(-\frac{3}{2}\right)^2 \cdot \frac{1}{6} + \left(- \frac{1}{2}\right)^2 \cdot \frac{1}{6} + \left(\frac{1}{2}\right)^2 \cdot \frac{1}{6} + \left(\frac{3}{2}\right)^2 \cdot \frac{1}{6} + \left(\frac{5}{2}\right)^2 \cdot \frac{1}{6} \\
 &= \frac{25}{24} + \frac{9}{24} + \frac{1}{24} + \frac{1}{24} + \frac{9}{24} + \frac{25}{24} = \frac{35}{12} \\
 \end{aligned}$$
@@ -565,7 +565,7 @@ The standard deviation is then $\sigma_X = \sqrt{\frac{35}{12}}\approx 1.707$.
 \end{proposition}
 
 \begin{proof}
-Suppose there were two different realizations $x_1$ and $x_2$ which both have positive probabilities of occurring. Then at least one of $(x_1 - \mu_X)^2$ and $(x_2 - \mu_X)^2$ is nonzero (since $\mu_X$ cannot be equal to both $x_1$ and $x_2$), but this means at least one of the terms in the sum that defines $E[(X-\mu_X)^2]$ is positive. There are no negative terms in this sum since both squares and probabilities are always non-negative, hence $Var(X) > 0$.
+Suppose there were two different realizations $x_1$ and $x_2$ which both have positive probabilities of occurring. Then at least one of $(x_1 - \mu_X)^2$ and $(x_2 - \mu_X)^2$ is nonzero (since $\mu_X$ cannot be equal to both $x_1$ and $x_2$), but this means at least one of the terms in the sum that defines $E[(X-\mu_X)^2]$ is positive. There are no negative terms in this sum since both squares and probabilities are always non-negative, hence $\Var(X) > 0$.
 \end{proof}
 
 \section{The Uniform Distribution}
@@ -575,7 +575,7 @@ Suppose there were two different realizations $x_1$ and $x_2$ which both have po
 \begin{example} Suppose that $X$ represents the result of a single fair die roll, then $X$ is uniformly distributed on $A = \{1,2,3,4,5,6\}$, since $P(X = x) = \frac{1}{6}$ for all $x \in A$.
 \end{example}
 
-The notation $X \sim Uniform(n)$ indicates $X$ is a discrete random variable which is uniformly distributed on $A = \{1,2,3, \, .. \,, n\}$. We could write $X \sim Uniform(6)$ to describe the distribution of the random variable in the example of a die roll above. 
+The notation $X \sim \Uniform(n)$ indicates $X$ is a discrete random variable which is uniformly distributed on $A = \{1,2,3, \, .. \,, n\}$. We could write $X \sim \Uniform(6)$ to describe the distribution of the random variable in the example of a die roll above. 
 
 If $X$ is uniformly distributed on the set $A$, then its pmf has the form
 $$f_X(x) = \left\{
@@ -601,7 +601,7 @@ which yields a lollipop plot with a finite number lollipops of the equal height,
 
 The expected value of a uniformly distributed variable on the set $A$ is simply the average of the values in $A$. Formally, if $X$ is uniformly distributed on the set $A = \{a_1, a_2,\, \dots \, , a_n\}$, then
 $$E(X) = a_1 \cdot \textstyle\frac{1}{n} + a_2 \cdot \frac{1}{n} + \cdots + a_n \cdot \frac{1}{n} = \frac{a_1 + a_2 + \dots + a_n}{n}.$$
-In particular, if $X \sim Uniform(n)$, then $E(X) = \frac{1+2+3+\cdots+n}{n} = \frac{\frac{n(n+1)}{2}}{n} = \frac{n+1}{2}$.
+In particular, if $X \sim \Uniform(n)$, then $E(X) = \frac{1+2+3+\cdots+n}{n} = \frac{\frac{n(n+1)}{2}}{n} = \frac{n+1}{2}$.
 
 \begin{remark}
 When an element is being chosen from a set, and each element in that set has the same probability of being selected, we say the choice is made \emx{uniformly at random}.
@@ -613,7 +613,7 @@ One could `randomly' select a number from the set $A = \{0,1,2,3\}$ by flipping 
 
 Suppose that we perform an experiment with only two possible outcomes, usually called success and failure, and the probability of success is known to be $p$. Such an experiment is called a Bernoulli trial, after the mathematician Jacob Bernoulli. If $X$ is a random variable that counts the number of successes in a single Bernoulli trial (either zero or one), we say $X$ has a Bernoulli distribution with parameter $p$.
 
-\begin{definition}\index{Bernoulli Distribution}\index{Distribution!Bernoulli}The random variable $X$ has a \newterm{Bernoulli distribution} with parameter $p$, written $X \sim Bernoulli(p)$, if
+\begin{definition}\index{Bernoulli Distribution}\index{Distribution!Bernoulli}The random variable $X$ has a \newterm{Bernoulli distribution} with parameter $p$, written $X \sim \Bernoulli(p)$, if
 $$f_X(x) = \left\{
 \renewcommand*{\arraystretch}{1.35}
 \begin{array}{cl}
@@ -626,7 +626,7 @@ $$f_X(x) = \left\{
 In other words, $X$ takes the value $1$ with probability $p$, and $0$ with probability $1-p$.
 \end{definition}
 
-Think of a Bernoulli random variable as counting the number of heads observed in a single flip of a coin with a given bias. If $X$ represents the number of heads in a single flip of a fair coin, then $X \sim Bernoulli(0.5)$, and if $Y$ represents the number of heads in a single flip of a biased coin which lands on heads only $30\%$ of the time, then $Y \sim Bernoulli(0.3)$. The pmf of $Y$ is graphed below.
+Think of a Bernoulli random variable as counting the number of heads observed in a single flip of a coin with a given bias. If $X$ represents the number of heads in a single flip of a fair coin, then $X \sim \Bernoulli(0.5)$, and if $Y$ represents the number of heads in a single flip of a biased coin which lands on heads only $30\%$ of the time, then $Y \sim \Bernoulli(0.3)$. The pmf of $Y$ is graphed below.
 
 \begin{center}
 \begin{tikzpicture}[scale = 0.6]
@@ -640,7 +640,7 @@ Think of a Bernoulli random variable as counting the number of heads observed in
 \end{tikzpicture}
 \end{center}
 
-\begin{proposition}\label{BernoulliExpectation}\index{Bernoulli Distribution!Expected Value of}\index{Bernoulli Distribution!Variance of} If $X \sim Bernoulli(p)$, then $E(X) = p$ and $\Var(X) = p(1-p)$.
+\begin{proposition}\label{BernoulliExpectation}\index{Bernoulli Distribution!Expected Value of}\index{Bernoulli Distribution!Variance of} If $X \sim \Bernoulli(p)$, then $E(X) = p$ and $\Var(X) = p(1-p)$.
 \end{proposition}
 
 \begin{proof} These results both follow from direct calculations. From the probability mass function above we have $E(X) = 0 \cdot (1-p) + 1 \cdot p  = p$. We can then calculate
@@ -654,7 +654,7 @@ Bernoulli random variables are simple but fundamental in probability and statist
 
 Suppose we perform a fixed number of Bernoulli trials (call this number $n$). Each trial has the same probability of success (call this value $p$), and the results of the $n$ consecutive trials form a sequence of independent Bernoulli random variables. If $X$ counts the total number of successes after all the trials have been performed, then we say that $X$ has a Binomial distribution.
 
-\begin{definition}\index{Binomial Distribution}\index{Distribution!Binomial} The random variable $X$ has a \newterm{binomial distribution} with parameters $n$ and $p$, written $X \sim Binomial(n,p)$, if
+\begin{definition}\index{Binomial Distribution}\index{Distribution!Binomial} The random variable $X$ has a \newterm{binomial distribution} with parameters $n$ and $p$, written $X \sim \Binomial(n,p)$, if
 $$f_X(x) = \left\{
 \renewcommand*{\arraystretch}{1.35}
 \begin{array}{cl}
@@ -696,7 +696,7 @@ The number of heads in $n$ flips of a coin is the example that should immediatel
 
 \begin{example}Suppose that in a certain country's election, $56\%$ of the voting population will vote for a particular candidate, Bob. If you select seven members of the voting population uniformly at random, and ask them who they'll vote for (assume they'll answer honestly), what is the probability your poll will incorrectly conclude that Bob will win less than half the vote?
 
-Let $X$ represent the number of people who respond by saying that they'll vote for Bob. If we regard such a response as a success, and each interview is done without knowledge of the results of any of the others, then $X \sim Binomial(7, 0.56)$.
+Let $X$ represent the number of people who respond by saying that they'll vote for Bob. If we regard such a response as a success, and each interview is done without knowledge of the results of any of the others, then $X \sim \Binomial(7, 0.56)$.
 
 The result we're seeking is the probability that there are fewer than four successes, which we calculate from the pmf as follows.
 $$\begin{aligned}P(X \leq 3) &= \sum_{i=0}^{3} P(X = i) = \sum_{i=0}^{3} \binom{7}{i}(0.56)^{i}(0.44)^{7-i} \\
@@ -712,7 +712,7 @@ It would be easier to use the cdf to evaluate $P(X \leq 3)$, but unfortunately, 
 
 One of the reasons the binomial distribution appears in many contexts is that the process of evaluating a claim by doing repeated independent trials, which could be interviews, simulations, or literal laboratory experiments, is such a fundamental practice.
 
-\begin{theorem}\index{Binomial Distribution!Expected value of}\index{Binomial Distribution!Variance of}If $X \sim Binomial(n,p)$, then $E(X) = np$ and $\Var(X) = np(1-p)$.
+\begin{theorem}\index{Binomial Distribution!Expected value of}\index{Binomial Distribution!Variance of}If $X \sim \Binomial(n,p)$, then $E(X) = np$ and $\Var(X) = np(1-p)$.
 \end{theorem}
 
 These formulas follow from properties of expected value and sums of random variables which are not covered in this course, but appear in the Probability \& Random Variables option course, 201-PRV.
@@ -729,9 +729,9 @@ Therefore, $Y$ is larger on average. The second question is somewhat ambiguous, 
 \begin{example}
 Edward lives in a country with an unreliable mail system, where 7\% of parcels do not make it to their destination. He wants to send two books to his brother, each with a value of \$20. If he sends them in one parcel, the postage is \$5.20, and if he sends them separately, the postage is \$3.30 for each book. To minimize his expected losses, which method is preferable?
 
-Let $X \sim Bernoulli(0.07)$, then sending both books in one parcel, the \$5.20 postage charge always applies, and \$40 is lost if $X = 1$. If $L$ represents Edward's loss, then $L = 5.20 + 40X$, and therefore $E(L) = 5.20 + 40E(X) = 5.20 + 40 \cdot 0.07 = 8$.
+Let $X \sim \Bernoulli(0.07)$, then sending both books in one parcel, the \$5.20 postage charge always applies, and \$40 is lost if $X = 1$. If $L$ represents Edward's loss, then $L = 5.20 + 40X$, and therefore $E(L) = 5.20 + 40E(X) = 5.20 + 40 \cdot 0.07 = 8$.
 
-If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the smaller expected loss.
+If the two books are each sent separately, then $L = 6.60 + 20Y$, where $Y \sim \Binomial(2,0.07)$. Thus, $E(L) = 6.60 + 20E(Y) = 6.60 + 20 \cdot 2 \cdot 0.07 = 9.4$, so sending both books in one package is the option with the smaller expected loss.
 \end{example}
 
 \section{Continuous Random Variables}\label{ContinuousRVSection}
@@ -1087,7 +1087,7 @@ $$\begin{aligned}E(X) &= \frac{1}{\pi}\int_{-\infty}^{\infty} \frac{x}{1+x^2} \,
 &= \frac{1}{\pi}\int_{\infty}^{1} \frac{x}{u} \frac{1}{2x}\, du + \frac{1}{\pi}\int_{1}^{\infty} \frac{x}{u} \frac{1}{2x}\, du \\
 &= \frac{1}{2\pi}\int_{\infty}^{1} \frac{1}{u} \, du + \frac{1}{2\pi}\int_{1}^{\infty} \frac{1}{u} \, du \\ 
 &= \frac{1}{2\pi}\ln(u) \biggr|_{\infty}^{1} + \frac{1}{2\pi}\ln(u) \biggr|_{1}^{\infty} \\
-&= \frac{1}{2\pi}\left(\ln(1) - \lim_{u \to \infty}ln(u)\right) + \frac{1}{2\pi}\left(\lim_{u \to \infty}ln(u) - \ln(1)\right)\end{aligned}$$
+&= \frac{1}{2\pi}\left(\ln(1) - \lim_{u \to \infty}\ln(u)\right) + \frac{1}{2\pi}\left(\lim_{u \to \infty}\ln(u) - \ln(1)\right)\end{aligned}$$
 
 Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u) = \infty$, and hence $E(X)$ is undefined. 
 \end{example}
@@ -1096,11 +1096,11 @@ Neither of the two improper integrals converge since $\lim_{u \to \infty} \ln(u)
 This result may seem odd, since you would intuitively place the center of this distribution at zero. It turns out that there exist distributions (this one is known as a Cauchy distribution) that have so much area in their tails that they have an undefined mean. These \newterm{fat-tailed}\index{Distribution!Fat-tailed} distributions are very interesting, as most of the usual estimation methods we'll see later on in the course don't work well, or even at all, when the variable being studied has a fat-tailed distribution.
 \end{remark}
 
-As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDef}, but with the an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
+As with the expected value, the variance of a continuous random variable is defined in essentially the same way as in the discrete case, Definition \ref{VarianceDefRV}, but with an integral in place of the sum. The variance is the average squared distance from the mean, but now we're taking the average value of a continuous function.
 
 \begin{definition}\index{Variance! of a Continuous R.V.}
-If $X$ is a continuous random variable, the variance of $X$ is denoted $Var(X)$ or ${\sigma_X}^2$, and defined by
-$$Var(X) = \int_{-\infty}^{\infty}(x-\mu_X)^2 f_X(x) \, dx.$$
+If $X$ is a continuous random variable, the variance of $X$ is denoted $\Var(X)$ or ${\sigma_X}^2$, and defined by
+$$\Var(X) = \int_{-\infty}^{\infty}(x-\mu_X)^2 f_X(x) \, dx.$$
 The standard deviation, $\sigma_X$, is the square root of the variance.
 \end{definition}
 
@@ -1115,7 +1115,7 @@ $$f_X(x) = \left\{
 \right.$$
 Now we can calculate the mean and variance of $X$ as follows.
 $$E(X) = \int_{-\infty}^{\infty} x f_X(x) \, dx = \int_{0}^{1} x \cdot 1 \, dx = \textstyle\frac{1}{2}x^2 \,\bigr|_{0}^{1}=\frac{1}{2}$$
-$$Var(X) = \int_{-\infty}^{\infty} (x-\textstyle\frac{1}{2})^2 f_X(x) \, dx = \displaystyle\int_{0}^{1} (x-\textstyle\frac{1}{2})^2  \cdot 1 \, dx = \displaystyle\int_{0}^{1} x^2-x+\textstyle\frac{1}{4} \, dx = \textstyle\frac{1}{3}x^3 - \frac{1}{2}x^2 + \frac{1}{4}x \,\bigr|_{0}^{1}=\frac{1}{12}$$
+$$\Var(X) = \int_{-\infty}^{\infty} (x-\textstyle\frac{1}{2})^2 f_X(x) \, dx = \displaystyle\int_{0}^{1} (x-\textstyle\frac{1}{2})^2  \cdot 1 \, dx = \displaystyle\int_{0}^{1} x^2-x+\textstyle\frac{1}{4} \, dx = \textstyle\frac{1}{3}x^3 - \frac{1}{2}x^2 + \frac{1}{4}x \,\bigr|_{0}^{1}=\frac{1}{12}$$
 Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma = \frac{1}{\sqrt{12}}$.
 \end{example}
 
@@ -1130,7 +1130,7 @@ Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$Z \sim Gaussian(0,1)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$Z \sim \Gaussian(0,1)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     xtick={-2,-1,...,2},
     ytick = {0.1,0.2,0.3,0.4, 0.5},
     ymin=0,ymax=0.5,xmin=-2.5, xmax = 2.5, width=10cm, height=6cm]
@@ -1141,7 +1141,7 @@ Therefore, the mean is $\mu = \frac{1}{2}$ and the standard deviation is $\sigma
     \begin{minipage}{0.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=17.5, xmax = 32.5, xtick = {19,22,25,28,31}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=10cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
     \end{axis}
@@ -1154,16 +1154,16 @@ The Gaussian distribution gets its name from mathematician Carl Friedrich Gauss,
 
 Unfortunately, the pdf $f_X$ for a Gaussian distribution is not integrable in elementary terms. In other words, its antiderivative can't be expressed using only the functions and operations you've encountered in Calculus II, which means we can't find areas under the curve (probabilities) using those methods.
 
-The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
+The traditional way to get around this issue is to use a large table of values of the cdf as a reference. Unless otherwise stated, the letter $Z$ will be reserved for the random variable $Z \sim \Gaussian(0,1)$ from now on, and a $Z$-table is simply a large table of values of the cdf $F_Z(z) = P(Z \leq z)$ for many different realizations $z \in \mathbb{R}$.
 
 What if $X$ is a Gaussian random variable with a nonzero mean and a standard deviation which is different from one? As you might expect given the two graphs shown above, it turns out the distributions of any two Gaussian random variables differ only by shifting and stretching. The tools required to show this are covered in the Probability \& Random Variables option course, 201-PRV.
 
-\begin{proposition}If $X \sim Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim Gaussian(0,1)$.
+\begin{proposition}If $X \sim \Gaussian (\mu,\sigma)$, then $Z = \frac{X - \mu}{\sigma} \sim \Gaussian(0,1)$.
 \end{proposition}
 
-The process of translating values of any Gaussian distributed random variable into corresponding values of $Z \sim Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, which is known as the \newterm{Z-score}\index{Z-score} of $x$, and we can treat the resulting $z$ as a realization of $Z \sim Gaussian(0, 1)$.
+The process of translating values of any Gaussian distributed random variable into corresponding values of $Z \sim \Gaussian (0,1)$ is known as \newterm{standardization}\index{Standardization}, and $Z \sim \Gaussian (0,1)$ is known as the \newterm{standard normal distribution}\index{Standard Normal Distribution}\index{Distribution!Standard Normal}. To standardize a realization $x$ of $X \sim \Gaussian(\mu, \sigma)$ we simply compute $z  = \frac{x - \mu}{\sigma}$, which is known as the \newterm{Z-score}\index{Z-score} of $x$, and we can treat the resulting $z$ as a realization of $Z \sim \Gaussian(0, 1)$.
 
-\begin{example}\label{FemaleHeightsGaussian} The height of a randomly selected Canadian adult female, in inches, is approximated by the random variable $X \sim Gaussian(64,2.5)$. What proportion of Canadian adult females are taller than 5'8"? What proportion have heights between 5'3" and 5'7"?
+\begin{example}\label{FemaleHeightsGaussian} The height of a randomly selected Canadian adult female, in inches, is approximated by the random variable $X \sim \Gaussian(64,2.5)$. What proportion of Canadian adult females are taller than 5'8"? What proportion have heights between 5'3" and 5'7"?
 
 To standardize 5'8"\,=\,68", we calculate $z = \frac{68 - 64}{2.5} = 1.6$. Then we have
 \
@@ -1206,14 +1206,14 @@ Thus, about 5.5\% of Canadian adult females are taller than 5'8". For the second
 Therefore, around 54\% of Canadian adult females are between 5'3" and 5'7".
 \end{example}
 
-Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim Gaussian(0,1)$ efficiently using numerical integration, $Z$-tables are something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
+Since there is now almost universal access to computers which can calculate areas under the pdf of $Z \sim \Gaussian(0,1)$ efficiently using numerical integration, $Z$-tables are something of a mathematical artifact whose uses are limited to classrooms and standardized tests.
 
 \subsection*{Gaussian Distribution Shortcuts}
 
 Any Gaussian distribution has two inflection points, and these occur precisely one standard deviation from the mean. This fact is useful when drawing a sketch of a Gaussian distribution.
 \begin{center}    
     \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=17.5, xmax = 32.5, xtick = {19,22,25,28,31}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=10cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
        \addplot [only marks] table {
@@ -1229,7 +1229,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
 \begin{proposition}\index{68-95-99.7 Rule}\label{GaussianRuleThumb}(68-95-99.7 Rule) For any Gaussian distribution, 68\% of the area under its pdf occurs within one standard deviation of the mean, 95\% occurs within two standard deviations, and 99.7\% occurs within three standard deviations.
 \begin{center}
   \begin{tikzpicture}[scale = 0.6]
-       \begin{axis}[title = {$X \sim Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
+       \begin{axis}[title = {$X \sim \Gaussian(25,3)$}, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6},
     ymin=0,ymax=0.24,xmin=15, xmax = 35, xtick = {16,19,22,25,28,31,34}, ytick = {0.1,0.2,0.3,0.4,0.5}, width=12cm, height=6cm]
        \addplot[very thick,domain=15:35,blue, samples =100] {0.19298*e^(-(x-25)^2/18)};
        \draw (axis cs:22,0.17) -- node[below]{68\%} (axis cs:28,0.17);
@@ -1248,7 +1248,7 @@ For approximate reasoning with Gaussian distributions without the aid of a $Z$-t
 
 Primarily used for quick approximate calculations, the rule also illustrates how quickly a Gaussian distribution approaches the horizontal axis when it moves away from its mean. To contrast this with the strange behaviour we saw in Example \ref{CauchyExpectation} at the end of the last section, we can say that Gaussian distributions have \newterm{thin tails}\index{Distribution! Thin-tailed}.
 
-\begin{example}If $X \sim Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
+\begin{example}If $X \sim \Gaussian(64,2.5)$ is used to model the height of a randomly selected Canadian female, provide a range of heights which will include 95\% of all Canadian adult females.
 
 Using the 68-95-99.7 Rule, $95\%$ of Canadian adult females will have heights within two standard deviations of the mean height, 64". So we calculate $64 - 2(2.5) = 59$ and $64 + 2(2.5) =69$, then conclude that 95\% of all Canadian adult females are taller than 59"\,=\,4'11" and shorter than 69"\,=\,5'9".
 \end{example}
@@ -1326,23 +1326,23 @@ If $\overline{X}$ is the mean of a random sample taken from a population with me
 The notation $\mu_{\overline{X}}$ is also used for $E(\overline{X})$, so you may see the result above written as $\mu_{\overline{X}} = \mu$.
 \end{remark}
 
-This is a key result that all the inference procedures in the next Chapter depend on, and it's a very special property of the mean that is generally not true of other statistics.
+This is a key result that all the inference procedures in the next chapter depend on, and it's a very special property of the mean that is generally not true of other statistics.
 
 Now that we know that in any scenario where we're doing random sampling, the mean of the distribution of $\overline{X}$ is $\mu$, it's natural to wonder about the variance. Is there a simple relationship between the variance of $\overline{X}$ and the variance of the population the random sample was drawn from?
 
 \begin{example}
 Consider again the scenario in Example \ref{DistOfMeanAge}. Let's compute the variance of the random variable $\overline{X}$ and the compare it to the variance of the population.
-$$Var(\overline{X}) = (12 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} + (14 - \textstyle\frac{50}{3})^2 \cdot \frac{2}{9} + \dots + (22 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} = \frac{76}{9}$$
+$$\Var(\overline{X}) = (12 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} + (14 - \textstyle\frac{50}{3})^2 \cdot \frac{2}{9} + \dots + (22 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} = \frac{76}{9}$$
 $$\sigma^2 = \textstyle\frac{1}{3}\left((12-\frac{50}{3})^2 + (16-\frac{50}{3})^2 + (22-\frac{50}{3})^2 \right) = \frac{152}{9}$$
 In fact, the variance of $\overline{X}$ is precisely half the population variance. This is, again, not a coincidence.
 \end{example}
 
 \begin{proposition}\label{VarianceOfSampleMean}
-If $\overline{X}$ is the mean of a random sample of $n$ individuals taken from a population with variance $\sigma^2$, then $Var(\overline{X}) = \frac{\sigma^2}{n}$. In other words, the variance of the distribution of the sample mean is $n$ times smaller than the variance of the population.
+If $\overline{X}$ is the mean of a random sample of $n$ individuals taken from a population with variance $\sigma^2$, then $\Var(\overline{X}) = \frac{\sigma^2}{n}$. In other words, the variance of the distribution of the sample mean is $n$ times smaller than the variance of the population.
 \end{proposition}
 
 \begin{remark}
-The notation $\sigma_{\overline{X}}$ is used for the standard deviation of $\overline{X}$, so taking the square root of each side of $Var(\overline{X}) = \frac{\sigma^2}{n}$, we obtain $\sigma_{\overline{X}} = \frac{\sigma}{\sqrt{n}}$.
+The notation $\sigma_{\overline{X}}$ is used for the standard deviation of $\overline{X}$, so taking the square root of each side of $\Var(\overline{X}) = \frac{\sigma^2}{n}$, we obtain $\sigma_{\overline{X}} = \frac{\sigma}{\sqrt{n}}$.
 \end{remark}
 
 The proofs of Propositions \ref{MeanOfSampleMean} and \ref{VarianceOfSampleMean} require results on properties of expected value and variance that are developed in the Probability \& Random Variables option course, 201-PRV.
@@ -1363,7 +1363,7 @@ If we take samples of size one from the distribution of $X$, the distribution of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1379,7 +1379,7 @@ If we take samples of size one from the distribution of $X$, the distribution of
 \end{minipage}
 \end{center}
 \begin{remark}
-The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
+The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim \Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
 \end{remark}
 
 What happens when we increase the sample size? Now we'll take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each sample. The resulting distribution of sample means is given below on the right. Note that the most likely realizations of $X$ are very close to zero, but the most likely realizations of $\xbar$ are close to one. Each of the sample values $X_1$ and $X_2$ is more likely to be very close to zero than anywhere else, but samples where both values are simultaneously very close to zero are nonetheless quite unusual.
@@ -1387,7 +1387,7 @@ What happens when we increase the sample size? Now we'll take ten thousand rando
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1407,7 +1407,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1426,7 +1426,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1445,7 +1445,7 @@ If we continue increasing the sample size, taking ten thousand random samples of
     \begin{minipage}{.5\textwidth}
         \centering
   \begin{tikzpicture}[scale = 0.8]
-       \begin{axis}[title = {$X \sim Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
        \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
        \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
     \end{axis}
@@ -1467,7 +1467,7 @@ Moreover, there is a clear trend in the shapes of the sampling distributions. As
 
 This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then we know that the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample values were drawn from}.
 
-\begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
+\begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $\Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
 \end{theorem}
 
 The conclusion of the theorem is written here in very informal language. To make it more precise, we would need to decide on a way to measure the difference between two distributions, so the theorem above could state that this difference vanishes as $n \to \infty$. For details, see \cite{DevoreBerk} or \cite{Ghahramani}.
@@ -1508,7 +1508,7 @@ Note that the central limit theorem does not tell us how accurate the Gaussian a
 If the two distributions match well, then we'll know that our answer above is fairly accurate. If the sampling distribution is still far from being Gaussian, then we'll have to disregard our answer.
 \begin{center}
 \begin{tikzpicture}[scale = 0.8]
-\begin{axis}[title = {Distribution of $\xbar$ and $Gaussian(\frac{1}{2},\frac{1}{\sqrt{240}})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1700,xmin=0.2, xmax = 0.8, xtick = {0.2,0.3,0.4,0.5,0.6,0.7,0.8}, ytick = {3300}, area style, width = 10cm, height = 6cm]
+\begin{axis}[title = {Distribution of $\xbar$ and $\Gaussian(\frac{1}{2},\frac{1}{\sqrt{240}})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1700,xmin=0.2, xmax = 0.8, xtick = {0.2,0.3,0.4,0.5,0.6,0.7,0.8}, ytick = {3300}, area style, width = 10cm, height = 6cm]
 \addplot+[ybar interval,mark=no] plot coordinates {(0,0) (0.025,0) (0.05,0) (0.075,0) (0.1,0) (0.125,0) (0.15,0) (0.175,0) (0.2,0) (0.225,0) (0.25,2) (0.275,6) (0.3,13) (0.325,61) (0.35,147) (0.375,328) (0.4,624) (0.425,942) (0.45,1257) (0.475,1520) (0.5,1499) (0.525,1355) (0.55,955) (0.575,668) (0.6,346) (0.625,167) (0.65,58) (0.675,34) (0.7,7) (0.725,0)};
 \addplot[very thick,domain=0:1,red, samples=500] {250*6.185*e^((-(x - 0.5)^2)/(2*(1/240)))};
 \end{axis}
@@ -1534,7 +1534,7 @@ In practice, to convince themselves the sampling distribution of $\xbar$ is suff
 \begin{example}
 If a biased coin with a 55\% probability of heads is flipped one hundred times, what is the probability that the number of heads observed is less than the number of tails?
 
-If we call a head a success, then we have a sample of $n=100$ values $X_1,X_2\,\dots\,,X_{100}$ from $X \sim Bernoulli(0.55)$. If more tails than heads were observed, this means that more than half of the $X_i$ are zeros, so $\xbar = \frac{X_1 + X_2 + \cdots + X_{100}}{100} < \frac{50}{100} =0.5$.
+If we call a head a success, then we have a sample of $n=100$ values $X_1,X_2\,\dots\,,X_{100}$ from $X \sim \Bernoulli(0.55)$. If more tails than heads were observed, this means that more than half of the $X_i$ are zeros, so $\xbar = \frac{X_1 + X_2 + \cdots + X_{100}}{100} < \frac{50}{100} =0.5$.
 
 Using the formulas for the mean and variance of a Bernoulli random variable in Proposition \ref{BernoulliExpectation}, the mean and standard deviation of the sampling distribution of $\xbar$ are given by 
 $$\muxbar = \mu = p = 0.55 \ \ \text{and} \ \  \sigmaxbar = \frac{\sigma}{\sqrt{n}} = \frac{\sqrt{p(1-p)}}{\sqrt{n}} = \textstyle\frac{\sqrt{0.55\cdot 0.45}}{\sqrt{100}} \approx 0.05.$$
