@@ -199,7 +199,7 @@ $$\begin{aligned}
 \end{example}
 
 \begin{remark}
-The example above might leave you with some questions. Why were the laws used in that particular order? What does it even mean for one set expression to be `simpler' than another?
+The example above might leave you with some questions. Why were the laws used in that particular order? What does it even mean for one set expression to be simpler than another?
 
 Questions like these are addressed in a branch of mathematics known as Boolean algebra, which we're just scratching the surface of. Take the example as an illustration of how the laws above can be used in a productive way, and an invitation to think about some of the basic questions in Boolean algebra, the answers to which are beyond the scope of this course.
 \end{remark}
@@ -398,15 +398,15 @@ N (S \cap C) &= 19
 
 \section{Counting Principles \& Factorials}
 
-Suppose you order fries and root beer at a fast food restaurant. There are two options for the size of the fries and three options for the size of the root beer.
+Suppose you order fries and a root beer at a fast food restaurant. There are two options for the size of the fries and three options for the size of the root beer.
 
 Since there are two options for the size of the fries, and three options for the size of the root beer, you have a total of six possible choices when you order both. These are enumerated below, the first letter in each ordered pair denoting the size of the fries (small or large), and the second letter the size of the root beer (small, medium, or large).
 $$(S,s)\ \ (S,m)\ \ (S,l)\ \ (L,s)\ \ (L,m)\ \ (L,l)$$
-These are exactly the elements of the cartesian product $F \times R$, where $F = \{S,L\}$ and $R = \{s,m,l\}$. 
+These are ordered pairs whose first entry is from $F$ and whose second is from $R$, where $F = \{S,L\}$ and $R = \{s,m,l\}$. The number of such pairs is $N(F) \cdot N(R)$.
 
-If it turns out that, unfortunately, there's only enough change in your pocket to pay for a single item (which could be any size), then you only have five choices. Either you only order fries, and choose an element from $F$, or only order root beer, and choose an element from $R$. This is equivalent to choosing an element of $F \cup R = \{S,L,s,m,l\}$.
+If it turns out that, unfortunately, there's only enough change in your pocket to pay for a single item (which could be any size), then you only have five choices. Either you only order fries, and choose an element from $F$, or only order root beer, and choose an element from $R$. This is equivalent to choosing an element of $F \cup R = \{S,L,s,m,l\}$, which has $N(F)+ N(R)$ elements when $F \cap R = \emptyset$.
 
-To summarize, the number of ways to choose an element from $F$ \emx{and} an element from $R$ is $|F| \cdot |R|$, while the number of ways to choose an element from $F$ \emx{or} an element from $R$ is $|F|+|R|$. This idea generalizes considerably, and forms the foundational principle that will allow us to solve many problems.
+In summary, the number of ways to choose an element from $F$ \emx{and then} an element from $R$ is $N(F) \cdot N(R)$, while the number of ways to choose an element from $F$ \emx{or} an element from $R$ is $N(F)+N(R)$. This idea generalizes to a foundational principle for solving counting problems.
 
 \begin{proposition}(Fundamental Counting Principle) \label{FundamentalCountingPrinciple}\index{Fundamental Counting Principle} In a sequence of $k$ choices, if the first choice can be made in $n_1$ ways, the second choice can be made in $n_2$ ways, and so on, the number of ways of making all choices is the product $n_1 n_2 \,\cdots\, n_k$, while the number of ways of selecting one of the choices to make and making only that choice is the sum $n_1 + n_2 + \,\cdots\, + n_k$.
 \end{proposition}
@@ -415,6 +415,12 @@ To summarize, the number of ways to choose an element from $F$ \emx{and} an elem
 How many ways are there to select three students to be class representatives in three different classes, one with twenty students and two with thirty?
 
 There are three choices to be made, choosing a representative for each of the three classes, and since we must make all three choices, the number of ways this can be done is $20 \cdot 30 \cdot 30 = 18\,000$.
+\end{example}
+
+\begin{example}
+In class with 8 boys and 11 girls, how many ways are there to select a class president and a class vice-president subject to the restriction that one of the two must be a boy and the other must be a girl?
+
+If we choose a boy for president and a girl for vice-president, there are $8 \cdot 11$ possibilities, and if we choose a girl for president and a boy for vice-president, there are $11 \cdot 8$ possibilities. In total then, since we do one of those two things, there are $8 \cdot 11 + 11 \cdot 8 = 176$ possibilities. 
 \end{example}
 
 \begin{example}
