@@ -445,7 +445,23 @@ Factorials have some very nice algebraic properties that make them easy to work 
 \eqnsgap{\frac{8!}{6!} = \frac{8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}{6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}= \frac{8 \cdot 7 \cdot \cancel{6} \cdot \cancel{5} \cdot \cancel{4} \cdot \cancel{3} \cdot \cancel{2} \cdot \cancel{1}}{\cancel{6} \cdot \cancel{5} \cdot \cancel{4} \cdot \cancel{3} \cdot \cancel{2} \cdot \cancel{1}} = 56}
 \par
 
-%Factiorial algebra examples
+%Factorial algebra example
+
+\begin{example}
+How many arrangements of the letters in LOGARITHM contain the word TRIG?
+
+There are 9! ways to rearrange the letters, but most don't include the word TRIG. There's a simple idea we can use to count only those arrangements that include it. Instead of arranging letters, partition the letters into six blocks $\boxed {L}$, $\boxed {O}$, $\boxed {A}$, $\boxed {H}$, $\boxed {M}$, and $\boxed {TRIG}$, and arrange the blocks.
+
+Every arrangement of the six blocks is a distinct arrangement of the nine letters which includes TRIG. Hence there are $6!$ arrangements of the letters in LOGARITHM that contain the word TRIG. Note that this also means there are $9! - 6!$ arrangements that do not include TRIG.
+\end{example}
+
+\begin{example}
+How many arrangements of the letters in LOGARITHM have all the vowels together?
+
+Using the same idea as above, we can consider the blocks $\boxed {L}$, $\boxed {G}$, $\boxed {R}$, $\boxed {T}$, $\boxed {H}$, $\boxed{M}$ and $\boxed {OAI}$. This time though, the three letters in the last block can appear in any of $3!$ possible orders. 
+
+To create an arrangement of the letters in LOGARITHM that satisfies our requirement, we have to first arrange the blocks, and then arrange the three letters inside the vowel block. Hence there are a total of $7! \cdot 3!$ possibilities. 
+\end{example}
 
 \section{Permutations \& Combinations}
 
