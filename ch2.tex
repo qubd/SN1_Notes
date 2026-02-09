@@ -488,7 +488,14 @@ We can write the formula for permutations conveniently as above, but it's usuall
 How many ways are there to create a sequence of five letters with no repetitions using any of the 26 lower case letters of the alphabet?
 
 Taking $5$ letters from a set of $26$ and arranging them, the number of options is
-$$^{26}P_5 = \frac{26!}{(26-5)!} = \frac{26!}{21!} = 26 \cdot 25 \cdot 24 \cdot 23 \cdot 22 = 7\,893\,600$$
+$$^{26}P_5 = \frac{26!}{21!} = 26 \cdot 25 \cdot 24 \cdot 23 \cdot 22 = 7\,893\,600$$
+\end{example}
+
+\begin{example}
+How many ways are there to choose five novels from a pool of thirty, five math books from a pool of twenty, and arrange the ten selected books them on a shelf, if the novels must all be grouped together, and the math books must all be grouped together?
+
+There are $^{30}P_{5}$ possible ordered selections of the novels and $^{20}P_{5}$ possible ordered selections of the math books. Finally, we can either decide to place the novels on the left (and math books on the right), or the math books on the left (and novels on the right). Hence, the total number of options is
+$$^{30}P_{5} \cdot ^{20}P_{5} \cdot 2$$
 \end{example}
 
 %More examples
@@ -499,7 +506,7 @@ What if some objects are indistinguishable? If this is the case, there are fewer
 
 Notice that we just have to decide which of the four possible positions we'll place the $B$ into. Once that's done, then $A$'s go everywhere else, so there are only four distinct arrangements.
 
-Now suppose that we number the three $A$s. How many rearrangements of the string $A_1A_2A_3B$ are there? Since the four letters are now distinguishable, there are $4! = 24$. Let's write these out, grouping together in columns all strings that will be identical after the labels on the $A$'s are removed.
+Now suppose we number the three $A$'s. How many arrangements of the string $A_1A_2A_3B$ are there? Since the four letters are now distinguishable, there are $4! = 24$. Let's write these out, grouping together in columns all strings that will be identical after the labels on the $A$'s are removed.
 \begin{center}
 \begin{tabular}{cccc}
 $A_1A_2A_3B$ & $A_1A_2BA_3$ & $A_1BA_2A_3$ & $BA_1A_2A_3$ \\
@@ -512,9 +519,9 @@ $A_3A_2A_1B$ & $A_3A_2B_1A$ & $A_3BA_2A_1$ & $BA_3A_2A_1$ \\
 \end{center}
 Notice that rearranging the labels will result in a string which is identical once the labels are removed. This means if we list all possible arrangements of the labeled strings, each possible unlabeled string will appear $3!$ times, since there are $3!$ ways of arranging the labels. Alternatively, think about how there are 3! ways to \emx{apply the labels} to the three $A$'s, and each of the 24 labeled strings can be obtained by first selecting an unlabeled string (i.e. a column) then applying the labels.
 
-The upshot is that \emx{we can count the number of unlabeled strings by dividing the number of labeled strings by the number of ways of rearranging the labels}, in this case, $4! / 3! = 4$. The same principle applies if there are many different kinds of indistinguishable objects, and the general result can be summarized in the formula below.
+The point is that we can count the number of \emx{unlabeled strings} by dividing the number of \emx{labeled strings} by the number of ways of rearranging the labels, in this case, $4! / 3! = 4$. The same principle applies if there are many different kinds of indistinguishable objects, and the general result is summarized in the formula below.
 
-\begin{proposition}\index{Mississippi Formula} (Mississippi Formula) The number of ways of rearranging $n$ objects, with indistinguishable groups of sizes $k_1, k_2, \dots\, ,k_m$, is given by
+\begin{proposition}\index{Mississippi Formula} (Mississippi Formula) The number of ways of arranging $n$ objects, with indistinguishable groups of sizes $k_1, k_2, \dots\, ,k_m$, is given by
 $$\frac{n!}{k_{1}! \cdot k_{2}! \cdot \, \cdots \, \cdot k_{m}!}$$
 \end{proposition}
 
@@ -560,7 +567,7 @@ Since the order of the numbers on the ticket is irrelevant, the number of differ
 \begin{example}
 How many ways are there to choose a president, a treasurer, and an organizing committee of three from a group of 25 people? Assume no person can hold more than one position.
 
-There are 25 choices for president, then 24 for treasurer, then $\binom{23}{3}$ for the organizing committee. Note that when choosing the organizing committee, the order in which members are chosen is irrelevant. The committee consisting of Alice, Bob, and Chelsea and the committee consisting of Chelsea, Alice, and Bob are the same. We must make all three choices, so by the fundamental counting principle the number of possibilities is
+There are 25 choices for president, then 24 for treasurer, then $\binom{23}{3}$ for the organizing committee. When choosing the organizing committee, the order in which members are chosen is irrelevant. The committee consisting of Alice, Bob, and Chelsea and the committee consisting of Chelsea, Alice, and Bob are the same, so we're making an unordered selection. In total then, the number of possibilities is
 $$25 \cdot 24 \cdot \binom{23}{3} = 1\,062\,600.$$
 
 Notice that we could just as well have proceeded in the opposite order, that is, first chosen the organizing committee, then the treasurer, then the president, and still obtained
@@ -582,10 +589,20 @@ If we select A, B, C, and D for the first team and E, F, G, and H for the second
 $$\frac{\binom{8}{4}\binom{4}{4}}{2!} = 35$$
 
 Notice that if the two teams were distinguishable, for example, if there were a red team and blue team with four people on each, there would be $\binom{8}{4}\binom{4}{4} = 70$ ways.
+\end{example}
 
 \begin{remark}
-As the last example shows, it's very easy to end up inadvertently double counting, even for those with lots of experience with these kinds of problems. Solving such a problem amounts to coming up with a sequence of choices which can be made to produce each possible outcome. You need to convince yourself that your sequence of choices can not only produce every possible outcome, but produce it in a unique way (making any of the choices differently results in a different outcome).
+As the last example shows, it's very easy to end up inadvertently double counting, even for those with lots of experience with these kinds of problems. Solving such a problem amounts to coming up with a sequence of choices which can be made to produce each possible outcome. You need to convince yourself that your sequence of choices can not only produce every possible outcome, but produce it in a unique way (making any of the choices differently always results in a different outcome).
 \end{remark}
+
+\begin{example}
+Alice and Bob are in a gym class of twenty students. How many ways are there to make a team of eight students from the class if at least one of Alice and Bob them must be on the team?
+
+There are $\binom{19}{7}$ teams that include Alice (choose seven others to join Alice's team), and similarly, there are $\binom{19}{7}$ teams that include Bob. But if we add these together, we're double counting the teams that include both Alice and Bob. Using inclusion-exclusion and subtracting these out, we obtain a total of
+$$\binom{19}{7} + \binom{19}{7} - \binom{18}{6} = 82212.$$
+
+Another approach is to instead take the total number of possible teams, $\binom{20}{8}$, and remove those which include neither Alice nor Bob, to give
+$$\binom{20}{8} - \binom{18}{8} = 82212.$$
 \end{example}
 
 
