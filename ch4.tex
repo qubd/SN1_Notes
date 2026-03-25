@@ -1046,7 +1046,6 @@ The expected value of a continuous random variable $X$ is defined in essentially
 \begin{definition}\index{Expected Value}\index{Expected Value! of a Continuous R.V.}
 If $X$ is a continuous random variable, the expected value of $X$ is denoted $E(X)$ or $\mu_X$, and defined by
 $$E(X) = \int_{-\infty}^{\infty}x f_X(x) \, dx.$$
-
 Note that this improper integral may not converge, in which case the expected value is undefined.
 \end{definition}
 
@@ -1355,7 +1354,11 @@ To sum up, we've learned some important things about the \emx{distribution of me
 
 Now that we know the mean and variance of the sampling distribution of $\xbar$, what can we say about the shape? Consider, for example, the continuous random variable with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$. We can approximate the sampling distribution of $\xbar$ by taking ten thousand random samples, calculating their means, and plotting the results.
 
-If we take samples of size one from the distribution of $X$, the distribution of sample means should look just like the distribution of $X$, since the mean of a single observation is that observation itself. We're just building a histogram for the distribution of $X$ by taking many realizations.
+\begin{remark}
+The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim \Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
+\end{remark}
+
+If we take samples of size one from the distribution of $X$, the distribution of sample means is just the distribution of $X$, since the mean of a single observation is that observation itself. We're simply building a dataset consisting of many realizations of $X$ (ten thousand in this case) and constructing a histogram to visualize it.
 \begin{center}
     \begin{minipage}{.5\textwidth}
         \centering
@@ -1375,9 +1378,6 @@ If we take samples of size one from the distribution of $X$, the distribution of
 \end{tikzpicture}
 \end{minipage}
 \end{center}
-\begin{remark}
-The continuous random variable $X$ with density function $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim \Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
-\end{remark}
 
 What happens when we increase the sample size? Now we'll take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each sample. The resulting distribution of sample means is given below on the right. Note that the most likely realizations of $X$ are very close to zero, but the most likely realizations of $\xbar$ are close to one. Each of the sample values $X_1$ and $X_2$ is more likely to be very close to zero than anywhere else, but samples where both values are simultaneously very close to zero are nonetheless quite unusual.
 \begin{center}
@@ -1399,7 +1399,7 @@ What happens when we increase the sample size? Now we'll take ten thousand rando
 \end{tikzpicture}
 \end{minipage}
 \end{center}
-If we continue increasing the sample size, taking ten thousand random samples of larger and larger sizes from the same distribution, how will the distribution of the sample mean $\xbar$ change?
+If we continue increasing the sample size, taking ten thousand random samples of larger and larger sizes from the distribution of $X$, how will the distribution of the sample mean $\xbar$ change?
 \begin{center}
     \begin{minipage}{.5\textwidth}
         \centering
@@ -1458,11 +1458,11 @@ If we continue increasing the sample size, taking ten thousand random samples of
 \end{minipage}
 \end{center}
 
-In the last section, we saw that if $\xbar$ is the mean of a random sample, then $E(\xbar) = \mu$ and $\Var(\xbar) = \frac{\sigma^2}{n}$. These results are visible in the graphics above. Each distribution of $\xbar$ is centered at 2, which is the mean of the exponential distribution the samples were drawn from, and the dispersion of the distribution of $\xbar$ decreases as the sample size grows (note that $\frac{\sigma^2}{n}$ is a decreasing function of $n$).
+In the last section, we saw that if $\xbar$ is the mean of a random sample, then $E(\xbar) = \mu$ and $\Var(\xbar) = \frac{\sigma^2}{n}$. These results are visible in the graphics above. Each distribution of $\xbar$ is centered at 2, which is the mean of the exponential distribution the samples were drawn from, and the dispersion of the distribution of $\xbar$ decreases as the sample size grows (note that $\frac{\sigma^2}{n}$ decreases as $n$ increases).
 
-Moreover, there is a clear trend in the shapes of the sampling distributions. As the sample size increases, the distribution looks less like an exponential distribution, and more like a Gaussian distribution. This, once again, is not a coincidence.
+Moreover, there is a clear trend in the shapes of the sampling distributions. As the sample size grows, the distribution of $\xbar$ looks less like an exponential distribution, and more like a Gaussian distribution.
 
-This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then we know that the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample values were drawn from}.
+This phenomenon is why the Gaussian distribution plays such a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then in fact the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample values were drawn from}.
 
 \begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $\Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
 \end{theorem}
@@ -1476,9 +1476,9 @@ We will write $Y \sim AG(\mu,\sigma)$ to indicate a random variable $Y$ has a di
 In order to use the central limit theorem, we need to formulate this question in terms of the mean of a sample. In this case, we have a sample of $n=20$ values drawn from a uniform distribution on the interval $[0,1]$. Observe that
 $$X_1 + X_2 + \cdots + X_{20} > 8 \ \ \rightarrow \ \  \frac{X_1 + X_2 + \cdots + X_{20} }{20} > \frac{8}{20}.$$
 
-Thus, to answer this question, we need to find the probability of obtaining a sample of twenty values with a mean $\xbar$ higher than $\frac{2}{5}$. We know from Example \ref{MeanVarianceUnitInterval} that the mean and standard deviation of the distribution our sample is drawn from are $\mu = \frac{1}{2}$ and $\sigma = \frac{1}{\sqrt{12}}$.
+Thus, to answer this question, we need to find the probability of obtaining a sample of twenty values with a mean $\xbar$ higher than $\frac{2}{5}$. We know from Example \ref{MeanVarianceUnitInterval} that the mean and standard deviation of the distribution our sample values are drawn from are $\mu = \frac{1}{2}$ and $\sigma = \frac{1}{\sqrt{12}}$.
 
-The central limit theorem states that the distribution of $\xbar$ is approximately Gaussian, with a mean of $\mu = \frac{1}{2}$ and a standard deviation of $\frac{\sigma}{\sqrt{n}} = \frac{1}{\sqrt{12}\sqrt{20}} = \frac{1}{\sqrt{240}}$, or more concisely, $\xbar \sim AG(\frac{1}{2}, \frac{1}{\sqrt{240}})$.
+By the central limit theorem, the distribution of $\xbar$ is approximately Gaussian, with a mean of $\mu = \frac{1}{2}$ and a standard deviation of $\frac{\sigma}{\sqrt{n}} = \frac{1}{\sqrt{12}\sqrt{20}} = \frac{1}{\sqrt{240}}$, or more concisely, $\xbar \sim AG(\frac{1}{2}, \frac{1}{\sqrt{240}})$.
 
 Now the probability of obtaining a sample with $\xbar$ higher than $\frac{2}{5}$ can be calculated (approximately) by standardizing and using a $Z$-table.
 $$z = \frac{\xbar - \muxbar}{\sigmaxbar} = \frac{\frac{2}{5} - \frac{1}{2}}{\frac{1}{\sqrt{240}}} \approx -1.55$$
