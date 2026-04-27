@@ -1088,10 +1088,10 @@ There is a tradeoff between confidence and power. A test done at the 1\% signifi
 
 The difference between the true mean $\mu$ and the hypothesized mean $\mu_0$ is often referred to as the \newterm{effect size}\index{Effect Size}. Consider for example a new cold medication on the market. If those who have a cold and take no medication have symptoms for a mean of 5.7 days, and those who have a cold and take the new medication have symptoms for a mean of 5.2 days, one could say the effect of the medication was to decrease the mean symptom length by 0.5 days.
 
-A hypothesis test is an assessment of the strength of evidence for an effect (potentially in a certain direction depending on the alternative hypothesis chosen) in sample data, and the power of the test, $\beta$, is the probability of detecting an effect when an effect actually exists. When we reject $H_0$ and conclude that we've seen sufficient evidence for an effect, it's common to say that our study or experiment has produced a \newterm{statistically significant}\index{Statistical Significance} result.
+A hypothesis test is an assessment of the strength of evidence for an effect (potentially in a certain direction depending on the alternative hypothesis) in sample data, and the power of the test is the probability of detecting an effect when an effect actually exists. When we reject the null hypothesis and conclude that we've seen sufficient evidence for an effect, it's common to say that our study or experiment has produced a \newterm{statistically significant}\index{Statistical Significance} result.
 
 \begin{remark}
-Notice that as the effect size increases, and $\mu$ moves farther away from $\mu_0$, the power $\beta$ grows. Also, as the sample size increases, and the variance of both distributions decreases, $\beta$ grows. The power of the test is an increasing function of both the effect size and the sample size.
+Notice that as the effect size increases, and $\mu$ moves farther away from $\mu_0$, the power $1-\beta$ grows. As the sample size increases, and the variance of both distributions decreases, $1-\beta$ grows. The power of the test is an increasing function of both the effect size and the sample size.
 \end{remark}
 
 To detect a very small effect, we would typically need a very large sample, and a large effect can typically be detected with a small sample. Consider repeatedly flipping a coin with a $90\%$ heads bias, and a coin with a $55\%$ heads bias. We should detect the bias of the former coin with far fewer flips.
