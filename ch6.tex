@@ -550,14 +550,14 @@ $$TSS = \sum_{i=1}^{n} (y_i - \overline{y})^2 \qquad ESS = \sum_{i=1}^{n} (\wide
     ]
 
     % Define the data points for the scatter plot
-    %\addplot[only marks, mark=*, color=blue] table {
-    %    x y
-    %    72 84
-    %    93 82
-    %    88 91
-    %    68 75
-    %    77 73
-    %};
+    \addplot[only marks, mark=*, color=blue] table {
+        x y
+        72 84
+        93 82
+        88 91
+        68 75
+        77 73
+    };
     
     \addplot[color=black, thick, domain=68:93] expression {81};
     \addplot[color=red, thick, domain=68:93] expression {0.37*x+51.54};
@@ -629,14 +629,14 @@ If the sample points fall almost exactly along a straight line, then the $TSS$ a
 
     % Define the data points for the scatter plot
     % Define the data points for the scatter plot
-    %\addplot[only marks, mark=*, color=blue] table {
-    %    x y
-    %    68 68
-    %    70 72
-    %    75 74
-    %    84 84
-    %    93 94
-    %};
+    \addplot[only marks, mark=*, color=blue] table {
+        x y
+        68 68
+        70 72
+        75 74
+        84 84
+        93 94
+    };
     
     \addplot[color=black, thick, domain=68:93] expression {78.4};
     \addplot[color=red, thick, domain=68:93] expression {x+0.04055};
@@ -666,14 +666,14 @@ $$\begin{aligned} R^2 &= \frac{ESS}{TSS}
 &= \frac{\sum_{i=1}^{n}(r\frac{s_y}{s_x}(x_i - \overline{x}))^2}{\sum_{i=1}^{n}(y_i - \overline{y})^2} = r^2\frac{{s_y}^2}{{s_x}^2} \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2}{\sum_{i=1}^{n}(y_i - \overline{y})^2} = r^2\frac{{s_y}^2}{{s_x}^2} \frac{(n-1){s_x}^2}{(n-1){s_y}^2} = r^2 \end{aligned}$$
 \end{proof}
 
-This means that if we have done the work of calculating the coefficient of correlation $r$, not only can we easily write down the equation of the regression line, we also get a quantitative measure of how well it fits the data.
+This means that if we have done the work of calculating the coefficient of correlation $r$, not only can we easily write down the equation of the regression line, we also get a natural quantitative measure of how well it fits the data.
 
 \begin{example}
 Calculate the coefficient of determination in Examples \ref{GradesRegressionEx} and \ref{PlantsRegressionEx}. In which case is the regression line a more informative model?
 
 In Example \ref{GradesRegressionEx}, the regression line was $\widehat{y} = 0.37x+51.54$ with $r = 0.54$. Here, $r^2 = 0.29$, so only 29\% of the variance in reading grades is explained by the regression line.
 
-In Example \ref{PlantsRegressionEx}, the regression line was $\widehat{y} = 0.42x+10.41$ with $r = 0.86$. Here, $r^2 = 0.74$, so here 74\% of the variance in height is explained by the regression line, and the regression line is a much better predictive model.
+In Example \ref{PlantsRegressionEx}, the regression line was $\widehat{y} = 0.42x+10.41$ with $r = 0.86$. Here, $r^2 = 0.74$, so here 74\% of the variance in height is explained by the regression line, and the regression line is a much more useful predictive model.
 \end{example}
 
 \begin{example}
