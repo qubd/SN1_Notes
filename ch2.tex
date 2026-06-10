@@ -2,7 +2,7 @@
 % This chapter has been modified on 6-4-05.
 % There are two \choice
 \pagestyle{headings}
-\chapter{Sets \& Counting} \label{chp 2}
+\chapter{Sets \& Selections} \label{chp 2}
 
 \section{Sets and Set Notation}
 
@@ -396,7 +396,7 @@ N (S \cap C) &= 19
 
 \end{example}
 
-\section{Counting Principles \& Factorials}
+\section{Counting Principle \& Factorials}
 
 Suppose you order fries and a root beer at a fast food restaurant. There are two options for the size of the fries and three options for the size of the root beer.
 
@@ -445,32 +445,36 @@ Factorials have some very nice algebraic properties that make them easy to work 
 \eqnsgap{\frac{8!}{6!} = \frac{8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}{6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}= \frac{8 \cdot 7 \cdot \cancel{6} \cdot \cancel{5} \cdot \cancel{4} \cdot \cancel{3} \cdot \cancel{2} \cdot \cancel{1}}{\cancel{6} \cdot \cancel{5} \cdot \cancel{4} \cdot \cancel{3} \cdot \cancel{2} \cdot \cancel{1}} = 56}
 \par
 
+\begin{example}
+How many ways are there to order a standard deck of 52 cards?
+
+Since we are ordering 52 distinct objects (no two cards in a standard deck are the same), the number of possibilities is $52! \approx 8.07 \times 10^{67}$. This is astonishing, as it means that every time you do a good job of shuffling a deck of cards, it is almost certain that no deck of cards has ever been in that order before.
+\end{example}
+
 %Factorial algebra example
 
-\begin{example}
-How many arrangements of the letters in LOGARITHM contain the word TRIG?
+%\begin{example}
+%How many arrangements of the letters in LOGARITHM contain the word TRIG?
 
-There are 9! ways to rearrange the letters, but most don't include the word TRIG. There's a simple idea we can use to count only those arrangements that include it. Instead of arranging letters, partition the letters into six blocks $\boxed {L}$, $\boxed {O}$, $\boxed {A}$, $\boxed {H}$, $\boxed {M}$, and $\boxed {TRIG}$, and arrange the blocks.
+%There are 9! ways to rearrange the letters, but most don't include the word TRIG. There's a simple idea we can use to count only those arrangements that include it. Instead of arranging letters, partition the letters into six blocks $\boxed {L}$, $\boxed {O}$, $\boxed {A}$, $\boxed {H}$, $\boxed {M}$, and $\boxed {TRIG}$, and arrange the blocks.
 
-Every arrangement of the six blocks is a distinct arrangement of the nine letters which includes TRIG. Hence there are $6!$ arrangements of the letters in LOGARITHM that contain the word TRIG. Note that this also means there are $9! - 6!$ arrangements that do not include TRIG.
-\end{example}
+%Every arrangement of the six blocks is a distinct arrangement of the nine letters which includes TRIG. Hence there are $6!$ arrangements of the letters in LOGARITHM that contain the word TRIG. Note that this also means there are $9! - 6!$ arrangements that do not include TRIG.
+%\end{example}
 
-\begin{example}
-How many arrangements of the letters in LOGARITHM have all the vowels together?
+%\begin{example}
+%How many arrangements of the letters in LOGARITHM have all the vowels together?
 
-Using the same idea as above, we can consider the blocks $\boxed {L}$, $\boxed {G}$, $\boxed {R}$, $\boxed {T}$, $\boxed {H}$, $\boxed{M}$ and $\boxed {OAI}$. This time though, the three letters in the last block can appear in any of $3!$ possible orders. 
+%Using the same idea as above, we can consider the blocks $\boxed {L}$, $\boxed {G}$, $\boxed {R}$, $\boxed {T}$, $\boxed {H}$, $\boxed{M}$ and $\boxed {OAI}$. This time though, the three letters in the last block can appear in any of $3!$ possible orders. 
 
-To create an arrangement of the letters in LOGARITHM that satisfies our requirement, we have to first arrange the blocks, and then arrange the three letters inside the vowel block. Hence there are a total of $7! \cdot 3!$ possibilities. 
-\end{example}
+%To create an arrangement of the letters in LOGARITHM that satisfies our requirement, we have to first arrange the blocks, and then arrange the three letters inside the vowel block. Hence there are a total of $7! \cdot 3!$ possibilities. 
+%\end{example}
 
-\section{Permutations \& Combinations}
-
-\subsection*{Permutations}\label{PermutationsSec}
+\section{Permutations \& Combinations}\label{PermutationsSec}
 
 \begin{example}
 How many ways are there to choose three students from a class of twenty and arrange them in a line?
 
-We can use the same approach as in the last example. We're filling in three blanks, we have twenty options to choose from, and repeats are not permitted. Thus, there are $\underline{20} \cdot \underline{19} \cdot \underline{18} = 6\,840$ ways to do it. 
+We can apply the same approach used in the last section. We're filling in three blanks, we have twenty options to choose from, and repeats are not permitted. Applying the fundamental counting principle, there are $\underline{20} \cdot \underline{19} \cdot \underline{18} = 6\,840$ ways to do it. 
 
 \noindent The notation $^{20}P_3$ is used to refer to the number of ways of selecting $3$ objects from a set of $20$ distinct options and ordering them. Thus, we have $^{20}P_3 = 6\,840$.
 \end{example}
@@ -492,62 +496,83 @@ $$^{26}P_5 = \frac{26!}{21!} = 26 \cdot 25 \cdot 24 \cdot 23 \cdot 22 = 7\,893\,
 \end{example}
 
 \begin{example}
-How many ways are there to choose five novels from a pool of thirty, five math books from a pool of twenty, and arrange the ten selected books them on a shelf, if the novels must all be grouped together, and the math books must all be grouped together?
+How many ways are there to give a teacup to each of six guests who come over for tea if you have a collection of nine different teacups in your cupboard?
+
+We need to select six cups from a set of nine and arrange them (the arrangement is relevant since selecting the same five cups but assigning them to the guests in a different way yields a different outcome), so the number of possibilities is $$^{9}P_6 = \frac{9!}{3!} = 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 60\,480$$
+\end{example}
+
+\begin{example}
+How many ways are there to choose five novels from a box of thirty, five math books from a box of twenty, and arrange the ten selected books them on a shelf, if the novels must all be grouped together, and the math books must all be grouped together?
 
 There are $^{30}P_{5}$ possible ordered selections of the novels and $^{20}P_{5}$ possible ordered selections of the math books. Finally, we can either decide to place the novels on the left (and math books on the right), or the math books on the left (and novels on the right). Hence, the total number of options is
-$$^{30}P_{5} \cdot ^{20}P_{5} \cdot 2$$
+$$^{30}P_{5} \cdot\, ^{20}P_{5}\, \cdot 2$$
 \end{example}
 
-%More examples
+%\subsection*{Permutations with Identical Objects}
 
-\subsection*{Permutations with Identical Objects}
+%What if some objects are indistinguishable? If this is the case, there are fewer possibilities. For example, how many arrangements of the letters in the string $AAAB$ are there? 
 
-What if some objects are indistinguishable? If this is the case, there are fewer possibilities. For example, how many arrangements of the letters in the string $AAAB$ are there? 
+%Notice that we just have to decide which of the four possible positions we'll place the $B$ into. Once that's done, then $A$'s go everywhere else, so there are only four distinct arrangements.
 
-Notice that we just have to decide which of the four possible positions we'll place the $B$ into. Once that's done, then $A$'s go everywhere else, so there are only four distinct arrangements.
+%Now suppose we number the three $A$'s. How many arrangements of the string $A_1A_2A_3B$ are there? Since the four letters are now distinguishable, there are $4! = 24$. Let's write these out, grouping together in columns all strings that will be identical after the labels on the $A$'s are removed.
+%\begin{center}
+%\begin{tabular}{cccc}
+%$A_1A_2A_3B$ & $A_1A_2BA_3$ & $A_1BA_2A_3$ & $BA_1A_2A_3$ \\
+%$A_1A_3A_2B$ & $A_1A_3BA_2$ & $A_1BA_3A_2$ & $BA_1A_3A_2$ \\
+%$A_2A_1A_3B$ & $A_2A_1BA_3$ & $A_2BA_1A_3$ & $BA_2A_1A_3$ \\
+%$A_2A_3A_1B$ & $A_2A_3BA_1$ & $A_2BA_3A_1$ & $BA_2A_3A_1$ \\
+%$A_3A_1A_2B$ & $A_3A_1BA_2$ & $A_3BA_1A_2$ & $BA_3A_1A_2$ \\
+%$A_3A_2A_1B$ & $A_3A_2B_1A$ & $A_3BA_2A_1$ & $BA_3A_2A_1$ \\
+%\end{tabular}
+%\end{center}
+%Notice that rearranging the labels will result in a string which is identical once the labels are removed. This means if we list all possible arrangements of the labeled strings, each possible unlabeled string will appear $3!$ times, since there are $3!$ ways of arranging the labels. Alternatively, think about how there are 3! ways to \emx{apply the labels} to the three $A$'s, and each of the 24 labeled strings can be obtained by first selecting an unlabeled string (i.e. a column) then applying the labels.
 
-Now suppose we number the three $A$'s. How many arrangements of the string $A_1A_2A_3B$ are there? Since the four letters are now distinguishable, there are $4! = 24$. Let's write these out, grouping together in columns all strings that will be identical after the labels on the $A$'s are removed.
+%The point is that we can count the number of \emx{unlabeled strings} by dividing the number of \emx{labeled strings} by the number of ways of rearranging the labels, in this case, $4! / 3! = 4$. The same principle applies if there are many different kinds of indistinguishable objects, and the general result is summarized in the formula below.
+
+%\begin{proposition}\index{Mississippi Formula} (Mississippi Formula) The number of ways of arranging $n$ objects, with indistinguishable groups of sizes $k_1, k_2, \dots\, ,k_m$, is given by
+%$$\frac{n!}{k_{1}! \cdot k_{2}! \cdot \, \cdots \, \cdot k_{m}!}$$
+%\end{proposition}
+
+%\begin{example}
+%How many arrangements of the letters in MISSISSIPPI are there?
+%\par
+%\noindent There are eleven letters in total, with identical groups of size 4 (the I's), 4 (the S's), and 2 (the P's). Therefore, the number of arrangements is
+%\eqnsbiggap{\frac{11!}{4! \cdot 4! \cdot 2!} = \frac{11 \cdot 10 \cdot 9 \cdot {8} \cdot 7 \cdot {6} \cdot 5 \cdot {4} \cdot {3} \cdot {2} \cdot 1}{{4} \cdot {3} \cdot {2} \cdot 1 \cdot {4} \cdot {3} \cdot {2} \cdot 1 \cdot {2} \cdot 1} = 11 \cdot 10 \cdot 9 \cdot 7 \cdot 5 = 34\,650.}
+%\end{example}
+
+%\begin{example}
+%An urn contains four green and five red marbles, which are removed one at a time. How many different sequences of red and green marbles can result from this process?
+%\par
+%\noindent In this case, we are rearranging nine objects, four $G$'s and five $R$'s. Each arrangement, read left to right, corresponds to a sequence of marbles that could appear. There are identical groups of size 4 (the green marbles), and 5 (the red marbles). Therefore, the number of arrangements is
+%\eqnsbiggap{\frac{9!}{4! \cdot 5!} = \frac{9 \cdot {8} \cdot 7 \cdot {6} \cdot 5 \cdot {4} \cdot {3} \cdot {2} \cdot 1}{{4} \cdot {3} \cdot {2} \cdot 1 \cdot {5} \cdot {4} \cdot {3} \cdot {2} \cdot 1} = 9 \cdot 2 \cdot 7 = 126.}
+%\end{example}
+
+Now suppose we're interested in the number of ways to select elements from a set, but we're only concerned with which elements are selected, and not the order in which they appear. If the same objects appear in a different order, we regard it as the same outcome.
+
+\begin{example} How many three-element subsets of $A = \{a,b,c,d\}$ are there? 
+
+We've seen earlier that there are $^{4}P_{3} = 4\cdot 3 \cdot 2 = 24$ ordered selections of three elements. These are all listed below, and grouped into columns in which the three letters selected are the same (so the entries in any one column all correspond to the same subset of $A$). Each column is ordered alphabetically.
+
 \begin{center}
-\begin{tabular}{cccc}
-$A_1A_2A_3B$ & $A_1A_2BA_3$ & $A_1BA_2A_3$ & $BA_1A_2A_3$ \\
-$A_1A_3A_2B$ & $A_1A_3BA_2$ & $A_1BA_3A_2$ & $BA_1A_3A_2$ \\
-$A_2A_1A_3B$ & $A_2A_1BA_3$ & $A_2BA_1A_3$ & $BA_2A_1A_3$ \\
-$A_2A_3A_1B$ & $A_2A_3BA_1$ & $A_2BA_3A_1$ & $BA_2A_3A_1$ \\
-$A_3A_1A_2B$ & $A_3A_1BA_2$ & $A_3BA_1A_2$ & $BA_3A_1A_2$ \\
-$A_3A_2A_1B$ & $A_3A_2B_1A$ & $A_3BA_2A_1$ & $BA_3A_2A_1$ \\
+\begin{tabular}{ccccccc}
+$abc$ & & $acd$ & & $abd$ & & $bcd$ \\
+$acb$ & & $adc$ & & $adb$ & & $bdc$ \\
+$bac$ & & $cad$ & & $bad$ & & $cbd$ \\
+$bca$ & & $cda$ & & $bda$ & & $cdb$ \\
+$cab$ & & $dac$ & & $dab$ & & $dbc$ \\
+$cba$ & & $dca$ & & $dba$ & & $dcb$ \\
 \end{tabular}
 \end{center}
-Notice that rearranging the labels will result in a string which is identical once the labels are removed. This means if we list all possible arrangements of the labeled strings, each possible unlabeled string will appear $3!$ times, since there are $3!$ ways of arranging the labels. Alternatively, think about how there are 3! ways to \emx{apply the labels} to the three $A$'s, and each of the 24 labeled strings can be obtained by first selecting an unlabeled string (i.e. a column) then applying the labels.
 
-The point is that we can count the number of \emx{unlabeled strings} by dividing the number of \emx{labeled strings} by the number of ways of rearranging the labels, in this case, $4! / 3! = 4$. The same principle applies if there are many different kinds of indistinguishable objects, and the general result is summarized in the formula below.
-
-\begin{proposition}\index{Mississippi Formula} (Mississippi Formula) The number of ways of arranging $n$ objects, with indistinguishable groups of sizes $k_1, k_2, \dots\, ,k_m$, is given by
-$$\frac{n!}{k_{1}! \cdot k_{2}! \cdot \, \cdots \, \cdot k_{m}!}$$
-\end{proposition}
-
-\begin{example}
-How many arrangements of the letters in MISSISSIPPI are there?
-\par
-\noindent There are eleven letters in total, with identical groups of size 4 (the I's), 4 (the S's), and 2 (the P's). Therefore, the number of arrangements is
-\eqnsbiggap{\frac{11!}{4! \cdot 4! \cdot 2!} = \frac{11 \cdot 10 \cdot 9 \cdot {8} \cdot 7 \cdot {6} \cdot 5 \cdot {4} \cdot {3} \cdot {2} \cdot 1}{{4} \cdot {3} \cdot {2} \cdot 1 \cdot {4} \cdot {3} \cdot {2} \cdot 1 \cdot {2} \cdot 1} = 11 \cdot 10 \cdot 9 \cdot 7 \cdot 5 = 34\,650.}
+The total number of ordered selections, $^{4}P_{3}$, is the the number of entries in the table. As we move down from one row to the next, we are reordering the three elements in every possible way. The number of ways to do this, which is the number of rows, is $3!$, and thus the number of columns in the table, which is the answer to our question, is given by
+$$\frac{^{4}P_{3}}{3!} = \frac{\frac{4!}{(4-3)!}}{3!} = \frac{4!}{3!1!} = 4.$$
 \end{example}
 
-\begin{example}
-An urn contains four green and five red marbles, which are removed one at a time. How many different sequences of red and green marbles can result from this process?
-\par
-\noindent In this case, we are rearranging nine objects, four $G$'s and five $R$'s. Each arrangement, read left to right, corresponds to a sequence of marbles that could appear. There are identical groups of size 4 (the green marbles), and 5 (the red marbles). Therefore, the number of arrangements is
-\eqnsbiggap{\frac{9!}{4! \cdot 5!} = \frac{9 \cdot {8} \cdot 7 \cdot {6} \cdot 5 \cdot {4} \cdot {3} \cdot {2} \cdot 1}{{4} \cdot {3} \cdot {2} \cdot 1 \cdot {5} \cdot {4} \cdot {3} \cdot {2} \cdot 1} = 9 \cdot 2 \cdot 7 = 126.}
-\end{example}
+This argument generalizes to unordered selections of any number of elements from any finite set. We count the number of ordered selections, then divide out by the number of possible reorderings. If we were making an unordered selection of four elements from a set with ten elements, there would be $^{10}P_{4} / 4! =  \frac{10!}{4!6!}$ possibilities.
 
-\subsection*{Combinations}
+%Notice that rearranging the labels will result in a string which is identical once the labels are removed. This means if we list all possible arrangements of the labeled strings, each possible unlabeled string will appear $3!$ times, since there are $3!$ ways of arranging the labels. Alternatively, think about how there are 3! ways to \emx{apply the labels} to the three $A$'s, and each of the 24 labeled strings can be obtained by first selecting an unlabeled string (i.e. a column) then applying the labels.
 
-Suppose now we're interested in the number of ways that a subset of $r$ objects can be selected from a larger set of $n$ distinct objects. We're only concerned with which objects are selected not with their order, so if the same objects appear, but in a different order, we consider this to be the same outcome.
-
-Consider how many ways there are to selecta group three children from a family with five. To do this, we can imagine lining up the children any fixed order, let's say by age. We can now specify which children are chosen using a string such as $YYNYN$, which would indicate we chose the first two children in the line as well as the fourth. In fact, every distinct five letter string made up of $Y$s and $N$s which has exactly three $Y$s will represent a different choice of three children, and every choice of three children determines such a string.
-
-Now we can use the Mississippi formula to count the number of different choices by counting strings. Each string is a rearrangement of five objects with identical groups of sizes three and two, hence there are $\frac{5!}{3!2!} = 5 \cdot 2 = 10$ possibilities.
-
-The general principle is that once the elements of a set have been lined up in some arbitrary order, each subset is given by an \emph{ordered} list of $Y$'s and $N$'s, where $Y$ denotes membership in the subset, and $N$ denotes non-membership. We can count the number of these ordered lists of $Y$'s and $N$'s using the Mississippi formula.
+%The point is that we can count the number of \emx{unlabeled strings} by dividing the number of \emx{labeled strings} by the number of ways of rearranging the labels, in this case, $4! / 3! = 4$. The same principle applies if there are many different kinds of indistinguishable objects, and the general result is summarized in the formula below.
 
 \begin{definition}\index{Combinations}\label{combinationdefinition}
 If a subset of $r$ objects is selected from a set of $n$ objects, the result is called an $r$-combination. The number of $r$-\newterm{combinations}, denoted $^nC_r$, or more commonly $\binom{n}{r}$, is given by
@@ -555,13 +580,13 @@ $$^nC_r = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$
 \end{definition}
 
 \begin{warning}
-Note carefully the distinction between $^nP_r$ and $^nC_r$. The former counts the number of ways of selecting $r$ objects \emx{and arranging them}, while the latter is the number of selections possible when \emx{any rearrangement is regarded as the same outcome}.
+Note the distinction between $^nP_r$ and $^nC_r$. The former counts the number of ways of selecting $r$ objects \emx{and arranging them}, while the latter is the number of selections possible when \emx{any rearrangement is regarded as the same outcome}.
 \end{warning}
 
 \begin{example}
 In Lotto 6/49, if you purchase a ticket you choose 6 distinct numbers between 1 and 49. The ticket wins if its numbers match 6 distinct numbers between 1 and 49 which are randomly drawn, regardless of the order they are drawn in. How many different tickets would you need to buy to guarantee a win?
 
-Since the order of the numbers on the ticket is irrelevant, the number of different tickets available is $\binom{49}{6} = \frac{49!}{6!43!} = 13\,983\,816$, so this is the minimum number you would need to purchase to be guaranteed one will win.
+Since the order of the numbers on the ticket is irrelevant, the number of different tickets available is $\binom{49}{6} = \frac{49!}{6!43!} = 13\,983\,816$, so this is the minimum number you would need to purchase to be certain one will win.
 \end{example}
 
 \begin{example}
@@ -574,26 +599,26 @@ Notice that we could just as well have proceeded in the opposite order, that is,
 $$\binom{25}{3} \cdot 22 \cdot 21 = 1\,062\,600.$$
 \end{example}
 
-\begin{example}How many ways are there to divide a group of eight people into a team of three and a team of five?
+%\begin{example}How many ways are there to divide a group of eight people into a team of three and a team of five?
 
-To create a team of three and a team of five, we choose three individuals for the team of three, then the five remaining make up the team of five.
-$$\binom{8}{3}\binom{5}{5} = 56$$
-\end{example}
+%To create a team of three and a team of five, we choose three individuals for the team of three, then the five remaining make up the team of five.
+%$$\binom{8}{3}\binom{5}{5} = 56$$
+%\end{example}
 
-\begin{example}
-How many ways are there to divide a group of eight people into two teams of four?
+%\begin{example}
+%How many ways are there to divide a group of eight people into two teams of four?
 
-To create two teams of four, we choose four for the first team, and those that remain make up another team of four. We have to be very careful though. In the example above the two teams were distinguishable (one has more people than the other), but here they are not. 
+%To create two teams of four, we choose four for the first team, and those that remain make up another team of four. We have to be very careful though. In the example above the two teams were distinguishable (one has more people than the other), but here they are not. 
 
-If we select A, B, C, and D for the first team and E, F, G, and H for the second, this results in the same outcome as selecting E, F, G, and H for the first team and A, B, C, and D for the second. Because the teams are indistinguishable, every outcome has been double counted! Thus, we need to divide out by the number of rearrangements of the teams.
-$$\frac{\binom{8}{4}\binom{4}{4}}{2!} = 35$$
+%If we select A, B, C, and D for the first team and E, F, G, and H for the second, this results in the same outcome as selecting E, F, G, and H for the first team and A, B, C, and D for the second. Because the teams are indistinguishable, every outcome has been double counted! Thus, we need to divide out by the number of rearrangements of the teams.
+%$$\frac{\binom{8}{4}\binom{4}{4}}{2!} = 35$$
 
-Notice that if the two teams were distinguishable, for example, if there were a red team and blue team with four people on each, there would be $\binom{8}{4}\binom{4}{4} = 70$ ways.
-\end{example}
+%Notice that if the two teams were distinguishable, for example, if there were a red team and blue team with four people on each, there would be $\binom{8}{4}\binom{4}{4} = 70$ ways.
+%\end{example}
 
-\begin{remark}
-As the last example shows, it's very easy to end up inadvertently double counting, even for those with lots of experience with these kinds of problems. Solving such a problem amounts to coming up with a sequence of choices which can be made to produce each possible outcome. You need to convince yourself that your sequence of choices can not only produce every possible outcome, but produce it in a unique way (making any of the choices differently always results in a different outcome).
-\end{remark}
+%\begin{remark}
+%As the last example shows, it's very easy to end up inadvertently double counting, even for those with lots of experience with these kinds of problems. Solving such a problem amounts to coming up with a sequence of choices which can be made to produce each possible outcome. You need to convince yourself that your sequence of choices can not only produce every possible outcome, but produce it in a unique way (making any of the choices differently always results in a different outcome).
+%\end{remark}
 
 \begin{example}
 Alice and Bob are in a gym class of twenty students. How many ways are there to make a team of eight students from the class if at least one of Alice and Bob them must be on the team?
@@ -605,5 +630,36 @@ Another approach is to instead take the total number of possible teams, $\binom{
 $$\binom{20}{8} - \binom{18}{8} = 82212.$$
 \end{example}
 
+\begin{example}
+How many ways are there to reorder the nine letters AAAABBBBB?
+
+Note that since the nine letters are not distinct, the answer is not $9!$. Why not? Consider that there are not nine choices for the first letter. Only two. So the answer is $2\cdot2\cdot \, \dots \, \cdot 2 = 2^9$? No. The problem is that at some point, the fourth $A$ will be used (or the fifth $B$), and from then on, all the following letters are determined. The point where this happens depends on the particular sequence of choices made.
+
+There's a clever way to deal with the problem by reframing it differently. Instead of thinking about filling in blanks, one at a time, think about the set $I = \{1,2,3,4,5,6,7,8,9\}$, and notice that we can associate to each arrangement of AAAABBBBB, a four-element subset of $I$ which contains the indices of the positions of the A's.
+\begin{center}
+\begin{tabular}{ccccccc}
+Arrangment & & Subset \\
+AAAABBBBB & &\{1,2,3,4\} \\
+ABBBBBAAA & &\{1,7,8,9\} \\
+BABABABAB& &\{2,4,6,8\} \\
+ABBABBABA & &\{1,4,7,9\} \\
+BBBBBAAAA & &\{6,7,8,9\} \\
+\end{tabular}
+\end{center}
+
+Two different arrangements yield two different four-element subsets, and vice-versa, so the number of arrangements is equal to the number of four-element subsets of $I$, which is $\binom{9}{4}$.
+\end{example}
+
+The idea in the example above will be important when we introduce the binomial distribution in Section \ref{BinomialSec}, so let's write it down in greater generality. Note that we could, in fact, have used this as the definition of $\binom{n}{k}$, and observed later that each ordering of the $A$'s and $B$'s corresponds to an unordered selection of elements of $I$.
+
+\begin{proposition}\label{TwoSymbolCount}
+The number of arrangements of a sequence of $k$ A's and $n-k$ B's (so the total number of symbols being arranged is $n$) is given by $\binom{n}{k}$.
+\end{proposition}
+
+\begin{example}
+A coin is flipped eight times. If at least six heads appeared, how many possibilities are there for the sequence of eight outcomes that occurred?
+
+Either six, seven, or eight heads appeared, so using the result above in each case (with H's and T's in place of A's and B's) in each of the three cases, the total number of possibilities is $\binom{8}{6}+\binom{8}{7}+\binom{8}{8} = 37$.
+\end{example}
 
 

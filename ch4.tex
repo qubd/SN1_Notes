@@ -647,7 +647,7 @@ $$\begin{aligned}\Var(X) &= E[(X - \mu_X)^2] = E[(X - p)^2] = (0-p)^2 \cdot (1-p
 
 Bernoulli random variables are simple but fundamental in probability and statistics. The Binomial, Geometric, and Poisson distributions, all of which come up frequently in scientific practice, can be defined in terms of Bernoulli random variables. In this course, we'll cover only the Binomial distribution, the others are studied in the Probability \& Random Variables option course, 201-PRV.
 
-\section{The Binomial Distribution}
+\section{The Binomial Distribution}\label{BinomialSec}
 
 Suppose we perform a fixed number of Bernoulli trials (call this number $n$). Each trial has the same probability of success (call this value $p$), and the results of the $n$ consecutive trials form a sequence of independent Bernoulli random variables. If $X$ counts the total number of successes after all the trials have been performed, then we say that $X$ has a Binomial distribution.
 
@@ -683,7 +683,7 @@ Below on the left is the pmf of a binomial distribution with $n = 5$, $p = 0.5$,
 \end{tikzpicture}
 \end{center}
 
-To derive this probability mass function, imagine recording of the results of the Bernoulli trials as an $n$ letter long sequence of $S$'s and $F$'s, representing success and failure respectively. By the Mississippi formula from Section \ref{PermutationsSec}, the number of such sequences in which $x$ successes occur is $\frac{n!}{x!(n-x)!} = \binom{n}{x}$.
+To derive this probability mass function, imagine recording of the results of the Bernoulli trials as an $n$ letter long sequence of $S$'s and $F$'s, representing success and failure respectively. As we saw in Proposition \ref{TwoSymbolCount}, the number of such sequences in which $x$ successes occur is given by $\binom{n}{x}$.
 
 Consider any such sequence, say $SFSSSFF$ for example. Here $n=7$, and $x=4$ successes occurred. The probability this particular ordered sequence occurs is not hard to calculate since we're performing independent Bernoulli trials, each with the same probability of success. Every $S$ occurs with probability $p$, and every $F$ with probability $1-p$. There are four $S$'s and three $F$'s, and the trials are independent, so this sequence occurs with probability $p^4(1-p)^3$.
 
