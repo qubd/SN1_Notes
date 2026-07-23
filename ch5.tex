@@ -942,10 +942,18 @@ Reject $H_0$ & Type I Error & Correct \\
 \end{center}
 
 \begin{remark}
-A useful analogy here is a jury trial. The defendant is only deemed guilty if the there's sufficient evidence, so $H_0$ is innocence and $H_a$ is guilt. In this context, convicting an innocent defendant is a Type I error, and acquitting a guilty defendant is a Type II error.
+A useful analogy here is a jury trial. The defendant should be deemed guilty only if there's sufficient evidence, so $H_0$ is innocence and $H_a$ is guilt. In this context, convicting an innocent defendant is a Type I error, and acquitting a guilty defendant is a Type II error.
 \end{remark}
 
-To understand how these occur, consider a one-sample $Z$-test of $H_0: \mu = \mu_0$ against $H_a: \mu > \mu_0$, done at the 5\% significance level, as usual.
+\begin{example}
+Sam has two coins. One is fair, and the other has tails on both sides. He selects one of the coins, then flips it five times. Compute the probability of each type of error when testing $H_0: p = \frac{1}{2}$ against $H_a: p = 1$ at the 5\% significance level, where $p$ denotes the probability of tails on the coin.
+
+If the coin is fair ($H_0$ is true), a Type I error will occur when we obtain enough evidence to convince us the coin has two tails. The probability a fair coin shows tails on all five flips is $(\frac{1}{2})^5 \approx 0.03$, and the probability it shows four tails and one head is about $16\%$ (using a binomial distribution with $n=5$ and $p=\frac{1}{2}$). Thus, to reject $H_0$ and make a Type I error, we need to observe five tails, so $P = 0.03 < 0.05$. Thus, the Type I error rate is about 3\%.
+
+If the coin has two tails ($H_a$ is true), a Type II error will occur when we don't obtain enough evidence to convince us the coin has two tails. As we saw above, the probability a fair coin shows tails on all five flips is $(\frac{1}{2})^5 \approx 0.03$, but we observe this result every time the coin with tails on both sides is chosen, and hence we will always reject $H_0$ and come to the correct conclusion. Thus, the Type II error rate is 0\%.
+\end{example}
+
+In the example above, our alternative hypothesis specified a precise value of the unknown parameter $p$ (this is known in the business as a simple hypothesis). In the tests we've developed, we don't have this luxury. The alternatives in the $Z$ and $T$-tests specify a range of possible values (these are known in the business as composite hypotheses). To understand how we can compute the error rates in these cases, consider a one-sample $Z$-test of $H_0: \mu = \mu_0$ against $H_a: \mu > \mu_0$, at the 5\% significance level, as usual.
 
 We've seen that the distribution of the sample mean $\xbar$ is centred at the population mean $\mu$, and if the hypotheses of the central limit theorem hold, is approximately Gaussian. In the figures below, we'll draw this distribution in blue. The null hypothesis, which may or may not be true, claims the population mean is $\mu_0$.
 
@@ -980,7 +988,7 @@ We've seen that the distribution of the sample mean $\xbar$ is centred at the po
 
 We'll call these two distributions the \newterm{true distribution}\index{True Distribution} of $\xbar$ (centred at the true mean $\mu$), and the \newterm{null distribution}\index{Null Distribution} of $\xbar$ (centred at at the hypothesized value $\mu_0$) respectively. Note that when we calculate the test statistic, we use the hypothesized mean $\mu_0$.
 
-Now if the null hypothesis is, in fact, true, then the two distributions are identical, and the correct decision is to not reject $H_0$. We'll incorrectly reject $H_0$ (a Type I error) when the area to the right of the test statistic (the $P$-value) is under $5\%$, which happens when our sample is among the $5\%$ highest samples, in terms of the sample mean.
+Now if the null hypothesis $H_0: \mu = \mu_0$ is true, then these two distributions are identical, and the correct decision is to not reject $H_0$. We'll incorrectly reject $H_0$ (a Type I error) when the area to the right of the test statistic (the $P$-value) is under $5\%$, which happens when our sample is among the $5\%$ highest samples, in terms of the sample mean.
 
 \begin{center}
 \begin{tikzpicture}[scale = 0.9]
@@ -1023,9 +1031,9 @@ Now if the null hypothesis is, in fact, true, then the two distributions are ide
 
 Thus, when we choose the significance level of the test, we're setting the probability of a Type I error. Why not always take a very small significance level then, since making a Type I error is something we would ideally never do?
 
-The problem comes when the null hypothesis is false. If the population mean $\mu$ is higher than $\mu_0$, the correct decision is to reject $H_0$. In this situation, a Type II error will occur if the $P$-value is above $5\%$. When we select a random sample, its mean is drawn from the true distribution of $\xbar$ (the blue distribution), then we take that realization $\littlexbar$ and compute the $P$-value using the null distribution of $\xbar$ (the dashed black distribution). 
+The problem comes when the null hypothesis is false. If the population mean $\mu$ is higher than $\mu_0$, the correct decision is to reject $H_0$. In this situation, a Type II error will occur if the $P$-value is above $5\%$. When we select a random sample and compute its mean, we get a realization of the true distribution of $\xbar$ (the blue distribution), then we take that realization $\littlexbar$ and compute the $P$-value using the null distribution of $\xbar$ (the dashed black distribution). 
 
-The green area below is the probability of correctly rejecting $H_0$ (obtaining a sample whose test statistic is far enough into the tail of the null distribution to have $P < 0.05$), and the red area is the probability of not rejecting $H_0$ (obtaining a sample with $P > 0.05$).
+In the figure below, the crosshatched area under the null distribution is $0.05$, the area coloured green is the probability of correctly rejecting $H_0$ (obtaining a sample which results in $P < 0.05$), and the area coloured red is the probability of not rejecting $H_0$ (obtaining a sample which results in $P > 0.05$).
 
 \begin{center}
 \begin{tikzpicture}[scale = 0.9]
@@ -1067,7 +1075,7 @@ The green area below is the probability of correctly rejecting $H_0$ (obtaining 
 \end{tikzpicture}
 \end{center}
 
-The probability of not rejecting $H_0$ when it's true is the \newterm{confidence}\index{Confidence Level! of a Hypothesis Test} level of the test, denoted $1-\alpha$, and the probability of rejecting $H_0$ when it's false is called the \newterm{power}\index{Power! of a Hypothesis Test} of the test, denoted $1- \beta$. As we increase the confidence level (that is, decrease the significance level) of the test, the Type I error rate ($\alpha$) shrinks, but the Type II error rate ($\beta$) grows.
+The probability of not rejecting $H_0$ when it's true is the \newterm{confidence}\index{Confidence Level! of a Hypothesis Test} level of the test, denoted $1-\alpha$, and the probability of rejecting $H_0$ when it's false is the \newterm{power}\index{Power! of a Hypothesis Test} of the test, denoted $1- \beta$. In the jury trial analogy, 100\% confidence means no innocent defendant is concvicted, while 100\% power means no guilty defendant is acquitted.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -1080,15 +1088,23 @@ Reject $H_0$ & $\alpha$ & $1-\beta$ \\
 \end{tabular}
 \end{center}
 
-\begin{keypoint}
-There is a tradeoff between confidence and power. A test done at the 1\% significance level has a higher confidence level, but lower power, than a test done at the 5\% significance level.
-\end{keypoint}
+In practice, a hypothesis test is testing for the presence of some effect or change (the coin is no longer fair, the treatment lowers mean time to recovery, etc), and the null hypothesis is there is no such effect. With this is mind, rejecting $H_0$ means the test returned a positive result (the test detected an effect), and not rejecting means the test returned a negative result (the test did not detect an effect).
+
+In the table above then, the top-left and bottom right cells, labelled with $1-\alpha$ and $1-\beta$ respectively, correspond to a true negative (concluding there is no effect when no effect exists), and a true positive (concluding there is an effect when an effect exists).
+
+The top-right cell, where a Type II error occurred, is a \newterm{false negative}. The test concludes no effect exists when in fact there is one. The bottom-left cell, where a Type I error occurred, is a \newterm{false positive}. The test concludes an effect exists when in fact there is none.
+
+\begin{remark}
+In medicine, the terms \newterm{sensitivity}\index{Sensitivity} and \newterm{specificity}\index{Specificity} are used for power $1-\beta$ and confidence $1-\alpha$ respectively. A sensitive test returns a positive result even for very small effects (has high power), and a specific test only returns a positive result when the effect is really there (has high confidence).
+\end{remark}
+
+%As we increase the confidence level (that is, decrease the significance level) of the test, the Type I error rate ($\alpha$) shrinks, but the Type II error rate ($\beta$) grows.
 
 \subsection*{Effect Size, Sample Size, and Significance}
 
 The difference between the true mean $\mu$ and the hypothesized mean $\mu_0$ is often referred to as the \newterm{effect size}\index{Effect Size}. Consider for example a new cold medication on the market. If those who have a cold and take no medication have symptoms for a mean of 5.7 days, and those who have a cold and take the new medication have symptoms for a mean of 5.2 days, one could say the effect of the medication was to decrease the mean symptom length by 0.5 days.
 
-A hypothesis test is an assessment of the strength of evidence for an effect (potentially in a certain direction depending on the alternative hypothesis) in sample data, and the power of the test is the probability of detecting an effect when an effect actually exists. When we reject the null hypothesis and conclude that we've seen sufficient evidence for an effect, it's common to say that our study or experiment has produced a \newterm{statistically significant}\index{Statistical Significance} result.
+A hypothesis test is an assessment of the strength of evidence for an effect (potentially in a certain direction depending on the alternative hypothesis) in sample data, and the power of the test is the probability of detecting an effect when an effect actually exists. When we reject the null hypothesis and conclude that we've seen sufficient evidence for an effect, it's common to say that our experiment has produced a \newterm{statistically significant}\index{Statistical Significance} result.
 
 \begin{remark}
 Notice that as the effect size increases, and $\mu$ moves farther away from $\mu_0$, the power $1-\beta$ grows. As the sample size increases, and the variance of both distributions decreases, $1-\beta$ grows. The power of the test is an increasing function of both the effect size and the sample size.
