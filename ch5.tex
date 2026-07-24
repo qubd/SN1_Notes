@@ -946,7 +946,7 @@ A useful analogy here is a jury trial. The defendant should be deemed guilty onl
 \end{remark}
 
 \begin{example}
-Sam has two coins. One is fair, and the other has tails on both sides. He selects one of the coins, then flips it five times. Compute the probability of each type of error when testing $H_0: p = \frac{1}{2}$ against $H_a: p = 1$ at the 5\% significance level, where $p$ denotes the probability of tails on the coin.
+Sam has two coins. One is fair, and the other has tails on both sides. He selects one of the coins, without telling which, then flips it five times. Compute the probability of each type of error when testing $H_0: p = \frac{1}{2}$ against $H_a: p = 1$ at the 5\% significance level, where $p$ denotes the probability of tails on the coin.
 
 If the coin is fair ($H_0$ is true), a Type I error will occur when we obtain enough evidence to convince us the coin has two tails. The probability a fair coin shows tails on all five flips is $(\frac{1}{2})^5 \approx 0.03$, and the probability it shows four tails and one head is about $16\%$ (using a binomial distribution with $n=5$ and $p=\frac{1}{2}$). Thus, to reject $H_0$ and make a Type I error, we need to observe five tails, so $P = 0.03 < 0.05$. Thus, the Type I error rate is about 3\%.
 
