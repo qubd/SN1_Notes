@@ -2,16 +2,345 @@
 % This chapter has been modified on 6-4-05.
 % There are two \choice
 \pagestyle{headings}
-\chapter{Confidence Intervals \& Hypothesis Tests} \label{chp 5}
+\chapter{Frequentist Statistics} \label{chp 5}
+
+\section{Sampling Distributions}
+
+Recall that a statistic is a numerical property of a sample. It's value is determined by the sample it was derived from. Therefore, we can think of a statistic as a function whose input is a sample, and whose output is a real number.
+
+If we fix a sample size, $n$, define a sample space $\Omega$ as the set of possible samples of that size, and assign probabilities to each possible sample, a statistic is a random variable defined on $\Omega$. This is the premise of \newterm{frequentist statistics}: a parameter is a real number, which we may or may not know, but a \emph{statistic is a random variable} and like any random variable, \emph{it has a distribution}.
+
+\begin{definition}\index{Sampling Distribution}
+The \newterm{sampling distribution} of a statistic, over samples of size $n$, is the distribution of possible values of that statistic.
+\end{definition}
+
+\begin{example}\label{DistOfMeanAge} Consider a population of three individuals, Alice, Bob, and Charles. Alice is 12 years old, Bob is 16 years old, and Charles is 22 years old. Let $\overline{X}$ denote the mean age in a sample of two individuals drawn from this population (now we're treating the sample mean as a random variable, so we write it as $\overline{X}$). Find the sampling distribution of $\overline{X}$ over all samples of size two taken with replacement.
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+Sample & $X_1$ & $X_2$ & $\overline{X}$ \\
+\hline
+A,A & $12$ & $12$ & $12$ \\
+A,B & $12$ & $16$ & $14$ \\
+A,C & $12$ & $22$ & $17$ \\
+B,A & $16$ & $12$ & $14$ \\
+B,B & $16$ & $16$ & $16$ \\
+B,C & $16$ & $22$ & $19$ \\
+C,A & $22$ & $12$ & $17$ \\
+C,B & $22$ & $16$ & $19$ \\
+C,C & $22$ & $22$ & $22$ \\
+\end{tabular}
+\end{center}
+
+\noindent Above, we've constructed a table with a row for each of the $3\cdot3 = 9$ possible samples. $X_1$ and $X_2$ denote the ages of the first and second individuals in our sample, and $\overline{X} = \frac{1}{2}(X_1 + X_2)$ is their mean.
+
+\noindent If we assume every sample is equally likely, then each of the nine rows of the table above occurs with probability $\frac{1}{9}$, and we obtain the sampling distribution below.
+
+\vspace{-1em}
+\begin{center}
+    \begin{minipage}{.45\textwidth}
+        \centering
+      \renewcommand*{\arraystretch}{1.35}
+\begin{tabular}{c|c}
+$x$ & $P(\overline{X} = x)$ \\
+\hline
+$12$ & $\frac{1}{9}$ \\
+$14$ & $\frac{2}{9}$ \\
+$16$ & $\frac{1}{9}$ \\
+$17$ & $\frac{2}{9}$ \\
+$19$ & $\frac{2}{9}$ \\
+$22$ & $\frac{1}{9}$
+\end{tabular}
+\renewcommand*{\arraystretch}{1}
+\vspace{0.25em}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+\begin{tikzpicture}[scale = 0.6]
+\begin{axis} [title = {Sampling Distribution of Mean Age ($n=2$)}, width = 10cm, height = 6cm, ymin = 0, ymax = 0.3, xmin = 10.5, xmax = 23.5, tick label style={font=\scriptsize, scale = 1/0.6}, title style={font=\scriptsize, scale = 1/0.6}, ytick = {0.1,0.2,0.3}, xtick = {12,14,16,18,20,22}]
+\addplot+[ycomb] plot coordinates {(12,0.1111) (14,0.2222) (16,0.1111) (17,0.2222) (19,0.2222) (22,0.1111)}; 
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+\begin{keypoint}
+To create this distribution, we assigned equal probability to every possible sample, which means we are assuming random sampling (to be completely explicit, we're assuming the sampling process results in a simple random sample taken with replacement).
+\end{keypoint}
+If we compute the mean of this distribution, $E(\overline{X}) = 12 \cdot \frac{1}{9} + 14 \cdot \frac{2}{9} + \dots + 22 \cdot \frac{1}{9} = \frac{50}{3}$. Note that the mean age in our population is $\mu = \frac{12+16+22}{3} = \frac{50}{3}$ also. This is not a coincidence.
+\end{example}
+
+\begin{proposition}\label{MeanOfSampleMean}
+If $\overline{X}$ is the mean of a random sample taken from a population with mean $\mu$, then $E(\overline{X}) = \mu$. The average sample mean, across all samples, is precisely equal to the population mean.
+\end{proposition}
+
+\begin{remark}
+The notation $\mu_{\overline{X}}$ is also used for $E(\overline{X})$, so you may see the result above written as $\mu_{\overline{X}} = \mu$.
+\end{remark}
+
+This is a key result that will appear in the inference procedures later in the chapter, and it's a very special property of the mean which is generally not true of other statistics.
+
+Now that we know that in any scenario where we're doing random sampling, the mean of the distribution of $\overline{X}$ is $\mu$, it's natural to wonder about the variance. Is there a simple relationship between the variance of $\overline{X}$ and the variance of the population the random sample was drawn from?
+
+\begin{example}
+Consider again the scenario in Example \ref{DistOfMeanAge}. Let's compute the variance of the random variable $\overline{X}$ and the compare it to the variance of the population.
+$$\Var(\overline{X}) = (12 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} + (14 - \textstyle\frac{50}{3})^2 \cdot \frac{2}{9} + \dots + (22 - \textstyle\frac{50}{3})^2 \cdot \frac{1}{9} = \frac{76}{9}$$
+$$\sigma^2 = \textstyle\frac{1}{3}\left((12-\frac{50}{3})^2 + (16-\frac{50}{3})^2 + (22-\frac{50}{3})^2 \right) = \frac{152}{9}$$
+In fact, the variance of $\overline{X}$ is precisely half the population variance. This is, again, not a coincidence.
+\end{example}
+
+\begin{proposition}\label{VarianceOfSampleMean}
+If $\overline{X}$ is the mean of a random sample of $n$ individuals taken from a population with variance $\sigma^2$, then $\Var(\overline{X}) = \frac{\sigma^2}{n}$. In other words, the variance of the distribution of the sample mean is $n$ times smaller than the variance of the population.
+\end{proposition}
+
+\begin{remark}
+The notation $\sigma_{\overline{X}}$ is used for the standard deviation of $\overline{X}$, so taking the square root of each side of $\Var(\overline{X}) = \frac{\sigma^2}{n}$, we obtain $\sigma_{\overline{X}} = \frac{\sigma}{\sqrt{n}}$, which is how the result is often stated in statistics texts.
+\end{remark}
+
+The proofs of Propositions \ref{MeanOfSampleMean} and \ref{VarianceOfSampleMean} require results on properties of expected value and variance that are developed in the Probability \& Random Variables option course, 201-PRV.
+
+To sum up, we've learned some important things about the \emx{distribution of means of random samples}. In any scenario where we compute the mean of a random sample, the average sample mean is precisely equal to the population mean, and the variance of the distribution of sample means is $n$ times smaller than the variance of the population. This is expressed more formally below.
+
+\begin{keypoint}The mean of random sample, $\xbar$, taken from a population with mean $\mu$ and variance $\sigma^2$, is a random variable whose mean and variance are
+$$E(\xbar) = \mu \qquad  Var(\xbar) = \frac{\sigma^2}{n}$$
+\end{keypoint}
+
+%This implies that if we use the mean of random sample $\overline{X}$ to guess the value of the population mean $\mu$, the target value we're trying to hit is precisely in the center of the distribution of our guess, and the larger the sample size, the smaller the dispersion in the distribution of our guess, that is, the more the distribution of our guess clusters around its center. Bigger samples usually result in better guesses, as you would expect.
+
+%Put Grphics here
+
+
+\section{The Central Limit Theorem}
+
+Now we know there's a simple relationship between the mean and variance of the distribution of $\xbar$ and the mean and variance of the population we're sampling. What can we say about how the shape of the distribution of $\xbar$ compares to the shape of the population distribution?
+
+To illustrate, let's take the continuous random variable with density $f_X(x) = \frac{1}{2}e^{-\frac{1}{2}x}$ on $[0,\infty)$.
+
+\begin{remark}
+This random variable $X$ is known as an exponential random variable with parameter $\frac{1}{2}$, which we can abbreviate $X \sim \Exponential(\frac{1}{2})$. Exponential distributions are studied in detail in the Probability \& Random Variables option course, 201-PRV. For our purposes, it's simply a convenient distribution to use to illustrate the main result in this section. Note that $E(X) = \int_{0}^{\infty}\frac{1}{2}xe^{-\frac{1}{2}x}\,dx = 2$.
+\end{remark}
+
+We'll approximate the sampling distribution of $\xbar$ by taking ten thousand samples, computing the mean of each, and constructing a histogram of the resulting values. We'll start with samples of size one.
+
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
+       \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
+    \end{axis}
+    \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ for $n=1$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=1200,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1500}, area style]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,1153) (0.25,1063) (0.5,939) (0.75,882) (1,678) (1.25,655) (1.5,557) (1.75,479) (2,443) (2.25,364) (2.5,313) (2.75,298) (3,275) (3.25,208) (3.5,211) (3.75,198) (4,161) (4.25,146) (4.5,99) (4.75,99) (5,86) (5.25,73) (5.5,86) (5.75,41) (6,65) (6.25,54)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+The result is not surprising. The distribution on the right (means of samples of size one) has the same shape as the distribution on the left (the distribution of the population those samples were drawn from). The mean of a sample consisting of a single observation is just that observation itself, so we're simply collecting ten thousand realizations of $X$, and constructing a histogram.
+
+What happens when we increase the sample size? Now we'll take ten thousand random samples, each consisting of two independent observations $X_1$ and $X_2$, and compute the mean $\xbar = \frac{1}{2}(X_1 + X_2)$ of each sample. The resulting distribution of sample means is given below on the right. Note that the most likely realizations of $X$ are very close to zero, but the most likely realizations of $\xbar$ are close to one. Each of the sample values $X_1$ and $X_2$ is more likely to be very close to zero than anywhere else, but samples where both values are simultaneously very close to zero are nonetheless quite unusual.
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
+       \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
+    \end{axis}
+    \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ for $n=2$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8},ymin=0,ymax=1200,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1500}, area style]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,282) (0.25,620) (0.5,801) (0.75,894) (1,959) (1.25,880) (1.5,803) (1.75,706) (2,608) (2.25,537) (2.5,469) (2.75,394) (3,366) (3.25,283) (3.5,260) (3.75,231) (4,158) (4.25,142) (4.5,103) (4.75,105) (5,57) (5.25,67) (5.5,57) (5.75,37) (6,27) (6.25,36)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+If we continue increasing the sample size, taking ten thousand random samples of larger and larger sizes from the distribution of $X$, how will the distribution of the sample mean $\xbar$ change?
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
+       \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
+    \end{axis}
+    \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ for $n=5$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1300,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1500}, area style]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,4) (0.25,85) (0.5,355) (0.75,668) (1,954) (1.25,1180) (1.5,1224) (1.75,1140) (2,1045) (2.25,861) (2.5,678) (2.75,495) (3,354) (3.25,318) (3.5,218) (3.75,139) (4,89) (4.25,67) (4.5,49) (4.75,32) (5,17) (5.25,11) (5.5,4) (5.75,6) (6,2) (6.25,2)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
+       \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
+    \end{axis}
+    \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ for $n=10$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1750,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {2000}, area style]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,0) (0.25,1) (0.5,55) (0.75,269) (1,709) (1.25,1275) (1.5,1631) (1.75,1624) (2,1434) (2.25,1073) (2.5,782) (2.75,493) (3,288) (3.25,175) (3.5,102) (3.75,42) (4,22) (4.25,18) (4.5,5) (4.75,0) (5,2) (5.25,0) (5.5,0) (5.75,0) (6,0) (6.25,0)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+       \begin{axis}[title = {$X \sim \Exponential(\frac{1}{2})$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=0.6,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {1}]
+       \addplot[very thick,domain=0:6.5,blue] {0.5*e^(-0.5*x)};
+       \draw[very thick, blue, -] (axis cs:0,0) -- (axis cs:0,2);
+    \end{axis}
+    \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+  \begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ for $n=30$},tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=2900,xmin=-0.0025, xmax = 6.2, xtick = {0,1,2,3,4,5,6}, ytick = {3000}, area style]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,0) (0.25,0) (0.5,0) (0.75,6) (1,108) (1.25,653) (1.5,1826) (1.75,2653) (2,2385) (2.25,1430) (2.5,636) (2.75,230) (3,59) (3.25,12) (3.5,2) (3.75,0) (4,0) (4.25,0) (4.5,0) (4.75,0) (5,0) (5.25,0) (5.5,0) (5.75,0) (6,0) (6.25,0)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+In the last section, we saw that $E(\xbar) = \mu$ and $\Var(\xbar) = \frac{\sigma^2}{n}$. These results are visible in the graphics above. Each distribution of $\xbar$ is centered at 2, which is the mean of the distribution the samples were drawn from, and the dispersion of the distribution of $\xbar$ decreases as the sample size grows (note that $\frac{\sigma^2}{n}$ decreases as $n$ increases).
+
+Moreover, there is a clear trend in the shapes of the sampling distributions. As the sample size grows, the distribution of $\xbar$ looks less like an exponential distribution, and more like a Gaussian distribution.
+
+This phenomenon is why the Gaussian distribution plays a central role in statistics. If some quantity is obtained by averaging a random sample, and the sample size is large enough, then the distribution of that quantity must be approximately Gaussian \emph{regardless of the shape of the distribution the sample was drawn from}.
+
+\begin{theorem} (\newterm{Central Limit Theorem})\index{Central Limit Theorem}\label{CLT} Consider a variable with mean $\mu$ and standard deviation $\sigma$ in some population, and let $\xbar$ denote the mean of a random sample of $n$ values drawn from that population. Then as the sample size $n$ increases, the sampling distribution of $\xbar$ becomes better approximated by $\Gaussian(\muxbar,\sigmaxbar)$, where $\mu_{\xbar} = \mu$ and $\sigma_{\xbar} = \frac{\sigma}{\sqrt{n}}$.
+\end{theorem}
+
+The conclusion of the theorem is written here in very informal language. To make it more precise, we would need to decide on a way to measure the difference between two distributions, so the theorem above could state that this difference vanishes as $n \to \infty$. For details, see \cite{DevoreBerk} or \cite{Ghahramani}.
+
+We will write $Y \sim AG(\mu,\sigma)$ to indicate a random variable $Y$ has a distribution which is approximately Gaussian with mean $\mu$ and standard deviation $\sigma$. This way, the conclusion of the central limit theorem can be written simply as $\xbar \sim AG(\mu,\frac{\sigma}{\sqrt{n}})$, where $\mu$ and $\sigma$ are the mean and standard deviation of the population our sample was drawn from.
+
+\begin{example}\label{CLTExamp}Twenty numbers in the interval $[0,1]$ are independently chosen uniformly at random. What is the probability their sum is higher than eight?
+
+In order to use the central limit theorem, we need to formulate this question in terms of the mean of a sample. In this case, we have a sample of $n=20$ values drawn from a uniform distribution on the interval $[0,1]$. Observe that
+$$X_1 + X_2 + \cdots + X_{20} > 8 \ \ \rightarrow \ \  \frac{X_1 + X_2 + \cdots + X_{20} }{20} > \frac{8}{20}.$$
+
+Thus, to answer this question, we need to find the probability of obtaining a sample of twenty values with a mean $\xbar$ higher than $\frac{2}{5}$. We know from Example \ref{MeanVarianceUnitInterval} that the mean and standard deviation of the distribution our sample values are drawn from are $\mu = \frac{1}{2}$ and $\sigma = \frac{1}{\sqrt{12}}$.
+
+By the central limit theorem, the distribution of $\xbar$ is approximately Gaussian, with a mean of $\mu = \frac{1}{2}$ and a standard deviation of $\frac{\sigma}{\sqrt{n}} = \frac{1}{\sqrt{12}\sqrt{20}} = \frac{1}{\sqrt{240}}$, or more concisely, $\xbar \sim AG(\frac{1}{2}, \frac{1}{\sqrt{240}})$.
+
+Now the probability of obtaining a sample with $\xbar$ higher than $\frac{2}{5}$ can be calculated (approximately) by standardizing and using a $Z$-table.
+$$z = \frac{\xbar - \muxbar}{\sigmaxbar} = \frac{\frac{2}{5} - \frac{1}{2}}{\frac{1}{\sqrt{240}}} \approx -1.55$$
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \eqns{P(\xbar > \textstyle\frac{2}{5}) &= P(Z > -1.55) \\ &= 1 - P(Z \leq -1.55) \\ &= 1 - 0.0603 \\ &= 0.9397 \approx 94\%}
+  \vspace{1.25em}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+   \begin{tikzpicture}[scale = 0.6]
+       \begin{axis}[width = 10cm, height = 6cm, tick label style={font=\scriptsize, scale = 1/0.6}, ymin=0,ymax=0.5,xmin=-2.9, xmax = 2.9, xtick = {-2,-1,0,1,2}, ytick = {0.1,0.2,0.3,0.4,0.5}]
+       \addplot[fill = blue, very thick,domain=-1.55:3,blue!50, samples=100] {0.3989*e^(-x^2/2)}\closedcycle;
+       \addplot[very thick,domain=-3:3,blue, samples=100] {0.3989*e^(-x^2/2)};
+       \addplot[domain=-3:3] {0};
+    \end{axis}
+    \end{tikzpicture}
+\end{minipage}
+\end{center}
+
+Note that the central limit theorem does not tell us how accurate the Gaussian approximation of the distribution of $\xbar$ is, just that it will be more accurate for larger sample sizes. Let's take ten thousand samples of twenty numbers in the interval $[0,1]$ and plot the resulting sampling distribution of $\xbar$, along with the approximating normal distribution given by the central limit theorem.
+
+If the two distributions match well, then we'll know that our answer above is fairly accurate. If the sampling distribution is still far from being Gaussian, then we'll have to disregard our answer.
+\begin{center}
+\begin{tikzpicture}[scale = 0.8]
+\begin{axis}[title = {Distribution of $\xbar$ and $\Gaussian(\frac{1}{2},\frac{1}{\sqrt{240}})$}, tick label style={font=\scriptsize, scale = 1/0.8}, title style={font=\scriptsize, scale = 1/0.8}, ymin=0,ymax=1700,xmin=0.2, xmax = 0.8, xtick = {0.2,0.3,0.4,0.5,0.6,0.7,0.8}, ytick = {3300}, area style, width = 10cm, height = 6cm]
+\addplot+[ybar interval,mark=no] plot coordinates {(0,0) (0.025,0) (0.05,0) (0.075,0) (0.1,0) (0.125,0) (0.15,0) (0.175,0) (0.2,0) (0.225,0) (0.25,2) (0.275,6) (0.3,13) (0.325,61) (0.35,147) (0.375,328) (0.4,624) (0.425,942) (0.45,1257) (0.475,1520) (0.5,1499) (0.525,1355) (0.55,955) (0.575,668) (0.6,346) (0.625,167) (0.65,58) (0.675,34) (0.7,7) (0.725,0)};
+\addplot[very thick,domain=0:1,red, samples=500] {250*6.185*e^((-(x - 0.5)^2)/(2*(1/240)))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+The distribution of $\xbar$ for random samples of size twenty is extremely well approximated by a Gaussian distribution, so we can be sure our answer is reasonably accurate.
+\end{example}
+
+\subsection*{Sample Size}
+
+The central limit theorem states that the sampling distribution of $\xbar$ will eventually look Gaussian, once the sample size is large enough. The question is then how large must our sample be, so that using a Gaussian distribution for probability calculations, as in the example above, gives an accurate result?
+
+Unfortunately, the answer depends on the details of the population distribution. Symmetric population distributions with tails that decay exponentially (thin tails) typically yield sampling distributions for $\xbar$ which are very close to Gaussian even for single digit sample sizes, while asymmetric population distributions with tails that decay polynomially (fat tails) can result in sampling distributions for $\xbar$ which don't look Gaussian until the sample size becomes extremely large.
+
+As a rule of thumb, we'll require a sample size of thirty or more to treat the distribution of $\xbar$ as if it's Gaussian. There is nothing mathematically significant about this value, or slightly different values you might find in other sources. We're simply establishing a clear, yet arbitrary, baseline. 
+
+\begin{remark}
+If the population distribution is known to be Gaussian, any sample size will suffice. An important property of Gaussian distributions is that the distribution of the mean of any number of observations from a Gaussian distribution is again Gaussian.
+\end{remark}
+
+In practice, to convince themselves the sampling distribution of $\xbar$ is sufficiently close to a Gaussian distribution for a given sample size $n$, statisticians could either rigorously derive error bounds from some known properties of the population distribution, usually in combination with stronger variations of the central limit theorem, or use statistical software to take many samples from an educated guess at the population distribution, and approximate the sampling distribution empirically, as was done to generate the graphics at the beginning of this section.
+
+\begin{example}
+If a biased coin with a 55\% probability of heads is flipped one hundred times, what is the probability that the number of heads observed is less than the number of tails?
+
+If we call a head a success, then we have a sample of $n=100$ values $X_1,X_2\,\dots\,,X_{100}$ from $X \sim \Bernoulli(0.55)$. If more tails than heads were observed, this means that more than half of the $X_i$ are zeros, so $\xbar = \frac{X_1 + X_2 + \cdots + X_{100}}{100} < \frac{50}{100} =0.5$.
+
+Using the formulas for the mean and variance of a Bernoulli random variable in Proposition \ref{BernoulliExpectation}, the mean and standard deviation of the sampling distribution of $\xbar$ are given by 
+$$\muxbar = \mu = p = 0.55 \ \ \text{and} \ \  \sigmaxbar = \frac{\sigma}{\sqrt{n}} = \frac{\sqrt{p(1-p)}}{\sqrt{n}} = \textstyle\frac{\sqrt{0.55\cdot 0.45}}{\sqrt{100}} \approx 0.05.$$
+
+By the central limit theorem, $\xbar \sim AG(0.55,0.05)$, so we can calculate (approximately) the probability of obtaining a sample whose mean is smaller than $0.5$ by standardizing and using a $Z$-table.
+$$z = \frac{\xbar - \muxbar}{\sigmaxbar} = \frac{0.5 - 0.55}{0.05} = \frac{-0.05}{0.05} = -1$$
+
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+        \centering
+  \eqns{P(\xbar < 0.5) &= P(Z < -1) \\ &= 0.1587 \approx 16\%}
+  \vspace{1.25em}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+   \begin{tikzpicture}[scale = 0.6]
+       \begin{axis}[width = 10cm, height = 6cm, tick label style={font=\scriptsize, scale = 1/0.6}, ymin=0,ymax=0.5,xmin=-2.9, xmax = 2.9, xtick = {-2,-1,0,1,2}, ytick = {0.1,0.2,0.3,0.4,0.5}]
+       \addplot[fill = blue, very thick,domain=-3:-1,blue!50, samples=100] {0.3989*e^(-x^2/2)}\closedcycle;
+       \addplot[very thick,domain=-3:3,blue, samples=100] {0.3989*e^(-x^2/2)};
+       \addplot[domain=-3:3] {0};
+    \end{axis}
+    \end{tikzpicture}
+\end{minipage}
+\end{center}
+Therefore, there's about a $16\%$ chance we will observe more tails than heads. \\
+\end{example}
+
+\begin{keypoint}
+It's very important to know the hypotheses of the central limit theorem, because all the procedures that follow in this chapter treat the mean of a sample as a realization of a Gaussian random variable, which is justified as long as these hypotheses hold.
+\begin{itemize}
+\item The sample data was obtained via random sampling.
+\item The sample data came from a distribution with a well-defined mean and variance.
+\item The sample size is large enough, or our sample data came from a Gaussian distribution.
+\end{itemize}
+\end{keypoint}
+
+%Error of Average of guesses vs Average of Guess errors illustrates CLT
 
 %TODO: Examples and discussion of non-CLT confidence intervals.
 
 \section{Confidence Interval for a Population Mean}\index{Confidence Interval! for a Mean}\label{ConfIntervalIntro}
 
-
 \subsection*{Estimating Average Age}
 
-In this chapter, we'll put the central limit theorem to work. Suppose we're interested in knowing the mean age of students at Champlain College. To estimate it, we take a random sample of 50 students and record their ages. It turns out that the mean age of students in the sample is $18.3$ years.
+Suppose we're interested in knowing the mean age of students at Champlain College. To estimate it, we take a random sample of 50 students and record their ages. It turns out that the mean age of students in the sample is $18.3$ years.
 
 Since the sample mean, $\littlexbar = 18.3$, is the mean of a random sample of a sufficiently large size, the central limit theorem tells us $\xbar \sim AG(\muxbar, \sigmaxbar)$. Standardizing the sample mean we observed yields
 $$z = \frac{\overline{x} - \muxbar}{\sigmaxbar} = \frac{18.3 - \muxbar}{\sigmaxbar}.$$
@@ -196,7 +525,9 @@ Our procedure for constructing a confidence interval for a population mean $\mu$
 Can we somehow estimate $\sigma$ and build this estimation process into the confidence interval procedure? The best estimate of the population distribution we have access to is the distribution of values within our sample, so what if we simply use the standard deviation of our sample in place of the standard deviation of the population?
 
 If we use the sample standard deviation, $S$, to estimate the standard deviation in our population, $\sigma$, then when we standardize a sample mean $\xbar$, instead of the standardized value
+
 $$\frac{\overline{X} - \muxbar}{\sigmaxbar} = \frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{n}}}, \ \ \text{we'll have the estimate} \ \ \frac{\overline{X} - \muxbar}{\sigmaxbar} \approx \frac{\overline{X} - \mu}{\frac{S}{\sqrt{n}}}.$$
+
 Our construction of a confidence interval for the population mean $\mu$ was justified by the central limit theorem, which tells us the distribution of the quantity on the left approaches $Z \sim \Gaussian(0,1)$ as the sample size $n$ grows. But what about our estimate on the right? If we repeatedly draw samples and calculate this value, what kind of distribution will we obtain?
 
 \begin{definition}\label{TDistDef}\index{Distribution! Student's T}\index{T-distribution} Draw a random sample $X_1, X_2, \, \dots \, , X_n$ from a Gaussian distribution with mean $\mu$. Let
