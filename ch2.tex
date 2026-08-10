@@ -633,7 +633,7 @@ $$\binom{20}{8} - \binom{18}{8} = 82212.$$
 \begin{example}
 How many ways are there to reorder the nine letters AAAABBBBB?
 
-Note that since the nine letters are not distinct, the answer is not $9!$. Why not? Consider that there are not nine choices for the first letter. Only two. So the answer is $2\cdot2\cdot \, \dots \, \cdot 2 = 2^9$? No. The problem is that at some point, the fourth $A$ will be used (or the fifth $B$), and from then on, all the following letters are determined. The point where this happens depends on the particular sequence of choices made.
+Note that since the nine letters are not distinct, the answer is not $9!$. Why not? Consider that there are not nine choices for the first letter. Only two. Could it be $2\cdot2\cdot \, \dots \, \cdot 2 = 2^9$? No. The problem is that at some point, the fourth $A$ will be used (or the fifth $B$), and from then on, all the following letters are determined. The point where this happens depends on the particular sequence of choices made.
 
 There's a clever way to deal with the problem by reframing it differently. Instead of thinking about filling in blanks, one at a time, think about the set $I = \{1,2,3,4,5,6,7,8,9\}$, and notice that we can associate to each arrangement of AAAABBBBB, a four-element subset of $I$ which contains the indices of the positions of the A's.
 \begin{center}
@@ -647,10 +647,10 @@ BBBBBAAAA & &\{6,7,8,9\} \\
 \end{tabular}
 \end{center}
 
-Two different arrangements yield two different four-element subsets, and vice-versa, so the number of arrangements is equal to the number of four-element subsets of $I$, which is $\binom{9}{4}$.
+Different arrangements yield different four-element subsets, and vice-versa, so the number of arrangements is equal to the number of four-element subsets of $I$, which is $\binom{9}{4}$.
 \end{example}
 
-The idea in the example above will be important when we introduce the binomial distribution in Section \ref{BinomialSec}, so let's write it down in greater generality. Note that we could, in fact, have used this as the definition of $\binom{n}{k}$, and observed later that each ordering of the $A$'s and $B$'s corresponds to an unordered selection of elements of $I$.
+This idea in the example above will be important when we introduce the binomial distribution in Section \ref{BinomialSec}, so let's write it down in greater generality. Note that we could have used this as the definition of $\binom{n}{k}$, and made the connection to unordered selections later.
 
 \begin{proposition}\label{TwoSymbolCount}
 The number of arrangements of a sequence of $k$ A's and $n-k$ B's (so the total number of symbols being arranged is $n$) is given by $\binom{n}{k}$.
@@ -659,7 +659,13 @@ The number of arrangements of a sequence of $k$ A's and $n-k$ B's (so the total 
 \begin{example}
 A coin is flipped eight times. If at least six heads appeared, how many possibilities are there for the sequence of eight outcomes that occurred?
 
-Either six, seven, or eight heads appeared, so using the result above in each case (with H's and T's in place of A's and B's) in each of the three cases, the total number of possibilities is $\binom{8}{6}+\binom{8}{7}+\binom{8}{8} = 37$.
+We can represent an outcome as a sequence of eight H's and T's. Either six, seven, or eight H's appeared, so summing the three cases, the total number of possibilities is $\binom{8}{6}+\binom{8}{7}+\binom{8}{8} = 37$.
+\end{example}
+
+\begin{example}
+Bill the bunny starts at the point $(0,0)$, and repeatedly hops either one unit right, or one unit up. How many different paths can Bill take from his starting position $(0,0)$ to the point $(5,5)$?
+
+We can represent Bill's path as a sequence of R's and U's. To arrive at (5,5), Bill must have hopped right five times and up five times, so the total number of possibilities is $\binom{10}{5} = 252$.
 \end{example}
 
 
