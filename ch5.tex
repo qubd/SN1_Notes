@@ -1013,9 +1013,9 @@ Thus, the P-value is $P(Z \geq 2.43) = 1 - P(Z \leq 2.43) = 1 - 0.9925 = 0.0075$
 \end{example}
 
 \begin{example}
-A bicycle components manufacturer claims the mean diameter of crank axles they produce is $24.98$\,mm with a standard deviation of $0.05$\,mm. A random sample of thirty-eight axles were measured very accurately, the mean diameter was found to be $24.968$\,mm. Is this enough evidence to conclude the mean diameters of axles the manufacturer is producing is not $24.98\,mm$, at the 5\% significance level?
+A bicycle component manufacturer claims the mean diameter of crank axles they produce is $24.98$\,mm with a standard deviation of $0.05$\,mm. In a random sample of thirty-eight axles that were measured very accurately, the mean diameter was $24.968$\,mm. Is this enough evidence to conclude the mean diameter of axles the manufacturer is producing is not $24.98\,mm$, at the 5\% significance level?
 
-Note that in this example, we have a \newterm{two-sided alternative hypothesis}. We're looking for evidence the mean axle diameter \textbf{is not} $24.98$\,mm. Contrast this with the last example, where we had a \newterm{one-sided alternative hypothesis}. We were looking for evidence the mean temperature was \textbf{above} $26.2^{\circ}$\,C.
+In this example, we have a \newterm{two-sided alternative hypothesis}. We're looking for evidence that the mean axle diameter \textbf{is not} $24.98$\,mm. Contrast this with the last example, where we had a \newterm{one-sided alternative hypothesis}. We were looking for evidence the mean temperature was \textbf{above} $26.2^{\circ}$\,C.
 
 \begin{keypoint}
 The alternative hypothesis is chosen based on what the researchers want to be able to conclude from the test. Is the goal of the experiment to show that the population mean is higher than a certain claimed value, lower than a certain claimed value, or not equal to that value?
@@ -1058,11 +1058,11 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
 \end{center}
 Thus, the P-value is $P(Z \geq 1.48) + P(Z \leq -1.48) = 2\,P(Z \leq -1.48) = 0.1388$.
 
-\item Since $P > 0.05$, we have not seen sufficient evidence to conclude the mean diameters of axles the manufacturer is producing is different from $24.98\,mm$, at the 5\% significance level
+\item Since $P > 0.05$, we have not seen sufficient evidence to conclude the mean diameter of axles the manufacturer is producing is different from $24.98\,mm$, at the 5\% significance level
 \end{enumerate}
 \end{example}
 
-Note that in the last two examples, we tested claims about the population mean $\mu$, and in our test, used the population standard deviation $\sigma$ provided by the same authority that gave us the value of $\mu$ we had doubts about (in the first example, a textbook, and in the second, a bicycle components manufacturer), which seems problematic. Indeed, the conclusion of the test is only properly justified if the value of $\sigma$ used in the test is the true population standard deviation, which is essentially always unknown in practice.
+Note that in the last two examples, we tested claims about the population mean $\mu$, and in our test, used the population standard deviation $\sigma$ provided by the same authority that gave us the value of $\mu$ we had doubts about (in the first example, a textbook, and in the second, a bicycle component manufacturer), which seems problematic. Indeed, the conclusion of the test is only properly justified if the value of $\sigma$ used in the test is the true population standard deviation, which is essentially always unknown in practice.
 
 \subsection*{What if we don't know $\sigma$?}
 
@@ -1123,7 +1123,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
   \end{axis}
 \end{tikzpicture}
 \end{center}
-Consulting a table of values for the T-distribution, we can find the critical value which produces a tail area of 5\% is $-1.796$. Therefore, the P-value in our test is (much) larger than 5\%. Using a computer to explicitly compute the area gives $P = 0.234$.
+Consulting a table of values for the T-distribution, we can find the critical value which produces a tail area of 5\% is $t^* = -1.796$. Therefore, the P-value in our test is (much) larger than 5\%. Using a computer to explicitly compute the area gives $P = 0.234$.
 
 \item Since $P > 0.05$, we have not seen sufficient evidence to conclude the mean monthly savings is less than \$15, at the 5\% significance level.
 \end{enumerate}
@@ -1150,7 +1150,6 @@ If in fact $p = \frac{1}{2}$, we are sampling from a population distribution wit
 The $P$-value is the probability of observing evidence at least as strong as what was observed in our sample, \emph{assuming $H_0$ is true}, so for the purposes of calculating the $P$-value, the population standard deviation $\sigma$ is known, and we can use the $Z$-test, exactly as in the last section. 
 
 If we let $p_0$ denote the claimed proportion in the null hypothesis ($\frac{1}{2}$ in our example), $\widehat{p}$ denote the proportion observed in our sample ($\frac{18}{30}$ in our example), and make the replacements $\mu = p_0$ and $\sigma = \sqrt{p_0(1-p_0)}$, our test statistic becomes
-
 $$z = \frac{\widehat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}.$$
 
 \begin{example}
@@ -1421,9 +1420,7 @@ Reject $H_0$ & $\alpha$ & $1-\beta$ \\
 
 In practice, a hypothesis test is testing for the presence of some effect or change (the coin is no longer fair, the treatment lowers mean time to recovery, etc), and the null hypothesis is there is no such effect. With this is mind, rejecting $H_0$ means the test returned a positive result (the test detected an effect), and not rejecting means the test returned a negative result (the test did not detect an effect).
 
-In the table above then, the top-left and bottom right cells, labelled with $1-\alpha$ and $1-\beta$ respectively, correspond to a true negative (concluding there is no effect when no effect exists), and a true positive (concluding there is an effect when an effect exists).
-
-The top-right cell, where a Type II error occurred, is a \newterm{false negative}. The test concludes no effect exists when in fact there is one. The bottom-left cell, where a Type I error occurred, is a \newterm{false positive}. The test concludes an effect exists when in fact there is none.
+In the table above, the top-left and bottom right cells correspond to a true negative (concluding there is no effect when no effect exists), and a true positive (concluding there is an effect when an effect exists). The top-right cell, where a Type II error occurred, is a \newterm{false negative}. The test concludes no effect exists when in fact there is one. The bottom-left cell, where a Type I error occurred, is a \newterm{false positive}. The test concludes an effect exists when in fact there is none.
 
 \begin{remark}
 In medicine, the terms \newterm{sensitivity}\index{Sensitivity} and \newterm{specificity}\index{Specificity} are used for power $1-\beta$ and confidence $1-\alpha$ respectively. A sensitive test returns a positive result even for very small effects (has high power), and a specific test only returns a positive result when the effect is really there (has high confidence).
@@ -1504,11 +1501,7 @@ Similarly, 5\% of confidence intervals constructed at the 95\% confidence level 
 
 This is why the scientific method is so important. If we incorrectly conclude there is an effect at the 5\% significance level when none actually exists, but publish the result and the experimental method, then when others try to replicate it, the false positive will quickly be detected, since each trial done with a new random sample only has a 5\% chance of coming to the same incorrect conclusion.
 
-\begin{remark}
-Conversely, we can undermine the scientific process by continuing to replicate an experiment until achieving significance (when there is actually no effect, this will happen by chance in 5\% of experiments done at the 5\% significance level), and then denying the experiments that did not achieve significance ever happened.
-
-This practice is known as \emph{$P$-hacking}, and is a real problem in modern scientific practice, where often there is only an incentive to publish experiments that are novel (never been done before), and have achieved significance. Attempts have been made to address this problem by giving researchers more incentive to replicate the experiments of others, and ways to publish their findings regardless of whether they achieved significance or not.
-\end{remark}
+Conversely, we can undermine the scientific process by continuing to replicate an experiment until achieving significance (when there is actually no effect, this will happen by chance in 5\% of experiments done at the 5\% significance level), and then denying the experiments that did not achieve significance ever happened. This practice is known as \emph{$P$-hacking}, and is a real problem in modern scientific practice, where often there is only an incentive to publish experiments that are novel (never been done before), and have achieved significance. Attempts have been made to address this problem by giving researchers incentives to replicate the experiments of others, and places to publish experiments that did not achieve significance.
 
 % Testing 90% coin for unfairness vs 55% coin, sample size and effect siuze discussion
 
@@ -1618,7 +1611,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
   \end{axis}
 \end{tikzpicture}
 \end{center}
-Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 5\% is about 11. Therefore, the P-value in our test is (much) larger than 5\%. Using a computer to explicitly compute the area gives $P = 0.366$.
+Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 5\% is about $x^* = 11$. Therefore, the P-value in our test is (much) larger than 5\%. Using a computer to explicitly compute the area gives $P = 0.366$.
 
 \item Since $P > 0.05$, we have not seen sufficient evidence to conclude that the die is not fair, at the 5\% significance level.
 \end{enumerate}
@@ -1773,7 +1766,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
   \end{axis}
 \end{tikzpicture}
 \end{center}
-Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 10\% is about $4.605$. Therefore, the P-value in our test is (much) larger than 10\%. Using a computer to explicitly compute the area gives $P = 0.153$.
+Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 10\% is $x^* = 4.605$. Therefore, the P-value in our test is (much) larger than 10\%. Using a computer to explicitly compute the area gives $P = 0.153$.
 
 \item Since $P > 0.10$, we have not seen sufficient evidence to conclude that age and drink preference are not independent, at the 10\% significance level.
 \end{enumerate}
@@ -1850,7 +1843,7 @@ The P-value is the probability of obtaining a sample whose test statistic is at 
   \end{axis}
 \end{tikzpicture}
 \end{center}
-Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 5\% is $3.841$. Therefore, the P-value in our test is smaller than 5\%. Using a computer to explicitly compute the area gives $P = 0.037$.
+Consulting a table of values for the chi-square distribution, we can find the critical value which produces a tail area of 5\% is $x^* = 3.841$. Therefore, the P-value in our test is smaller than 5\%. Using a computer to explicitly compute the area gives $P = 0.037$.
 
 \item Since $P < 0.05$, we can conclude that seed shape and colour are not inherited independently, i.e., are linked, at the 5\% significance level.
 \end{enumerate}
