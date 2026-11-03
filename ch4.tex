@@ -366,7 +366,7 @@ $$\begin{aligned}
 P(X_1 = 6 \cup \dots \cup X_4 = 6) &= P((X_1 \neq 6 \cap \dots \cap X_4 \neq 6)^c) \\
 &= 1 - P(X_1 \neq 6 \cap \dots \cap X_4 \neq 6) \\
 &= 1 - P(X_1 \neq 6) \cdot \dots \cdot P(X_4 \neq 6) \\
-&= 1 - \textstyle\frac{5}{6} \cdot \dots \cdot \frac{5}{6} \\
+&= 1 - \textstyle\frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \\
 &= 1 - (\textstyle\frac{5}{6})^4.
 \end{aligned}$$
 \end{example}
@@ -497,9 +497,9 @@ We can also use the expected value to quantify the amount of dispersion present 
 \end{tikzpicture}
 \end{center}
 
-The values of $X$ tend to be clustered close to the center of the distribution, only very rarely straying under 4 or over 7. On the other hand, $Y$ takes on values far from the center of its distribution quite often. In other words, the distance between the value of $X$ and the center of its distribution is usually smaller than the distance between the value of $Y$ and its center of its distribution. 
+Both distributions are centered around 5 or 6, but the values of $X$ tend to be clustered close to the center, only rarely straying under 4 or over 7. On the other hand, $Y$ takes values outside this interval fairly often. In other words, the distance between a realization of $X$ and the center of its distribution is typically smaller than the distance between a realization of $Y$ and its center of its distribution. 
 
-In Section \ref{MeasuresOfDispersionSec} we defined the variance of a statistical variable in a dataset as the average squared distance from the mean, and we'll define the variance of a random variance analogously, as the expected squared distance between a random variable and its expected value.
+In Section \ref{MeasuresOfDispersionSec}, we defined the variance of a statistical variable in a dataset as the average squared distance from the mean, and we'll define the variance of a random variance analogously, as the expected squared distance between a random variable and its expected value.
 
 \begin{definition}\index{Random Variable!Variance of}\index{Random Variable!Standard Deviation of}\index{Variance}\index{Standard Deviation}\label{VarianceDefRV} The \newterm{variance} of a discrete random variable $X$ is denoted $\Var(X)$ or $\sigma^{2}_{X}$, and given by 
 $$\Var(X) = E[(X - \mu_X)^2] = \sum_{x \in A} (x - \mu_X)^2 f_X(x).$$
@@ -543,7 +543,7 @@ Thus, it does not matter which game you play in the long run. Over a very large 
 This large difference in the variances indicates Big Win Bob's game is much riskier. In Bob's game players win rarely but win big, while in Charles' game players win small amounts quite often.
 \end{example}
 
-Calculating the variance by hand can be tedious, and in practice such calculations are usually done with a computer. It's important to do a few examples by hand though, to understand the subtleties and develop some intuition. In the example above, note that the variance of Big Win Bob's game is dominated by the contribution of the term corresponding to the rare outcome where the player gains \$74, despite the tiny probability, because the difference between the rare \$74 gain and the expected gain is squared.
+Calculating the variance by hand can be tedious, and in practice such calculations are usually done with a computer. It's important to do a few examples by hand though, to understand the nature of the calculation. In the example above, note that the variance of Big Win Bob's game is dominated by the contribution of the term corresponding to the rare outcome where the player gains \$74, despite the tiny probability, because the difference between the rare \$74 gain and the expected gain is squared.
 
 \begin{example}\label{stdevoneroll}
 If $X$ represents the outcome of a single roll of a fair six-sided die, find $\sigma_X$.
